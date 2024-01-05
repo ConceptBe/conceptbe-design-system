@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const globalStyles = css`
+export const GlobalStyles = css`
   #root {
     height: 100vh;
     width: 100%;

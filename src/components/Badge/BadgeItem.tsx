@@ -6,7 +6,7 @@ import { ColorType } from '../../styles/theme';
 type BackgroundColorType = keyof Pick<ColorType, 'c1' | 'bg1'>;
 type FontColorType = keyof Pick<ColorType, 'w1' | 'b4' | 'b9'>;
 
-interface Props {
+export interface Props {
   children: ReactNode;
   backgroundColor?: BackgroundColorType;
   fontColor?: FontColorType;

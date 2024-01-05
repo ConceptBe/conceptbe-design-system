@@ -23,7 +23,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "svg.d.ts", "emotion.d.ts"],
+  "include": ["src", "svg.d.ts", "emotion.d.ts", "dist"],
   "exclude": ["./node_modules"],
   "files": ["emotion.d.ts"],
   "types": ["vite-plugin-svgr/client"],
