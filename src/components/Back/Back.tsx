@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,12 +12,14 @@ const Back = ({ customStyle }: Props) => {
   const navigate = useNavigate();
 
   return (
-    <SVGBack
-      onClick={() => navigate(-1)}
-      cursor="pointer"
-      style={customStyle}
-    />
+    <Wrapper onClick={() => navigate(-1)} style={customStyle}>
+      <SVGBack />
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  cursor: pointer;
+`;
 
 export default Back;
