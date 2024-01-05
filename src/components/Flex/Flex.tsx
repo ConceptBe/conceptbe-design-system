@@ -1,4 +1,4 @@
-import styled from '@emotion/styled/macro';
+import styled from '@emotion/styled';
 import { CSSProperties } from 'react';
 
 import { ColorKeyType } from '../../styles/theme';
