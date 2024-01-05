@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { Config, Validate } from '../../types/useInput';
 
-interface Props {
+export interface Props {
   name: string;
   value: string;
   onChange: (
