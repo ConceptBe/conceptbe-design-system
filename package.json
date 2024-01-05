@@ -1,17 +1,29 @@
 {
   "name": "concept-be-design-system",
   "description": "콘셉비 디자인 시스템",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "type": "module",
-  "homepage": "https://github.com/ConceptBe/conceptbe-design-system",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConceptBe/conceptbe-design-system.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "publish:npm": "rm -rf dist && mkdir dist && tsc && vite build && cp -r ./src/assets ./dist",
+    "publish:npm": "rm -rf dist && mkdir dist && tsc && vite build && cp -r ./src/assets ./dist && npm publish",
     "preview": "vite preview"
   },
   "dependencies": {
