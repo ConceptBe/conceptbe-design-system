@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useState, useEffect, useCallback } from 'react';
 
 import DropdownPanel from './DropdownPanel.tsx';
-import SVGArrow from '../../assets/arrow.svg';
+import { ReactComponent as SVGArrow } from '../../assets/svg/arrow.svg';
 import useHandleClickOutside from '../../hooks/useHandleClickOutside.ts';
 import { DropdownItem } from '../../types/Dropdown.ts';
 

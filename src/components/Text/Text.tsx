@@ -6,7 +6,7 @@ import {
   ComponentPropsWithoutRef,
 } from 'react';
 
-import Required from '../../assets/text_required.svg';
+import { ReactComponent as SVGTextRequired } from '../../assets/svg/text_required.svg';
 import { ColorKeyType, FontKeyType } from '../../styles/theme';
 
 type Props<T extends ElementType> = {
@@ -40,7 +40,7 @@ const Text = <T extends ElementType>({
       {children}
       {required && (
         <RequiredWrapper>
-          <Required />
+          <SVGTextRequired />
         </RequiredWrapper>
       )}
     </Wrapper>

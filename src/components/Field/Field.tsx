@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 import FieldInput from './FieldInput';
 import FieldTextarea from './FieldTextarea';
-import SVGRequired from '../../assets/text_required.svg';
+import { ReactComponent as SVGRequired } from '../../assets/svg/text_required.svg';
 
 interface InputProps {
   children: ReactNode;
