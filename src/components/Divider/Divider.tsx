@@ -13,7 +13,7 @@ interface Props {
 
 const Divider = styled.hr<Props>`
   width: ${({ width }) => (width ? convertCSS(width) : '100%')};
-  height: ${({ height }) => (height ? convertCSS(height) : 1)};
+  height: ${({ height }) => (height ? convertCSS(height) : '1px')};
   margin-top: ${({ top }) => top && convertCSS(top)};
   margin-bottom: ${({ bottom }) => bottom && convertCSS(bottom)};
   border: none;

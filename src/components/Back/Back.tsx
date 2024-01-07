@@ -1,18 +1,16 @@
 import styled from '@emotion/styled';
 import { CSSProperties } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-import SVGBack from '../../assets/back_24_W.svg';
+import { ReactComponent as SVGBack } from '../../assets/svg/back_24_W.svg';
 
 interface Props {
   customStyle?: CSSProperties;
+  onClick?: () => void;
 }
 
-const Back = ({ customStyle }: Props) => {
-  const navigate = useNavigate();
-
+const Back = ({ customStyle, onClick }: Props) => {
   return (
-    <Wrapper onClick={() => navigate(-1)} style={customStyle}>
+    <Wrapper onClick={onClick} style={customStyle}>
       <SVGBack />
     </Wrapper>
   );

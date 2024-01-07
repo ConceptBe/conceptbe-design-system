@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
-import { useNavigate } from 'react-router-dom';
 
-import SVGLogo from '../../assets/main_logo.svg';
+import { ReactComponent as SVGLogo } from '../../assets/svg/main_logo.svg';
 
-const Logo = () => {
-  const navigate = useNavigate();
+interface Props {
+  onClick?: () => void;
+}
 
+const Logo = ({ onClick }: Props) => {
   return (
-    <Wrapper onClick={() => navigate('/')}>
+    <Wrapper onClick={onClick}>
       <SVGLogo />
     </Wrapper>
   );

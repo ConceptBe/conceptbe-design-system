@@ -1,42 +1,23 @@
 import styled from '@emotion/styled';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { ReactNode } from 'react';
 
-import PNGBottomBg from '../../assets/background/bottom_bg.png';
-import SVGFeed from '../../assets/navigation/feed.svg';
-import SVGActiveFeed from '../../assets/navigation/feed_active.svg';
-import SVGProfile from '../../assets/navigation/profile.svg';
-import SVGActiveProfile from '../../assets/navigation/profile_active.svg';
-import SVGWrite from '../../assets/writeicon24.svg';
+import NavigationItem from './NavigationItem';
+import PNGBottomBg from '../../assets/image/bottom_bg.png';
 
-const Navigation = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+interface Props {
+  children: ReactNode;
+}
 
+const Navigation = ({ children }: Props) => {
   return (
     <Wrapper>
       <NavBackImg src={PNGBottomBg} alt="bottom-menu-back-image" />
-      <NavWrapper>
-        <NavItem onClick={() => navigate('/feed')}>
-          {location.pathname.startsWith('/feed') ? (
-            <SVGActiveFeed />
-          ) : (
-            <SVGFeed />
-          )}
-        </NavItem>
-        <NavCenterItem>
-          <SVGWrite />
-        </NavCenterItem>
-        <NavItem onClick={() => navigate('/profile')}>
-          {location.pathname.startsWith('/profile') ? (
-            <SVGActiveProfile />
-          ) : (
-            <SVGProfile />
-          )}
-        </NavItem>
-      </NavWrapper>
+      <NavWrapper>{children}</NavWrapper>
     </Wrapper>
   );
 };
+
+Navigation.Item = NavigationItem;
 
 export default Navigation;
 
@@ -62,30 +43,4 @@ const NavWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   gap: 20%;
-`;
-
-const NavItem = styled.div`
-  flex: 1 1 auto;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  cursor: pointer;
-`;
-
-const NavCenterItem = styled.div`
-  position: absolute;
-  background-color: ${({ theme }) => theme.color.c1};
-  border-radius: 50%;
-  bottom: -3px;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  width: 58px;
-  height: 58px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 99;
 `;
