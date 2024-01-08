@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
+import { useContext } from 'react';
 
+import { FieldContext } from './Field';
 import { Config, Validate } from '../../types/useInput';
 
 export interface Props {
   name: string;
-  value: string;
   onChange: (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     config: Config,
@@ -16,12 +17,10 @@ export interface Props {
   autoFocus?: boolean;
   maxLength?: number;
   placeholder?: string;
-  isRequired?: boolean;
 }
 
 const FieldTextarea = ({
   name,
-  value,
   onChange,
   onValidate,
   isSuccess = true,
@@ -30,8 +29,9 @@ const FieldTextarea = ({
   autoFocus = false,
   placeholder = '',
   maxLength,
-  isRequired = false,
 }: Props) => {
+  const { isRequired, inputValue: value } = useContext(FieldContext);
+
   return (
     <>
       <TextArea
