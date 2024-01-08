@@ -27,8 +27,8 @@ import Text from './components/Text/Text';
 import TextDivider from './components/TextDivider/TextDivider';
 import ConceptBeProvider from './ConceptBeProvider';
 import useCheckbox from './hooks/useCheckbox';
-import useHandleClickOutside from './hooks/useHandleClickOutside';
-import useInput from './hooks/useInput';
+import useDropdown from './hooks/useDropdown';
+import useField from './hooks/useField';
 import useRadio from './hooks/useRadio';
 import theme from './styles/theme';
 import { convertCSS } from './utils/convertCSS';
@@ -100,9 +100,9 @@ export {
   TextDivider,
   ConceptBeProvider,
   useCheckbox,
-  useHandleClickOutside,
-  useInput,
+  useField,
   useRadio,
+  useDropdown,
   convertCSS,
   theme,
   PNGAgreementBackground,
