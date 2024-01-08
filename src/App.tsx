@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
 
-import { CheckboxContainer, RadioContainer, useCheckbox, useRadio } from '.';
+import Child from './Child';
+import CheckboxContainer from './components/CheckboxContainer/CheckboxContainer';
 import Dropdown from './components/Dropdown/Dropdown';
+import RadioContainer from './components/RadioContainer/RadioContainer';
+import useCheckbox from './hooks/useCheckbox';
 import useDropdown from './hooks/useDropdown';
+import useRadio from './hooks/useRadio';
 
 interface FilterOption {
   id: number;
@@ -86,6 +90,7 @@ const App = () => {
 
   return (
     <>
+      <Child />
       <Dropdown
         selectedValue={dropdownValue.see}
         initialValue="시/도/군"
