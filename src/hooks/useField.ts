@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Config } from '../types/useInput';
+import { Config } from '../types/useField';
 
 const initErrorMessages = <T extends Record<keyof T, string>>(
   initialValue: T,
@@ -16,13 +16,13 @@ const initErrorMessages = <T extends Record<keyof T, string>>(
   );
 };
 
-const useInput = <T extends Record<keyof T, string>>(initialValue: T) => {
-  const [inputValue, setInputValue] = useState<T>(initialValue);
-  const [inputErrorValue, setInputErrorValue] = useState<
+const useField = <T extends Record<keyof T, string>>(initialValue: T) => {
+  const [fieldValue, setFieldValue] = useState<T>(initialValue);
+  const [fieldErrorValue, setFieldErrorValue] = useState<
     Record<keyof T, string>
   >(initErrorMessages(initialValue));
 
-  const onChangeInput = (
+  const onChangeField = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     config?: Config,
   ) => {
@@ -32,13 +32,13 @@ const useInput = <T extends Record<keyof T, string>>(initialValue: T) => {
       return;
     }
 
-    setInputValue((prevValues: T) => ({
+    setFieldValue((prevValues: T) => ({
       ...prevValues,
       [name]: value,
     }));
 
     if (config?.isRequired && value.length === 0) {
-      setInputErrorValue((prev) => ({
+      setFieldErrorValue((prev) => ({
         ...prev,
         [name]: '필수 입력 값입니다.',
       }));
@@ -48,7 +48,7 @@ const useInput = <T extends Record<keyof T, string>>(initialValue: T) => {
     if (config && config.onValidate) {
       config.onValidate().forEach((validate) => {
         if (validate.name === name && validate.regexp.test(value)) {
-          setInputErrorValue((prev) => ({
+          setFieldErrorValue((prev) => ({
             ...prev,
             [name]: validate.errorMessage,
           }));
@@ -64,14 +64,14 @@ const useInput = <T extends Record<keyof T, string>>(initialValue: T) => {
       )
         return;
     }
-    setInputErrorValue((prev) => ({ ...prev, [name]: '' }));
+    setFieldErrorValue((prev) => ({ ...prev, [name]: '' }));
   };
 
   return {
-    inputValue,
-    inputErrorValue,
-    onChangeInput,
+    fieldValue,
+    fieldErrorValue,
+    onChangeField,
   };
 };
 
-export default useInput;
+export default useField;

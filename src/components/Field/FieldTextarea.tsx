@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useContext } from 'react';
 
 import { FieldContext } from './Field';
-import { Config, Validate } from '../../types/useInput';
+import { Config, Validate } from '../../types/useField';
 
 export interface Props {
   name: string;
