@@ -54,7 +54,7 @@ const filterOptions2 = [
 ];
 
 const App = () => {
-  const { checkboxValue, onChangeCheckBox } = useCheckbox<{
+  const { checkboxValue, onChangeCheckbox } = useCheckbox<{
     goal: FilterOption[];
     goal2: FilterOption[];
   }>({
@@ -125,13 +125,13 @@ const App = () => {
       <CheckboxContainer
         nameKey="goal"
         options={checkboxValue.goal}
-        onChange={(e) => onChangeCheckBox(e, 'goal')}
+        onChange={(e) => onChangeCheckbox(e, 'goal')}
       />
       <CheckboxContainer
         nameKey="goal2"
         options={checkboxValue.goal2}
         onChange={(e) =>
-          onChangeCheckBox(e, 'goal2', {
+          onChangeCheckbox(e, 'goal2', {
             checkboxKey: 'goal2',
             maxValue: 3,
           })

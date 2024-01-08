@@ -16,7 +16,7 @@ const useCheckbox = <T extends Record<string, CheckboxItem[]>>(
 ) => {
   const [checkboxValue, setCheckboxValue] = useState<T>(initialValue);
 
-  const onChangeCheckBox = (
+  const onChangeCheckbox = (
     e: ChangeEvent<HTMLInputElement>,
     checkBoxKey: keyof T,
     limit?: Limit<T>,
@@ -43,7 +43,7 @@ const useCheckbox = <T extends Record<string, CheckboxItem[]>>(
 
   return {
     checkboxValue,
-    onChangeCheckBox,
+    onChangeCheckbox,
   };
 };
 
