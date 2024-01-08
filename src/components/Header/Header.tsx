@@ -12,11 +12,11 @@ interface Props {
 
 const Header = ({ children, main, spacerPosition }: Props) => {
   return (
-    <Container main={main}>
+    <Wrapper main={main}>
       {spacerPosition === 'start' && <Spacer size={24} />}
       {children}
       {spacerPosition === 'end' && <Spacer size={24} />}
-    </Container>
+    </Wrapper>
   );
 };
 
@@ -24,7 +24,7 @@ Header.Item = HeaderItem;
 
 export default Header;
 
-const Container = styled.header<{ main?: boolean }>`
+const Wrapper = styled.header<{ main?: boolean }>`
   padding: 25px 22px;
   height: 24px;
   background: ${(props) =>

@@ -1,29 +1,35 @@
 import styled from '@emotion/styled';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback, ReactNode, createContext } from 'react';
 
-import DropdownPanel from './DropdownPanel.tsx';
+import DropdownItem from './DropdownItem.tsx';
 import { ReactComponent as SVGArrow } from '../../assets/svg/arrow.svg';
 import useHandleClickOutside from '../../hooks/useHandleClickOutside.ts';
-import { DropdownItem } from '../../types/Dropdown.ts';
 
 interface DropdownProps {
-  items: DropdownItem[] | [];
-  initialValue: string;
-  onClick: (value: string) => void;
-  value?: string;
   disabled?: boolean;
+  selectedValue: string;
+  initialValue: string;
+  children: ReactNode;
 }
 
+interface DropdownContextProps {
+  isActive: boolean;
+  onClickDisActive: () => void;
+}
+
+export const DropdownContext = createContext<DropdownContextProps>({
+  isActive: false,
+  onClickDisActive: () => {},
+});
+
 const Dropdown = ({
-  items,
+  children,
+  selectedValue = '',
   initialValue,
-  onClick,
   disabled,
-  value = '',
 }: DropdownProps) => {
   const [isActive, setIsActive] = useState(false);
-  const [selectedText, setSelectedText] = useState(initialValue);
-  const { ref } = useHandleClickOutside(
+  const { ref } = useHandleClickOutside<HTMLDivElement>(
     useCallback(() => {
       setIsActive(false);
     }, []),
@@ -33,42 +39,41 @@ const Dropdown = ({
     setIsActive(!isActive);
   };
 
-  const initText = (value: string, initialValue: string) => {
-    value === '' && setSelectedText(initialValue);
-  };
-
-  useEffect(() => {
-    if (typeof value === 'string') {
-      initText(value, initialValue);
-    }
-  }, [value, initialValue]);
-
   return (
-    <DropdownWrapper ref={ref} onBlur={() => setIsActive(false)}>
-      <Trigger
-        disabled={disabled}
-        onClick={!disabled ? toggleActive : () => {}}
+    <DropdownContext.Provider
+      value={{
+        isActive,
+        onClickDisActive: () => {
+          setIsActive(false);
+        },
+      }}
+    >
+      <Wrapper
+        ref={ref}
+        onBlur={() => {
+          setIsActive(false);
+        }}
       >
-        {selectedText}
-        <ArrowWrapper isActive={isActive}>
-          <SVGArrow />
-        </ArrowWrapper>
-      </Trigger>
-      {isActive && (
-        <DropdownPanel
-          onClick={onClick}
-          toggleActive={toggleActive}
-          setSelectedText={setSelectedText}
-          items={items}
-        />
-      )}
-    </DropdownWrapper>
+        <Trigger
+          disabled={disabled}
+          onClick={!disabled ? toggleActive : () => {}}
+        >
+          {selectedValue || initialValue}
+          <ArrowWrapper isActive={isActive}>
+            <SVGArrow />
+          </ArrowWrapper>
+        </Trigger>
+        {isActive && <PanelWrapper>{children}</PanelWrapper>}
+      </Wrapper>
+    </DropdownContext.Provider>
   );
 };
 
+Dropdown.Item = DropdownItem;
+
 export default Dropdown;
 
-const DropdownWrapper = styled.div`
+const Wrapper = styled.div`
   position: relative;
 `;
 
@@ -85,8 +90,8 @@ const Trigger = styled.div<{ disabled?: boolean }>`
   align-items: center;
   height: 40px;
   padding: 14px 16px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: ${({ theme }) => theme.font.suit14m.fontSize}px;
+  font-weight: ${({ theme }) => theme.font.suit14m.fontWeight};
   box-sizing: border-box;
   gap: 10px;
   background-color: ${({ theme, disabled }) =>
@@ -96,4 +101,19 @@ const Trigger = styled.div<{ disabled?: boolean }>`
   border: 1px solid ${({ theme }) => theme.color.l2};
   border-radius: 6px;
   cursor: ${(props) => (props.disabled ? 'auto' : 'pointer')};
+`;
+
+const PanelWrapper = styled.ul`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(calc(100% + 5px));
+  width: -webkit-fill-available;
+
+  background-color: ${({ theme }) => theme.color.w1};
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  max-height: 125px;
+  overflow: scroll;
+  z-index: 1;
 `;

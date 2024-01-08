@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
+import { useContext } from 'react';
 
-import { Config, Validate } from '../../types/useInput';
+import { FieldContext } from './Field';
+import { Config, Validate } from '../../types/useField';
 
 export interface Props {
   name: string;
-  value: string;
   onChange: (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     config: Config,
@@ -14,14 +15,11 @@ export interface Props {
   successMessage?: string;
   errorMessage?: string;
   autoFocus?: boolean;
-  maxLength?: number;
   placeholder?: string;
-  isRequired?: boolean;
 }
 
 const FieldInput = ({
   name,
-  value,
   onChange,
   onValidate,
   isSuccess = true,
@@ -29,9 +27,9 @@ const FieldInput = ({
   errorMessage = '',
   autoFocus = false,
   placeholder = '',
-  maxLength,
-  isRequired = false,
 }: Props) => {
+  const { isRequired, inputValue: value, maxLength } = useContext(FieldContext);
+
   return (
     <>
       <Input
@@ -49,13 +47,18 @@ const FieldInput = ({
         maxLength={maxLength}
         errorMessage={errorMessage}
       />
-      <MessageWrapper>
-        {!errorMessage && isSuccess && value ? (
-          <SuccessMessageWrapper>{successMessage}</SuccessMessageWrapper>
-        ) : (
-          <ErrorMessageWrapper>{errorMessage}</ErrorMessageWrapper>
-        )}
-      </MessageWrapper>
+
+      {!errorMessage && isSuccess && value && (
+        <MessageWrapper isNonError={!errorMessage && isSuccess}>
+          {successMessage}
+        </MessageWrapper>
+      )}
+
+      {(errorMessage || !isSuccess) && (
+        <MessageWrapper isNonError={!errorMessage && isSuccess}>
+          {errorMessage}
+        </MessageWrapper>
+      )}
     </>
   );
 };
@@ -68,8 +71,8 @@ const Input = styled.input<{ errorMessage: string }>`
   height: 44px;
   border-radius: 6px;
   padding: 11px 16px;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: ${({ theme }) => theme.font.suit14r.fontSize}px;
+  font-weight: ${({ theme }) => theme.font.suit14r.fontWeight};
   border: 1px solid
     ${({ errorMessage, theme }) =>
       errorMessage ? theme.color.c3 : theme.color.l2};
@@ -82,18 +85,12 @@ const Input = styled.input<{ errorMessage: string }>`
   }
 `;
 
-const MessageWrapper = styled.div`
+const MessageWrapper = styled.p<{ isNonError: boolean }>`
   margin-top: 12px;
   font-size: 12px;
   font-weight: 400;
   width: 100%;
   height: 15px;
-`;
-
-const ErrorMessageWrapper = styled.p`
-  color: ${({ theme }) => theme.color.c3};
-`;
-
-const SuccessMessageWrapper = styled.p`
-  color: ${({ theme }) => theme.color.c2};
+  color: ${({ theme, isNonError }) =>
+    isNonError ? theme.color.c2 : theme.color.c3};
 `;

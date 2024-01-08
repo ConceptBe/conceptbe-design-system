@@ -9,17 +9,17 @@ interface BottomSheetProps {
 
 const BottomSheet = ({ children, isOpen, onClose }: BottomSheetProps) => {
   return (
-    <BottomSheetContainer isOpen={isOpen}>
+    <Wrapper isOpen={isOpen}>
       {isOpen && <Overlay onClick={onClose} />}
       <BottomSheetWrapper isOpen={isOpen}>
         <Content>{children}</Content>
       </BottomSheetWrapper>
-    </BottomSheetContainer>
+    </Wrapper>
   );
 };
 export default BottomSheet;
 
-const BottomSheetContainer = styled.div<{ isOpen: boolean }>`
+const Wrapper = styled.div<{ isOpen: boolean }>`
   visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
 `;
 

@@ -37,4 +37,7 @@ export default defineConfig({
       esmExternals: ['react'],
     },
   },
+  server: {
+    port: 3001,
+  },
 });

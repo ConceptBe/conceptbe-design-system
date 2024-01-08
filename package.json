@@ -1,7 +1,7 @@
 {
   "name": "concept-be-design-system",
   "description": "콘셉비 디자인 시스템",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",

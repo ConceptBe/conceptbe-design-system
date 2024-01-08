@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ReactNode } from 'react';
+import { ReactNode, createContext } from 'react';
 
 import FieldInput from './FieldInput';
 import FieldTextarea from './FieldTextarea';
@@ -13,6 +13,18 @@ interface InputProps {
   isRequired?: boolean;
 }
 
+interface FieldContextProps {
+  isRequired: boolean;
+  inputValue: string;
+  maxLength: number | undefined;
+}
+
+export const FieldContext = createContext<FieldContextProps>({
+  isRequired: false,
+  inputValue: '',
+  maxLength: undefined,
+});
+
 const Field = ({
   label,
   value,
@@ -21,7 +33,13 @@ const Field = ({
   children,
 }: InputProps) => {
   return (
-    <>
+    <FieldContext.Provider
+      value={{
+        isRequired,
+        inputValue: value,
+        maxLength,
+      }}
+    >
       <LabelWrapper>
         <Label>
           {label}
@@ -39,7 +57,7 @@ const Field = ({
         )}
       </LabelWrapper>
       {children}
-    </>
+    </FieldContext.Provider>
   );
 };
 

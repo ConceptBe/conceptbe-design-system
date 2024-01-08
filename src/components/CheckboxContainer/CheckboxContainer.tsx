@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { ChangeEvent, Fragment } from 'react';
 
 interface CheckboxOptions {
-  text: string;
-  value: string;
+  id: number;
+  name: string;
   checked: boolean;
 }
 
@@ -17,17 +17,20 @@ const CheckboxContainer = ({ nameKey, options, onChange }: Props) => {
   return (
     <Wrapper>
       {options.map((option) => (
-        <Fragment key={option.value}>
+        <Fragment key={option.id}>
           <CheckboxInput
-            id={option.value}
+            id={`${option.id}-${option.name}`}
             name={nameKey}
-            value={option.value}
+            value={option.name}
             type="checkbox"
             checked={option.checked}
             onChange={onChange}
           />
-          <CheckboxLabel htmlFor={option.value} checked={option.checked}>
-            {option.text}
+          <CheckboxLabel
+            htmlFor={`${option.id}-${option.name}`}
+            checked={option.checked}
+          >
+            {option.name}
           </CheckboxLabel>
         </Fragment>
       ))}

@@ -4,8 +4,8 @@ import { ChangeEvent } from 'react';
 type GapType = 'small' | 'large';
 
 interface RadioOptions {
-  text: string;
-  value: string;
+  id: number;
+  name: string;
   checked: boolean;
 }
 interface Props {
@@ -24,22 +24,22 @@ const RadioContainer = ({
   return (
     <Wrapper>
       {options.map((option) => (
-        <RadioWrapper key={option.value}>
+        <RadioWrapper key={option.id}>
           <RadioInput
             type="radio"
-            id={option.value}
+            id={`${option.id}-${option.name}`}
             name={nameKey}
-            value={option.value}
+            value={option.name}
             checked={option.checked}
             onChange={onChange}
           />
           {option.checked ? (
-            <CheckedLabel htmlFor={option.value} gap={gap}>
-              {option.text}
+            <CheckedLabel htmlFor={`${option.id}-${option.name}`} gap={gap}>
+              {option.name}
             </CheckedLabel>
           ) : (
-            <UnCheckedLabel htmlFor={option.value} gap={gap}>
-              {option.text}
+            <UnCheckedLabel htmlFor={`${option.id}-${option.name}`} gap={gap}>
+              {option.name}
             </UnCheckedLabel>
           )}
         </RadioWrapper>

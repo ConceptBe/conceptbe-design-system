@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-const useHandleClickOutside = (onSuccess: () => void) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+const useHandleClickOutside = <T extends HTMLElement>(onClick: () => void) => {
+  const ref = useRef<T | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: globalThis.MouseEvent) => {
@@ -10,16 +10,16 @@ const useHandleClickOutside = (onSuccess: () => void) => {
         e.target instanceof Node &&
         !ref.current.contains(e.target)
       ) {
-        onSuccess();
+        onClick();
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
-  }, [onSuccess]);
+  }, [onClick]);
 
   return { ref };
 };
