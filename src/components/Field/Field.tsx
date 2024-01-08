@@ -16,11 +16,13 @@ interface InputProps {
 interface FieldContextProps {
   isRequired: boolean;
   inputValue: string;
+  maxLength: number | undefined;
 }
 
 export const FieldContext = createContext<FieldContextProps>({
   isRequired: false,
   inputValue: '',
+  maxLength: undefined,
 });
 
 const Field = ({
@@ -35,6 +37,7 @@ const Field = ({
       value={{
         isRequired,
         inputValue: value,
+        maxLength,
       }}
     >
       <LabelWrapper>

@@ -28,9 +28,8 @@ const FieldTextarea = ({
   errorMessage = '',
   autoFocus = false,
   placeholder = '',
-  maxLength,
 }: Props) => {
-  const { isRequired, inputValue: value } = useContext(FieldContext);
+  const { isRequired, inputValue: value, maxLength } = useContext(FieldContext);
 
   return (
     <>

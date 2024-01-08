@@ -15,7 +15,6 @@ export interface Props {
   successMessage?: string;
   errorMessage?: string;
   autoFocus?: boolean;
-  maxLength?: number;
   placeholder?: string;
 }
 
@@ -28,9 +27,8 @@ const FieldInput = ({
   errorMessage = '',
   autoFocus = false,
   placeholder = '',
-  maxLength,
 }: Props) => {
-  const { isRequired, inputValue: value } = useContext(FieldContext);
+  const { isRequired, inputValue: value, maxLength } = useContext(FieldContext);
 
   return (
     <>
