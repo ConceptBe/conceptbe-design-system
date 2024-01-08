@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
 
 interface RadioItem {
-  text: string;
-  value: string;
+  id: number;
+  name: string;
   checked: boolean;
 }
 
@@ -19,7 +19,7 @@ const useRadio = <T extends Record<string, RadioItem[]>>(initialValue: T) => {
       ...prev,
       [radioKey]: prev[radioKey].map((radio) => ({
         ...radio,
-        checked: radio.value === value,
+        checked: radio.name === value,
       })),
     }));
   };
