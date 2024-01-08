@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 
 interface RadioItem {
   id: number;
@@ -9,20 +9,20 @@ interface RadioItem {
 const useRadio = <T extends Record<string, RadioItem[]>>(initialValue: T) => {
   const [radioValue, setRadioValue] = useState<T>(initialValue);
 
-  const onChangeRadio = (
-    e: ChangeEvent<HTMLInputElement>,
-    radioKey: keyof T,
-  ) => {
-    const { value } = e.target;
+  const onChangeRadio = useCallback(
+    (e: ChangeEvent<HTMLInputElement>, radioKey: keyof T) => {
+      const { value } = e.target;
 
-    setRadioValue((prev) => ({
-      ...prev,
-      [radioKey]: prev[radioKey].map((radio) => ({
-        ...radio,
-        checked: radio.name === value,
-      })),
-    }));
-  };
+      setRadioValue((prev) => ({
+        ...prev,
+        [radioKey]: prev[radioKey].map((radio) => ({
+          ...radio,
+          checked: radio.name === value,
+        })),
+      }));
+    },
+    [],
+  );
 
   return {
     radioValue,
