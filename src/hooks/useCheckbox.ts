@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
 
 interface CheckboxItem {
-  text: string;
-  value: string;
+  id: number;
+  name: string;
   checked: boolean;
 }
 
@@ -35,7 +35,7 @@ const useCheckbox = <T extends Record<string, CheckboxItem[]>>(
       return {
         ...prev,
         [checkBoxKey]: prev[checkBoxKey].map((checkbox) =>
-          checkbox.value === value ? { ...checkbox, checked } : checkbox,
+          checkbox.name === value ? { ...checkbox, checked } : checkbox,
         ),
       };
     });
