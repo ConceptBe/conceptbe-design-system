@@ -50,6 +50,7 @@ export interface Props {
   cursor?: CSSProperties['cursor'];
   opacity?: CSSProperties['opacity'];
   zIndex?: CSSProperties['zIndex'];
+  shadow?: CSSProperties['boxShadow'];
 }
 
 const Flex = styled.div<Props>`
@@ -106,6 +107,7 @@ const Flex = styled.div<Props>`
   cursor: ${({ cursor }) => cursor};
   opacity: ${({ opacity }) => opacity};
   z-index: ${({ zIndex }) => zIndex};
+  box-shadow: ${({ shadow }) => shadow};
 `;
 
 export default Flex;
