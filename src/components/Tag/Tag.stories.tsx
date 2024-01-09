@@ -26,7 +26,7 @@ type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    name: 'Tag',
+    name: 'Tag Text',
     onDelete: () => {},
   },
   render: (args) => (
