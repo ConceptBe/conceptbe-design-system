@@ -8,7 +8,7 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'tsconfig'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'tsconfig', '*.stories.*'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'import'],
   rules: {
