@@ -5,18 +5,18 @@ import Spacer from '../Spacer/Spacer';
 import Text from '../Text/Text';
 
 interface TagProps {
-  text: string;
-  onDelete: (text: string) => void;
+  name: string;
+  onDelete: (name: string) => void;
 }
 
-const Tag = ({ text, onDelete }: TagProps) => {
+const Tag = ({ name, onDelete }: TagProps) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="tag">
       <Text font="suit13m" color="w1" customStyle={{ fontWeight: 400 }}>
-        {text}
+        {name}
       </Text>
       <Spacer size={10} />
-      <SVGWrapper onClick={() => onDelete(text)}>
+      <SVGWrapper onClick={() => onDelete(name)}>
         <SVGCancel />
       </SVGWrapper>
     </Wrapper>
