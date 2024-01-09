@@ -11,16 +11,18 @@ const meta = {
   argTypes: {
     width: {
       control: 'number',
-      description: 'Tab Layout 가로 크기를 설정합니다. 기본 값은 375px 입니다.',
+      description:
+        'Tab Layout 컴포넌트의 가로 크기를 설정합니다. 기본 값은 375px 입니다.',
     },
     height: {
       control: 'number',
-      description: 'Tab Layout 세로 크기를 설정합니다. 기본 값은 400px 입니다.',
+      description:
+        'Tab Layout 컴포넌트의 세로 크기를 설정합니다. 기본 값은 400px 입니다.',
     },
     tabBoxHeight: {
       control: 'number',
       description:
-        'Tab Box 세로 크기를 설정합니다. 기본 값은 50px 입니다. 가로 크기는 Tab Layout과 같습니다.',
+        'Tab Box의 세로 크기를 설정합니다. 기본 값은 50px 입니다. 가로 크기는 Tab Layout과 같습니다.',
     },
   },
 } as Meta<typeof TabLayout>;

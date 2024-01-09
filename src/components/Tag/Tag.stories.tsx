@@ -12,7 +12,7 @@ const meta = {
   argTypes: {
     name: {
       control: 'text',
-      description: 'Tag 내부의 텍스트를 설정합니다.',
+      description: 'Tag 컴포넌트 내부의 텍스트를 설정합니다.',
     },
     onDelete: {
       action: 'clicked',
