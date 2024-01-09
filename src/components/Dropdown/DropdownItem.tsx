@@ -30,7 +30,7 @@ const Wrapper = styled.li`
   padding: 11px 15px 12px;
   box-sizing: border-box;
   border-bottom: 1px solid ${({ theme }) => theme.color.l3};
-  cursor: 'pointer';
+  cursor: pointer;
   color: ${({ theme }) => theme.color.b6};
   font-size: 12px;
   font-weight: 400;
