@@ -48,7 +48,7 @@ const FieldInput = ({
         errorMessage={errorMessage}
       />
 
-      {!errorMessage && isSuccess && value && (
+      {!errorMessage && isSuccess && successMessage && value && (
         <MessageWrapper isNonError={!errorMessage && isSuccess}>
           {successMessage}
         </MessageWrapper>
