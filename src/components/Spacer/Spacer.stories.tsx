@@ -25,6 +25,7 @@ type Story = StoryObj<typeof Spacer>;
 export const Default: Story = {
   args: {
     size: 20,
+    as: 'div',
   },
   render: (args) => (
     <div

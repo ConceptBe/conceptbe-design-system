@@ -47,11 +47,6 @@ export const Default: Story = {
     required: false,
     as: 'span',
   },
-  render: ({ children, font, color, required, as }) => (
-    <Text as={as} font={font} color={color} required={required}>
-      {children}
-    </Text>
-  ),
 };
 
 interface Size {
