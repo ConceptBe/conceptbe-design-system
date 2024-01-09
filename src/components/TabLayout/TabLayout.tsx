@@ -28,10 +28,11 @@ const TabLayout = ({
   const [position, setPosition] = useState(0);
 
   return (
-    <Wrapper width={width}>
+    <Wrapper data-testId="tab-layout" width={width}>
       <TabBoxesWrapper tabBoxHeight={tabBoxHeight}>
         {childrenElements.map((children, idx) => (
           <TabBox
+            data-testId={`tab-layout-tab-box-${idx}`}
             key={children.key}
             active={position === idx}
             onClick={() => setPosition(idx)}
@@ -51,6 +52,10 @@ const TabLayout = ({
     </Wrapper>
   );
 };
+
+TabLayout.Tab = Tab;
+
+export default TabLayout;
 
 const Wrapper = styled.div<{ width: number | string }>`
   width: ${({ width }) => width && convertCSS(width)};
@@ -83,7 +88,3 @@ const TabPanel = styled.div<{ height: number | string }>`
   width: 100%;
   height: ${({ height }) => height && convertCSS(height)};
 `;
-
-TabLayout.Tab = Tab;
-
-export default TabLayout;
