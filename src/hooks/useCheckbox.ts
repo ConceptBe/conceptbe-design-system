@@ -11,7 +11,7 @@ interface Limit<T> {
   maxValue: number;
 }
 
-const useCheckbox = <T extends Record<string, CheckboxItem[]>>(
+const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
   initialValue: T,
 ) => {
   const [checkboxValue, setCheckboxValue] = useState<T>(initialValue);

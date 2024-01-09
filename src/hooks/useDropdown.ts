@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const useDropdown = <T extends object>(initialValue: T) => {
+const useDropdown = <T extends Record<keyof T, string>>(initialValue: T) => {
   const [dropdownValue, setDropdownValue] = useState<T>(initialValue);
 
   const onClickDropdown = useCallback(

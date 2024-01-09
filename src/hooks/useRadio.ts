@@ -6,7 +6,7 @@ interface RadioItem {
   checked: boolean;
 }
 
-const useRadio = <T extends Record<string, RadioItem[]>>(initialValue: T) => {
+const useRadio = <T extends Record<keyof T, RadioItem[]>>(initialValue: T) => {
   const [radioValue, setRadioValue] = useState<T>(initialValue);
 
   const onChangeRadio = useCallback(
