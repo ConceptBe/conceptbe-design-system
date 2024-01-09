@@ -131,8 +131,9 @@ export const Example: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const firstTabBox = await canvas.findByTestId('tab-layout-tab-box-0');
-    const secondTabBox = await canvas.findByTestId('tab-layout-tab-box-1');
+    const tabLayout = await canvas.findByTestId('tab-layout');
+    const tabBoxes = tabLayout.children[0].children;
+    const [firstTabBox, secondTabBox] = tabBoxes;
 
     await userEvent.click(secondTabBox, {
       delay: 500,

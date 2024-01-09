@@ -32,7 +32,6 @@ const TabLayout = ({
       <TabBoxesWrapper tabBoxHeight={tabBoxHeight}>
         {childrenElements.map((children, idx) => (
           <TabBox
-            data-testid={`tab-layout-tab-box-${idx}`}
             key={children.key}
             active={position === idx}
             onClick={() => setPosition(idx)}
