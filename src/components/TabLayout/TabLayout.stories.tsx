@@ -77,9 +77,10 @@ export const Example: Story = {
             alignItems: 'center',
           }}
         >
-          {new Array(10).fill('아이디어 카드').map((ideaCard) => (
+          {new Array(10).fill('아이디어 카드').map((ideaCard, idx) => (
             <div
-              data-testId="idea-card"
+              key={idx}
+              data-testid="idea-card"
               style={{
                 marginTop: '20px',
                 backgroundColor: '#fff',
@@ -106,9 +107,10 @@ export const Example: Story = {
             alignItems: 'center',
           }}
         >
-          {new Array(10).fill('북마크 카드').map((bookmarkCard) => (
+          {new Array(10).fill('북마크 카드').map((bookmarkCard, idx) => (
             <div
-              data-testId="bookmark-card"
+              key={idx}
+              data-testid="bookmark-card"
               style={{
                 marginTop: '20px',
                 backgroundColor: '#fff',

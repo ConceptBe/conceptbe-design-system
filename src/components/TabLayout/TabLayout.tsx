@@ -28,11 +28,11 @@ const TabLayout = ({
   const [position, setPosition] = useState(0);
 
   return (
-    <Wrapper data-testId="tab-layout" width={width}>
+    <Wrapper data-testid="tab-layout" width={width}>
       <TabBoxesWrapper tabBoxHeight={tabBoxHeight}>
         {childrenElements.map((children, idx) => (
           <TabBox
-            data-testId={`tab-layout-tab-box-${idx}`}
+            data-testid={`tab-layout-tab-box-${idx}`}
             key={children.key}
             active={position === idx}
             onClick={() => setPosition(idx)}
