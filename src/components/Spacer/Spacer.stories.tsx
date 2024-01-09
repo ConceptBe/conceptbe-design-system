@@ -11,6 +11,11 @@ const meta = {
       control: 'number',
       description: 'Spacer 컴포넌트의 가로 세로 크기를 설정합니다.',
     },
+    as: {
+      control: 'inline-radio',
+      options: ['div'],
+      description: 'Spacer 컴포넌트의 DOM tag를 설정합니다.',
+    },
   },
 } as Meta<typeof Spacer>;
 
