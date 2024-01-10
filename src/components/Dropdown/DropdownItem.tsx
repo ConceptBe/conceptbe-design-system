@@ -3,18 +3,13 @@ import { useContext } from 'react';
 
 import { DropdownContext } from './Dropdown';
 
-export interface PanelProps {
+export interface Props {
   value: string;
   children: string;
   onClick: (value: string) => void;
 }
 
-const DropdownItem = ({
-  children,
-  value,
-  onClick,
-  ...attributes
-}: PanelProps) => {
+const DropdownItem = ({ children, value, onClick, ...attributes }: Props) => {
   const { onClickDisActive } = useContext(DropdownContext);
 
   const onClickItem = () => {
