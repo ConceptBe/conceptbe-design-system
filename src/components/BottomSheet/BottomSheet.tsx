@@ -30,7 +30,7 @@ const Wrapper = styled.div<{ isOpen: boolean }>`
 
 const BottomSheetWrapper = styled.div<{ isOpen: boolean }>`
   position: fixed;
-  bottom: ${(props) => (props.isOpen ? '0' : '-1000px')};
+  bottom: ${(props) => (props.isOpen ? '0' : '-100vh')};
   left: 0;
   right: 0;
   background-color: #fff;
