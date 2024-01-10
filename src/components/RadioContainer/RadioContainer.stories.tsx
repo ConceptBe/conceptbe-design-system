@@ -60,7 +60,7 @@ export const Default: Story = {
   },
 };
 
-export const Example: Story = {
+export const InteractionTest: Story = {
   args: {
     nameKey: 'option',
     options: [

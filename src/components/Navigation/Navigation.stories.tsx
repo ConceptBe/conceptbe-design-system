@@ -59,7 +59,7 @@ export const Default: Story = {
   },
 };
 
-export const Example: Story = {
+export const InteractionTest: Story = {
   render: () => {
     const [navPosition, setNavPosition] = useState<'left' | 'center' | 'right'>(
       'center',

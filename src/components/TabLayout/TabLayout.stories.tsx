@@ -60,7 +60,7 @@ export const Default: Story = {
   ),
 };
 
-export const Example: Story = {
+export const InteractionTest: Story = {
   args: {
     width: 375,
     height: '100%',

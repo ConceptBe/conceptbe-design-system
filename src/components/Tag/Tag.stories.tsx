@@ -40,7 +40,7 @@ export const Default: Story = {
   ),
 };
 
-export const Example: Story = {
+export const InteractionTest: Story = {
   args: {
     name: '콘텐츠 마케팅, 하',
     onDelete: () => {},

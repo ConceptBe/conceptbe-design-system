@@ -51,7 +51,7 @@ export const Default: Story = {
   },
 };
 
-export const Example: Story = {
+export const Sample: Story = {
   args: {
     width: 1,
     height: 12,
