@@ -24,6 +24,8 @@ const App = ({ children }) => {
 
 ## 사용 방법
 
+자세한 내용은 [스토리북](https://659f1dcbf0bf3bf442b47290-mnoqlcimlu.chromatic.com/)에서 확인하세요.
+
 ### 컴포넌트
 
 Button 컴포넌트는 다음과 같이 사용할 수 있습니다.
@@ -172,10 +174,7 @@ function SomeComponent() {
         nameKey="skill"
         options={radioValue.skill}
         onChange={(e) =>
-          onChangeRadio(e, 'skill', {
-            checkboxKey: 'skill',
-            maxValue: 3,
-          })
+          onChangeRadio(e, 'skill')
         }
       />
     </form>
@@ -249,7 +248,7 @@ function SomeComponent() {
 
 ## 문서
 
-추후 업데이트 예정
+- [스토리북](https://659f1dcbf0bf3bf442b47290-mnoqlcimlu.chromatic.com/)
 
 ## 기여
 
