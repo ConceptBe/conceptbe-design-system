@@ -15,11 +15,13 @@ const meta = {
     },
     font: {
       control: 'select',
-      description: 'Text 컴포넌트의 폰트 스타일을 설정합니다.',
+      description:
+        'Text 컴포넌트의 폰트 스타일을 설정합니다. 기본 값은 suit14sm 입니다.',
     },
     color: {
       control: 'select',
-      description: 'Text 컴포넌트의 폰트 색상을 설정합니다.',
+      description:
+        'Text 컴포넌트의 폰트 색상을 설정합니다. 기본 값은 b 입니다.',
     },
     required: {
       control: 'boolean',

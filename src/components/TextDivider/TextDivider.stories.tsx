@@ -26,8 +26,9 @@ const meta = {
       description: 'TextDivider 컴포넌트의 우측 여백을 설정합니다.',
     },
     color: {
-      control: 'radio',
-      description: 'TextDivider 컴포넌트의 색상을 설정합니다.',
+      control: 'select',
+      description:
+        'TextDivider 컴포넌트의 색상을 설정합니다. 기본 값은 b 입니다.',
     },
     as: {
       control: 'inline-radio',
@@ -57,7 +58,7 @@ export const Sample: Story = {
     height: 12,
     left: 5,
     right: 5,
-    color: 'b9',
+    color: 'l2',
     as: 'div',
   },
   render: (args) => (
