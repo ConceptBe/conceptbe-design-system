@@ -46,7 +46,12 @@ export const Default: Story = {
       <div style={{ width: '375px', margin: '0 auto', height: '400px' }}>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <button
-            style={{ padding: '6px 12px' }}
+            style={{
+              padding: '6px 12px',
+              border: '1px solid #767676',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
             onClick={() => setIsBottomSheetOpen(true)}
           >
             Open BottomSheet
@@ -90,7 +95,12 @@ export const InteractionTest: Story = {
       >
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <button
-            style={{ padding: '6px 12px' }}
+            style={{
+              padding: '6px 12px',
+              border: '1px solid #767676',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
             onClick={() => setIsBottomSheetOpen(true)}
             data-testid="open-button"
           >
@@ -134,7 +144,12 @@ export const InteractionTest: Story = {
             </span>
             <div style={{ margin: '12px auto', width: 'max-content' }}>
               <button
-                style={{ padding: '6px 20px' }}
+                style={{
+                  padding: '6px 20px',
+                  border: '1px solid #767676',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                }}
                 onClick={() => setIsBottomSheetOpen(false)}
                 data-testid="close-button"
               >
