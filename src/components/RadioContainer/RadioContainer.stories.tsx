@@ -51,7 +51,7 @@ export const Default: Story = {
       <>
         <RadioContainer
           nameKey={nameKey}
-          options={radioValue.name}
+          options={radioValue[nameKey]}
           onChange={(e) => onChangeRadio(e, nameKey)}
           gap={gap}
         />
@@ -90,7 +90,7 @@ export const InteractionTest: Story = {
         <RadioContainer
           data-testid="radio-container"
           nameKey={nameKey}
-          options={radioValue.option}
+          options={radioValue[nameKey]}
           onChange={(e) => onChangeRadio(e, nameKey)}
           gap={gap}
         />
