@@ -15,7 +15,6 @@ const meta = {
       description: 'Tag 컴포넌트 내부의 텍스트를 설정합니다.',
     },
     onDelete: {
-      action: 'clicked',
       description: 'X 표시를 클릭 시 해당 Tag를 삭제합니다.',
     },
   },
