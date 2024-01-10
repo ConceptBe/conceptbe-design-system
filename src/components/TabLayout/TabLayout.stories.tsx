@@ -138,13 +138,13 @@ export const InteractionTest: Story = {
     const [firstTabBox, secondTabBox] = tabBoxes;
 
     await userEvent.click(secondTabBox, {
-      delay: 500,
+      delay: 300,
     });
     const bookmarkCard = await canvas.findAllByTestId('bookmark-card');
     expect(bookmarkCard.length).toBe(10);
 
     await userEvent.click(firstTabBox, {
-      delay: 500,
+      delay: 300,
     });
     const ideaCard = await canvas.findAllByTestId('idea-card');
     expect(ideaCard.length).toBe(10);

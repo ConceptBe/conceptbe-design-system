@@ -168,7 +168,7 @@ export const InteractionTest: Story = {
     const bottomSheet = await canvas.findByTestId('bottom-sheet');
 
     await userEvent.click(bottomSheetOpenButton, {
-      delay: 500,
+      delay: 300,
     });
     expect(bottomSheet).toBeInTheDocument();
 
@@ -178,7 +178,7 @@ export const InteractionTest: Story = {
     const bottomSheetDimmed = bottomSheet.children[0];
     const closeButton = canvas.getByTestId('close-button');
     await userEvent.click(closeButton, {
-      delay: 500,
+      delay: 300,
     });
     expect(bottomSheetDimmed).not.toBeInTheDocument();
   },

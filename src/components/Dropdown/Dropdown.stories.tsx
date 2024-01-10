@@ -150,7 +150,7 @@ export const InteractionTest: Story = {
     const trigger = dropdown.children[0];
 
     await userEvent.click(trigger, {
-      delay: 500,
+      delay: 300,
     });
 
     const dropdownItems = await canvas.findAllByTestId('dropdown-item');
@@ -160,7 +160,7 @@ export const InteractionTest: Story = {
     const busanItem = dropdownItems[1];
 
     await userEvent.click(busanItem, {
-      delay: 500,
+      delay: 300,
     });
     expect(trigger.textContent).toBe('부산광역시');
   },

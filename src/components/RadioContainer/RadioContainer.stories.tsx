@@ -114,7 +114,7 @@ export const InteractionTest: Story = {
     const thirdRadioLabel = radioLabels[2] as HTMLLabelElement;
     const thirdRadioInput = radioInputs[2] as HTMLInputElement;
     await userEvent.click(thirdRadioLabel, {
-      delay: 500,
+      delay: 300,
     });
     expect(thirdRadioInput.checked).toBe(true);
     expect(firstRadioInput.checked).toBe(false);

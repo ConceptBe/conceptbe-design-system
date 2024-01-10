@@ -105,12 +105,12 @@ export const InteractionTest: Story = {
     const SVGDisActivatedMy = my.children[0];
 
     await userEvent.click(feed, {
-      delay: 500,
+      delay: 300,
     });
     expect(SVGDisActivatedFeed).not.toBeInTheDocument();
 
     await userEvent.click(my, {
-      delay: 500,
+      delay: 300,
     });
     expect(SVGDisActivatedMy).not.toBeInTheDocument();
   },
