@@ -14,11 +14,11 @@ const meta = {
       description: 'Text 컴포넌트의 텍스트를 설정합니다.',
     },
     font: {
-      control: 'radio',
+      control: 'select',
       description: 'Text 컴포넌트의 폰트 스타일을 설정합니다.',
     },
     color: {
-      control: 'radio',
+      control: 'select',
       description: 'Text 컴포넌트의 폰트 색상을 설정합니다.',
     },
     required: {
@@ -51,7 +51,7 @@ interface Size {
   color: ColorKeyType[];
 }
 
-export const Sizes: Story = {
+export const Case: Story = {
   render: () => {
     const size = {
       font: Object.keys(theme.font),
