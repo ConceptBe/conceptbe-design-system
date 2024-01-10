@@ -12,7 +12,11 @@ export interface Props {
 
 const NavigationItem = ({ onClick, position = 'normal', children }: Props) => {
   return (
-    <Wrapper onClick={onClick} position={position}>
+    <Wrapper
+      data-testid="navigation-item"
+      onClick={onClick}
+      position={position}
+    >
       {children}
     </Wrapper>
   );

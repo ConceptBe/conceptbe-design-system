@@ -10,7 +10,7 @@ interface Props {
 
 const Navigation = ({ children }: Props) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="navigation">
       <NavBackImg src={PNGBottomBg} alt="bottom-menu-back-image" />
       <NavWrapper>{children}</NavWrapper>
     </Wrapper>
