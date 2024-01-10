@@ -68,17 +68,24 @@ export const InteractionTest: Story = {
     return (
       <>
         <div style={{ width: '75px', height: '75px' }}></div>
-        <Navigation>
-          <Navigation.Item onClick={() => setNavPosition('left')}>
+        <Navigation data-testid="navigation">
+          <Navigation.Item
+            data-testid="navigation-item"
+            onClick={() => setNavPosition('left')}
+          >
             {navPosition === 'left' ? <SVGNavActiveFeed /> : <SVGNavFeed />}
           </Navigation.Item>
           <Navigation.Item
+            data-testid="navigation-item"
             position="center"
             onClick={() => setNavPosition('center')}
           >
             <SVGWrite24 />
           </Navigation.Item>
-          <Navigation.Item onClick={() => setNavPosition('right')}>
+          <Navigation.Item
+            data-testid="navigation-item"
+            onClick={() => setNavPosition('right')}
+          >
             {navPosition === 'right' ? (
               <SVGNavActiveProfile />
             ) : (

@@ -67,7 +67,7 @@ export const InteractionTest: Story = {
     tabBoxHeight: 40,
   },
   render: (args) => (
-    <TabLayout {...args}>
+    <TabLayout {...args} data-testid="tab-layout">
       <TabLayout.Tab label="아이디어">
         <div
           style={{

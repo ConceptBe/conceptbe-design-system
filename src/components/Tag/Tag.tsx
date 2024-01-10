@@ -9,9 +9,9 @@ interface TagProps {
   onDelete: (name: string) => void;
 }
 
-const Tag = ({ name, onDelete }: TagProps) => {
+const Tag = ({ name, onDelete, ...attributes }: TagProps) => {
   return (
-    <Wrapper data-testid="tag">
+    <Wrapper {...attributes}>
       <Text font="suit13m" color="w1" customStyle={{ fontWeight: 400 }}>
         {name}
       </Text>

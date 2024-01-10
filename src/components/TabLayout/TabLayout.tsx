@@ -21,6 +21,7 @@ const TabLayout = ({
   height = 400,
   tabBoxHeight = 50,
   children,
+  ...attributes
 }: Props) => {
   const childrenElements = Children.toArray(
     children,
@@ -28,7 +29,7 @@ const TabLayout = ({
   const [position, setPosition] = useState(0);
 
   return (
-    <Wrapper data-testid="tab-layout" width={width}>
+    <Wrapper width={width} {...attributes}>
       <TabBoxesWrapper tabBoxHeight={tabBoxHeight}>
         {childrenElements.map((children, idx) => (
           <TabBox

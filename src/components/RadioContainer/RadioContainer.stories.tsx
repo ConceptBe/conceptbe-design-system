@@ -88,6 +88,7 @@ export const InteractionTest: Story = {
           선택영역
         </div>
         <RadioContainer
+          data-testid="radio-container"
           nameKey={nameKey}
           options={radioValue.option}
           onChange={(e) => onChangeRadio(e, nameKey)}

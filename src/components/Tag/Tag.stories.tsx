@@ -67,7 +67,7 @@ export const InteractionTest: Story = {
 
     return (
       <div>
-        {tags.map((name, idx) => (
+        {tags.map((name) => (
           <div
             key={name}
             style={{
@@ -76,7 +76,7 @@ export const InteractionTest: Story = {
               marginBottom: '12px',
             }}
           >
-            <Tag data-testid={`tag-${idx}`} name={name} onDelete={onDelete} />
+            <Tag data-testid="tag" name={name} onDelete={onDelete} />
           </div>
         ))}
         <div
