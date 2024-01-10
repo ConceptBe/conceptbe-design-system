@@ -22,7 +22,7 @@ const RadioContainer = ({
   gap = 'small',
 }: Props) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="radio-container">
       {options.map((option) => (
         <RadioWrapper key={option.id}>
           <RadioInput
