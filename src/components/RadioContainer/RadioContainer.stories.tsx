@@ -24,7 +24,7 @@ const meta = {
     },
     gap: {
       control: 'radio',
-      description: 'Radio Input과 Label간 간격을 설정합니다.',
+      description: 'Radio간 간격을 설정합니다. 기본값은 small 입니다.',
     },
   },
 } as Meta<typeof RadioContainer>;
