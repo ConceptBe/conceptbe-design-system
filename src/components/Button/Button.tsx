@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import {
-  CSSProperties,
   ComponentPropsWithoutRef,
   ReactNode,
   ElementType,
@@ -12,27 +11,19 @@ type Props<T extends ElementType> = {
   as?: T;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   isGrayOut?: boolean;
-  customStyle?: CSSProperties;
 } & ComponentPropsWithoutRef<T>;
 
 const Button = <T extends ElementType>({
   as,
   onClick = () => {},
   isGrayOut = false,
-  customStyle,
   children,
   ...attributes
 }: Props<T>) => {
   const tag = as || 'button';
 
   return (
-    <Wrapper
-      as={tag}
-      onClick={onClick}
-      style={customStyle}
-      isGrayOut={isGrayOut}
-      {...attributes}
-    >
+    <Wrapper as={tag} onClick={onClick} isGrayOut={isGrayOut} {...attributes}>
       {children}
     </Wrapper>
   );

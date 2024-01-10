@@ -10,9 +10,9 @@ interface Props {
   main?: boolean;
 }
 
-const Header = ({ children, main, spacerPosition }: Props) => {
+const Header = ({ children, main, spacerPosition, ...attributes }: Props) => {
   return (
-    <Wrapper main={main}>
+    <Wrapper main={main} {...attributes}>
       {spacerPosition === 'start' && <Spacer size={24} />}
       {children}
       {spacerPosition === 'end' && <Spacer size={24} />}

@@ -27,6 +27,7 @@ const FieldTextarea = ({
   errorMessage = '',
   autoFocus = false,
   placeholder = '',
+  ...attributes
 }: Props) => {
   const { isRequired, inputValue: value, maxLength } = useContext(FieldContext);
 
@@ -46,6 +47,7 @@ const FieldTextarea = ({
         autoFocus={autoFocus}
         maxLength={maxLength}
         errorMessage={errorMessage}
+        {...attributes}
       />
       {!errorMessage && isSuccess && successMessage && value && (
         <MessageWrapper isNonError={!errorMessage && isSuccess}>

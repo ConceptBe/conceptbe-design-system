@@ -31,6 +31,7 @@ const Field = ({
   maxLength,
   isRequired = false,
   children,
+  ...attributes
 }: InputProps) => {
   return (
     <FieldContext.Provider
@@ -40,7 +41,7 @@ const Field = ({
         maxLength,
       }}
     >
-      <LabelWrapper>
+      <LabelWrapper {...attributes}>
         <Label>
           {label}
           {isRequired && (

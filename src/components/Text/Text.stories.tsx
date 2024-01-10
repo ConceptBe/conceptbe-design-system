@@ -30,9 +30,6 @@ const meta = {
       options: ['span', 'a', 'button', 'p'],
       description: 'Text 컴포넌트의 DOM tag를 설정합니다.',
     },
-    customStyle: {
-      description: 'Text 컴포넌트의 커스텀 스타일을 설정합니다.',
-    },
   },
 } as Meta<typeof Text>;
 

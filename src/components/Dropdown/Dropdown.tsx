@@ -27,6 +27,7 @@ const Dropdown = ({
   selectedValue = '',
   initialValue,
   disabled,
+  ...attributes
 }: DropdownProps) => {
   const [isActive, setIsActive] = useState(false);
   const { ref } = useHandleClickOutside<HTMLDivElement>(
@@ -53,6 +54,7 @@ const Dropdown = ({
         onBlur={() => {
           setIsActive(false);
         }}
+        {...attributes}
       >
         <Trigger
           disabled={disabled}

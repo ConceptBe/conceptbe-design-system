@@ -9,7 +9,12 @@ export interface PanelProps {
   onClick: (value: string) => void;
 }
 
-const DropdownItem = ({ children, value, onClick }: PanelProps) => {
+const DropdownItem = ({
+  children,
+  value,
+  onClick,
+  ...attributes
+}: PanelProps) => {
   const { onClickDisActive } = useContext(DropdownContext);
 
   const onClickItem = () => {
@@ -17,7 +22,11 @@ const DropdownItem = ({ children, value, onClick }: PanelProps) => {
     onClickDisActive();
   };
 
-  return <Wrapper onClick={onClickItem}>{children}</Wrapper>;
+  return (
+    <Wrapper onClick={onClickItem} {...attributes}>
+      {children}
+    </Wrapper>
+  );
 };
 
 export default DropdownItem;

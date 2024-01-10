@@ -6,8 +6,12 @@ export interface Props {
   children: ReactNode;
 }
 
-const Tab = ({ label, children }: Props) => {
-  return <Wrapper id={label}>{children}</Wrapper>;
+const Tab = ({ label, children, ...attributes }: Props) => {
+  return (
+    <Wrapper id={label} {...attributes}>
+      {children}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`

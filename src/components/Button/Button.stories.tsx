@@ -19,9 +19,6 @@ const meta = {
       control: 'boolean',
       description: 'Button 컴포넌트의 그레이 아웃 여부를 설정합니다.',
     },
-    customStyle: {
-      description: 'Button 컴포넌트의 커스텀 스타일을 설정합니다.',
-    },
     onClick: {
       description: 'Button 컴포넌트 클릭 시 설정된 동작을 수행합니다.',
     },

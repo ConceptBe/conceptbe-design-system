@@ -7,8 +7,8 @@ interface Props {
   children: ReactNode;
 }
 
-const Badge = ({ children }: Props) => {
-  return <Wrapper>{children}</Wrapper>;
+const Badge = ({ children, ...attributes }: Props) => {
+  return <Wrapper {...attributes}>{children}</Wrapper>;
 };
 
 Badge.Item = BadgeItem;

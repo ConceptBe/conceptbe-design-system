@@ -7,9 +7,14 @@ interface BottomSheetProps {
   onClose: () => void;
 }
 
-const BottomSheet = ({ children, isOpen, onClose }: BottomSheetProps) => {
+const BottomSheet = ({
+  children,
+  isOpen,
+  onClose,
+  ...attributes
+}: BottomSheetProps) => {
   return (
-    <Wrapper isOpen={isOpen}>
+    <Wrapper isOpen={isOpen} {...attributes}>
       {isOpen && <Overlay onClick={onClose} />}
       <BottomSheetWrapper isOpen={isOpen}>
         <Content>{children}</Content>
