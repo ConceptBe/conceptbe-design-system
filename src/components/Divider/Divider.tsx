@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 
-import { ColorKeyType } from '../../styles/theme';
+import { ColorType } from '../../styles/theme';
 import { convertCSS } from '../../utils/convertCSS';
+
+type ColorKeyType = keyof Pick<ColorType, 'l3' | 'bg1' | 'b'>;
 
 interface Props {
   width?: number | string;
