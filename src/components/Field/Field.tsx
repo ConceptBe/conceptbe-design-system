@@ -3,7 +3,7 @@ import { ReactNode, createContext } from 'react';
 
 import FieldInput from './FieldInput';
 import FieldTextarea from './FieldTextarea';
-import { ReactComponent as SVGRequired } from '../../assets/svg/text_required.svg';
+import { ReactComponent as SVGTextRequired } from '../../assets/svg/text_required.svg';
 
 interface InputProps {
   children: ReactNode;
@@ -46,7 +46,7 @@ const Field = ({
           {label}
           {isRequired && (
             <SVGRequiredWrapper>
-              <SVGRequired />
+              <SVGTextRequired />
             </SVGRequiredWrapper>
           )}
         </Label>
