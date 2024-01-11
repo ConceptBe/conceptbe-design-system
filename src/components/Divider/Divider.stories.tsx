@@ -30,9 +30,12 @@ const meta = {
       description: 'Divider 컴포넌트의 색상을 설정합니다. 기본 값은 b 입니다.',
     },
     as: {
-      control: 'inline-radio',
-      options: ['div'],
+      control: false,
       description: 'Text 컴포넌트의 DOM tag를 설정합니다.',
+    },
+    theme: {
+      control: false,
+      description: 'Emotion theme 값입니다.',
     },
   },
 } as Meta<typeof Divider>;

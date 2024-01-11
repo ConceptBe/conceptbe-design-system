@@ -20,9 +20,9 @@ const meta = {
       description: 'Dropdown 컴포넌트의 초기값을 설정합니다.',
     },
     selectedValue: {
-      control: 'text',
+      control: false,
       description:
-        'Dropdown.Item 컴포넌트를 통해 선택된 요소를 화면에 표시합니다.',
+        'Dropdown.Item 컴포넌트를 통해 선택된 요소를 화면에 표시합니다. useDropdown 훅의 dropdownValue의 name 프로퍼티에 해당하는 값을 전달하면 됩니다.',
     },
     disabled: {
       control: 'boolean',

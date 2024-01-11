@@ -16,14 +16,15 @@ const meta = {
         'Radio Input에 적용되는 name을 설정합니다. useRadio를 통해 전달한 초기화 객체의 프로퍼티를 전달하면 됩니다. 제어 컴포넌트 방식이라 잘못된 값을 전달해도 정상 동작하나, 안정성을 위하여 만들어 놓았습니다.',
     },
     options: {
-      control: 'object',
-      description: 'Radio Input에 표시되는 id, name, checked를 설정합니다.',
+      control: false,
+      description:
+        'RadioContainer 컴포넌트를 통해 선택된 체크박스를 화면에 표시합니다. useRadio 훅의 radioValue의 name 프로퍼티에 해당하는 값을 전달하면 됩니다.',
     },
     onChange: {
       description: 'Radio를 클릭하면 체크 상태로 변경해줍니다.',
     },
     gap: {
-      control: 'radio',
+      control: 'inline-radio',
       description: 'Radio간 간격을 설정합니다. 기본값은 small 입니다.',
     },
   },

@@ -11,8 +11,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     as: {
-      control: 'inline-radio',
-      options: ['div'],
+      control: false,
       description: 'Button 컴포넌트의 DOM tag를 설정합니다.',
     },
     isGrayOut: {
@@ -21,6 +20,7 @@ const meta = {
         'Button 컴포넌트의 그레이 아웃 여부를 설정합니다. 기본 값은 false 입니다.',
     },
     onClick: {
+      control: false,
       description: 'Button 컴포넌트 클릭 시 설정된 동작을 수행합니다.',
     },
   },

@@ -9,8 +9,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     as: {
-      control: 'inline-radio',
-      options: ['div'],
+      control: false,
       description: 'Badge 컴포넌트의 DOM tag를 설정합니다.',
     },
     fontColor: {

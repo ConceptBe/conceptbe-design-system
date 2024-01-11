@@ -28,8 +28,7 @@ const meta = {
       description: 'Text 컴포넌트의 폰트 색상을 설정합니다.',
     },
     as: {
-      control: 'inline-radio',
-      options: ['span', 'a', 'button', 'p'],
+      control: false,
       description: 'Text 컴포넌트의 DOM tag를 설정합니다.',
     },
   },

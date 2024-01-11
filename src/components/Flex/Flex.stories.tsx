@@ -8,9 +8,12 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     as: {
-      control: 'inline-radio',
-      options: ['div', 'section', 'article'],
+      control: false,
       description: 'Flex 컴포넌트의 DOM tag를 설정합니다.',
+    },
+    theme: {
+      control: false,
+      description: 'Emotion theme 값입니다.',
     },
     flex: {
       control: 'select',

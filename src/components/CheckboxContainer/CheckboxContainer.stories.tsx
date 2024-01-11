@@ -13,12 +13,12 @@ const meta = {
     nameKey: {
       control: 'text',
       description:
-        'CheckboxContainer에 적용되는 name을 설정합니다. useCheckbox를 통해 전달한 초기화 객체의 프로퍼티를 전달하면 됩니다. 제어 컴포넌트 방식이라 잘못된 값을 전달해도 정상 동작하나, 안정성을 위하여 만들어 놓았습니다.',
+        'CheckboxContainer에 적용되는 name을 설정합니다. useCheckbox훅을 통해 전달한 초기화 객체의 프로퍼티를 전달하면 됩니다. 제어 컴포넌트 방식이라 잘못된 값을 전달해도 정상 동작하나, 안정성을 위하여 만들어 놓았습니다.',
     },
     options: {
-      control: 'object',
+      control: false,
       description:
-        'CheckboxContainer에 표시되는 id, name, checked를 설정합니다.',
+        'CheckboxContainer 컴포넌트를 통해 선택된 체크박스를 화면에 표시합니다. useCheckbox 훅의 checkboxValue의 name 프로퍼티에 해당하는 값을 전달하면 됩니다.',
     },
     onChange: {
       description:
