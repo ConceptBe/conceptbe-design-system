@@ -5,9 +5,13 @@
 ## 설치 방법
 
 ```sh
-$ npm install concept-be-design-system
-# or
-$ yarn add concept-be-design-system
+npm install concept-be-design-system
+```
+
+또는
+
+```sh
+yarn add concept-be-design-system
 ```
 
 ## 사용 전에
@@ -24,9 +28,9 @@ const App = ({ children }) => {
 
 ## 사용 방법
 
-자세한 내용은 [스토리북](https://659f1dcbf0bf3bf442b47290-mnoqlcimlu.chromatic.com/)에서 확인하세요.
-
 ### 컴포넌트
+
+자세한 내용은 [스토리북](https://659f1dcbf0bf3bf442b47290-mnoqlcimlu.chromatic.com/)에서 확인하세요.
 
 Button 컴포넌트는 다음과 같이 사용할 수 있습니다.
 
