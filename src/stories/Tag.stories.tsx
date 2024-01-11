@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useRef, useState } from 'react';
 
-import Tag from './Tag';
+import Tag from '../components/Tag/Tag';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
@@ -10,7 +10,7 @@ const meta = {
   component: Tag,
   tags: ['autodocs'],
   argTypes: {
-    name: {
+    children: {
       control: 'text',
       description: 'Tag 컴포넌트 내부의 텍스트를 설정합니다.',
     },
@@ -25,7 +25,7 @@ type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    name: 'Tag Text',
+    children: 'Tag Text',
     onDelete: () => {},
   },
   render: (args) => (
@@ -42,10 +42,10 @@ export const Default: Story = {
 
 export const InteractionTest: Story = {
   args: {
-    name: '콘텐츠 마케팅, 하',
+    children: '콘텐츠 마케팅, 하',
     onDelete: () => {},
   },
-  render: ({ name }) => {
+  render: ({ children }) => {
     const timerId = useRef<NodeJS.Timeout | null>(null);
     const [tags, setTags] = useState<string[]>([
       '영상 촬영, 중',
@@ -61,7 +61,7 @@ export const InteractionTest: Story = {
       if (timerId.current) clearTimeout(timerId.current);
 
       timerId.current = setTimeout(() => {
-        setTags((prev) => [...prev, name]);
+        setTags((prev) => [...prev, children]);
       }, 500);
     }, [name]);
 
@@ -76,7 +76,9 @@ export const InteractionTest: Story = {
               marginBottom: '12px',
             }}
           >
-            <Tag data-testid="tag" name={name} onDelete={onDelete} />
+            <Tag data-testid="tag" onDelete={onDelete}>
+              {name}
+            </Tag>
           </div>
         ))}
         <div

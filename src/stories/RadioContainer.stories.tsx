@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import RadioContainer from './RadioContainer';
-import useRadio from '../../hooks/useRadio';
+import RadioContainer from '../components/RadioContainer/RadioContainer';
+import useRadio from '../hooks/useRadio';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 

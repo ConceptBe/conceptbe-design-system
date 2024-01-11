@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import TextDivider from './TextDivider';
+import TextDivider from '../components/TextDivider/TextDivider';
 
 const meta = {
   title: 'Components/TextDivider',

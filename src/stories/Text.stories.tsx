@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Text from './Text';
+import Text from '../components/Text/Text';
 import { Fragment } from 'react';
-import theme, { ColorKeyType, FontKeyType } from '../../styles/theme';
+import theme, { ColorKeyType, FontKeyType } from '../styles/theme';
 
 const meta = {
   title: 'Components/Text',

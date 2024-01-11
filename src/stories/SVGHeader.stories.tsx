@@ -9,7 +9,7 @@ import {
   SVGHeaderMainLogo,
   SVGHeaderSetting,
   SVGHeaderClose24,
-} from '..';
+} from '../.';
 
 const meta = {
   title: 'Assets/SVG/Header',

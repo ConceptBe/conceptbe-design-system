@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Field from './Field';
+import Field from '../components/Field/Field';
 import { fireEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import useField from '../../hooks/useField';
-import FieldInput from './FieldInput';
-import FieldTextarea from './FieldTextarea';
-import sleep from '../../utils/sleep';
+import useField from '../hooks/useField';
+import FieldInput from '../components/Field/FieldInput';
+import FieldTextarea from '../components/Field/FieldTextarea';
+import sleep from '../utils/sleep';
 
 interface Props {
   label: string;

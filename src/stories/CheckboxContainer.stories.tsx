@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import CheckboxContainer from './CheckboxContainer';
-import useCheckbox from '../../hooks/useCheckbox';
+import CheckboxContainer from '../components/CheckboxContainer/CheckboxContainer';
+import useCheckbox from '../hooks/useCheckbox';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Navigation from './Navigation';
+import Navigation from '../components/Navigation/Navigation';
 import { useState } from 'react';
 import {
   SVGNavActiveFeed,
@@ -8,7 +8,7 @@ import {
   SVGNavFeed,
   SVGNavProfile,
   SVGNavWrite24,
-} from '../..';
+} from '../.';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 

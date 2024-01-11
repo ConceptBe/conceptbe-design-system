@@ -6,7 +6,7 @@ import {
   SVGNavFeed,
   SVGNavActiveProfile,
   SVGNavProfile,
-} from '..';
+} from '../.';
 
 const meta = {
   title: 'Assets/SVG/Navigation',

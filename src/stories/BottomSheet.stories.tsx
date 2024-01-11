@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import BottomSheet from './BottomSheet';
+import BottomSheet from '../components/BottomSheet/BottomSheet';
 import { useEffect, useState } from 'react';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

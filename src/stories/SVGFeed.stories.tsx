@@ -9,7 +9,7 @@ import {
   SVGFeedPencil,
   SVGFeedScrap,
   SVGFeedUnScrap,
-} from '..';
+} from '../.';
 
 const meta = {
   title: 'Assets/SVG/Feed',

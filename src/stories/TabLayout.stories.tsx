@@ -2,7 +2,7 @@ import { expect } from '@storybook/jest';
 import { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
 
-import TabLayout from './TabLayout';
+import TabLayout from '../components/TabLayout/TabLayout';
 
 const meta = {
   title: 'Components/TabLayout',

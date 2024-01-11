@@ -10,10 +10,13 @@ import {
   SVGProfileFilled24,
   SVGScrap24,
   SVGScrapFilled24,
+  SVGRadioUncheck24,
+  SVGRadioFilled24,
+  SVGRadioCheck24,
   SVGTextRequired,
   SVGTripleDots,
   SVGDropdownArrow,
-} from '..';
+} from '../.';
 
 const meta = {
   title: 'Assets/SVG/Common',
@@ -36,6 +39,9 @@ export const Default: Story = {
       <SVGProfileFilled24 />
       <SVGScrap24 />
       <SVGScrapFilled24 />
+      <SVGRadioUncheck24 />
+      <SVGRadioFilled24 />
+      <SVGRadioCheck24 />
       <SVGTextRequired />
       <SVGTripleDots />
     </div>

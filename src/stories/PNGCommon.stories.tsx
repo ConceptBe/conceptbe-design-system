@@ -8,7 +8,7 @@ import {
   PNGIdeaBackground3,
   PNGIdeaBackground4,
   PNGIdeaBackground5,
-} from '..';
+} from '../.';
 
 const meta = {
   title: 'Assets/PNG/Common',

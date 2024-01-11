@@ -7,7 +7,7 @@ import {
   SVGLoginDefaultImage,
   SVGLoginImageWrite,
   SVGLoginDefaultProfile,
-} from '..';
+} from '../.';
 
 const meta = {
   title: 'Assets/SVG/Login',

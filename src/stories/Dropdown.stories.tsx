@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Dropdown from './Dropdown';
+import Dropdown from '../components/Dropdown/Dropdown';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import useDropdown from '../../hooks/useDropdown';
+import useDropdown from '../hooks/useDropdown';
 import { useEffect, useState } from 'react';
 
 const meta = {

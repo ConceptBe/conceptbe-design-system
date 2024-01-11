@@ -5,7 +5,7 @@ import {
   SVGCardLike14,
   SVGCardScrap14,
   SVGCardView14,
-} from '..';
+} from '../.';
 
 const meta = {
   title: 'Assets/SVG/Card',
