@@ -30,7 +30,7 @@ const App = ({ children }) => {
 
 ### 컴포넌트
 
-자세한 내용은 [스토리북](https://659f1dcbf0bf3bf442b47290-mnoqlcimlu.chromatic.com/)에서 확인하세요.
+자세한 내용은 [스토리북](https://65a04fca8611ba47d7f8b115-jlefxghrma.chromatic.com/)에서 확인하세요.
 
 Button 컴포넌트는 다음과 같이 사용할 수 있습니다.
 
@@ -252,7 +252,7 @@ function SomeComponent() {
 
 ## 문서
 
-- [스토리북](https://659f1dcbf0bf3bf442b47290-mnoqlcimlu.chromatic.com/)
+- [스토리북](https://65a04fca8611ba47d7f8b115-jlefxghrma.chromatic.com/)
 
 ## 기여
 
