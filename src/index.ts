@@ -1,13 +1,10 @@
 import PNGAgreementBackground from './assets/image/agreement_bg.png';
 import PNGBottomBackground from './assets/image/bottom_bg.png';
-import PNGHeaderLogo from './assets/image/header_logo.png';
 import PNGIdeaBackground1 from './assets/image/idea_back_1.png';
 import PNGIdeaBackground2 from './assets/image/idea_back_2.png';
 import PNGIdeaBackground3 from './assets/image/idea_back_3.png';
 import PNGIdeaBackground4 from './assets/image/idea_back_4.png';
 import PNGIdeaBackground5 from './assets/image/idea_back_5.png';
-import PNGMainLogo from './assets/image/main_logo.png';
-import PNGPlus from './assets/image/plus.png';
 import Badge from './components/Badge/Badge';
 import BottomSheet from './components/BottomSheet/BottomSheet';
 import Box from './components/Box/Box';
@@ -60,13 +57,13 @@ export { ReactComponent as SVGCardLike14 } from './assets/svg/card/like_14.svg';
 export { ReactComponent as SVGCardScrap14 } from './assets/svg/card/scrap_14.svg';
 export { ReactComponent as SVGCardView14 } from './assets/svg/card/view_14.svg';
 
-export { ReactComponent as SVGNavImageWrite } from './assets/svg/navigation/image_write.svg';
 export { ReactComponent as SVGNavWrite24 } from './assets/svg/navigation/write24.svg';
 export { ReactComponent as SVGNavActiveFeed } from './assets/svg/navigation/feed_active.svg';
 export { ReactComponent as SVGNavFeed } from './assets/svg/navigation/feed.svg';
 export { ReactComponent as SVGNavActiveProfile } from './assets/svg/navigation/profile_active.svg';
 export { ReactComponent as SVGNavProfile } from './assets/svg/navigation/profile.svg';
 
+export { ReactComponent as SVGLoginImageWrite } from './assets/svg/login/image_write.svg';
 export { ReactComponent as SVGLoginNaver } from './assets/svg/login/naver.svg';
 export { ReactComponent as SVGLoginKakao } from './assets/svg/login/kakao.svg';
 export { ReactComponent as SVGLoginLogo } from './assets/svg/login/login_logo.svg';
@@ -109,12 +106,9 @@ export {
   theme,
   PNGAgreementBackground,
   PNGBottomBackground,
-  PNGHeaderLogo,
   PNGIdeaBackground1,
   PNGIdeaBackground2,
   PNGIdeaBackground3,
   PNGIdeaBackground4,
   PNGIdeaBackground5,
-  PNGMainLogo,
-  PNGPlus,
 };

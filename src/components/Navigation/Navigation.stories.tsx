@@ -7,7 +7,7 @@ import {
   SVGNavActiveProfile,
   SVGNavFeed,
   SVGNavProfile,
-  SVGWrite24,
+  SVGNavWrite24,
 } from '../..';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
@@ -44,7 +44,7 @@ export const Default: Story = {
             position="center"
             onClick={() => setNavPosition('center')}
           >
-            <SVGWrite24 />
+            <SVGNavWrite24 />
           </Navigation.Item>
           <Navigation.Item onClick={() => setNavPosition('right')}>
             {navPosition === 'right' ? (
@@ -80,7 +80,7 @@ export const InteractionTest: Story = {
             position="center"
             onClick={() => setNavPosition('center')}
           >
-            <SVGWrite24 />
+            <SVGNavWrite24 />
           </Navigation.Item>
           <Navigation.Item
             data-testid="navigation-item"

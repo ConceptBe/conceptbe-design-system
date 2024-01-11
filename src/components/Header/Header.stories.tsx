@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 import Header from './Header';
 import {
-  SVGBack24B,
-  SVGBack24W,
-  SVGCheck24,
-  SVGFeedDotsVertical,
-  SVGFilter,
-  SVGMainLogo,
-  SVGSetting,
+  SVGHeaderBack24B,
+  SVGHeaderBack24W,
+  SVGHeaderCheck24,
+  SVGTripleDots,
+  SVGHeaderFilter,
+  SVGHeaderMainLogo,
+  SVGHeaderSetting,
 } from '../..';
 
 const meta = {
@@ -43,10 +43,10 @@ export const Default: Story = {
     <>
       <Header main={main} spacerPosition={spacerPosition}>
         <Header.Item>
-          <SVGMainLogo cursor="pointer" />
+          <SVGHeaderMainLogo cursor="pointer" />
         </Header.Item>
         <Header.Item>
-          <SVGFilter cursor="pointer" />
+          <SVGHeaderFilter cursor="pointer" />
         </Header.Item>
       </Header>
     </>
@@ -60,8 +60,8 @@ export const FeedDetail: Story = {
   },
   render: ({ main, spacerPosition }) => (
     <Header main={main} spacerPosition={spacerPosition}>
-      <SVGBack24W cursor="pointer" />
-      <SVGMainLogo cursor="pointer" />
+      <SVGHeaderBack24W cursor="pointer" />
+      <SVGHeaderMainLogo cursor="pointer" />
     </Header>
   ),
 };
@@ -72,10 +72,10 @@ export const MyFeedDetail: Story = {
   },
   render: ({ main, spacerPosition }) => (
     <Header main={main} spacerPosition={spacerPosition}>
-      <SVGBack24W cursor="pointer" />
-      <SVGMainLogo cursor="pointer" />
+      <SVGHeaderBack24W cursor="pointer" />
+      <SVGHeaderMainLogo cursor="pointer" />
       <div style={{ position: 'relative' }}>
-        <SVGFeedDotsVertical cursor="pointer" />
+        <SVGTripleDots cursor="pointer" />
       </div>
     </Header>
   ),
@@ -87,7 +87,7 @@ export const WriteFeed: Story = {
   },
   render: ({ main, spacerPosition }) => (
     <Header main={main} spacerPosition={spacerPosition}>
-      <SVGBack24B cursor="pointer" />
+      <SVGHeaderBack24B cursor="pointer" />
       <span
         style={{
           fontSize: '16px',
@@ -97,7 +97,7 @@ export const WriteFeed: Story = {
       >
         글쓰기
       </span>
-      <SVGCheck24 cursor="pointer" />
+      <SVGHeaderCheck24 cursor="pointer" />
     </Header>
   ),
 };
@@ -136,10 +136,10 @@ export const Profile: Story = {
   render: ({ main, spacerPosition }) => (
     <Header main={main} spacerPosition={spacerPosition}>
       <Header.Item>
-        <SVGMainLogo cursor="pointer" />
+        <SVGHeaderMainLogo cursor="pointer" />
       </Header.Item>
       <Header.Item>
-        <SVGSetting cursor="pointer" />
+        <SVGHeaderSetting cursor="pointer" />
       </Header.Item>
     </Header>
   ),
@@ -153,7 +153,7 @@ export const ProfileSetting: Story = {
   render: ({ main, spacerPosition }) => (
     <Header main={main} spacerPosition={spacerPosition}>
       <Header.Item>
-        <SVGBack24W cursor="pointer" />
+        <SVGHeaderBack24W cursor="pointer" />
       </Header.Item>
       <Header.Item>
         <span
@@ -178,7 +178,7 @@ export const ProfileMore: Story = {
   render: ({ main, spacerPosition }) => (
     <Header main={main} spacerPosition={spacerPosition}>
       <Header.Item>
-        <SVGBack24B cursor="pointer" />
+        <SVGHeaderBack24B cursor="pointer" />
       </Header.Item>
       <Header.Item>
         <span

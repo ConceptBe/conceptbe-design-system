@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { ReactComponent as SVGCancel } from '../../assets/svg/x.svg';
+import { ReactComponent as SVGCancel } from '../../assets/svg/cancel.svg';
 import Spacer from '../Spacer/Spacer';
 import Text from '../Text/Text';
 
