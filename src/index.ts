@@ -42,6 +42,9 @@ export { ReactComponent as SVGScrap24 } from './assets/svg/scrap_24.svg';
 export { ReactComponent as SVGTextRequired } from './assets/svg/text_required.svg';
 export { ReactComponent as SVGCancel } from './assets/svg/cancel.svg';
 export { ReactComponent as SVGTripleDots } from './assets/svg/triple_dots.svg';
+export { ReactComponent as SVGRadioUncheck24 } from './assets/svg/radio_uncheck_24.svg';
+export { ReactComponent as SVGRadioFilled24 } from './assets/svg/radio_filled_24.svg';
+export { ReactComponent as SVGRadioCheck24 } from './assets/svg/radio_check_24.svg';
 
 export { ReactComponent as SVGHeaderBack24B } from './assets/svg/header/back_24_B.svg';
 export { ReactComponent as SVGHeaderBack24W } from './assets/svg/header/back_24_W.svg';
