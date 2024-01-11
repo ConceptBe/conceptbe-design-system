@@ -22,14 +22,17 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'index',
       fileName: 'index',
-      formats: ['es', 'umd', 'cjs'],
+      formats: ['es', 'cjs'],
     },
 
     rollupOptions: {
-      external: ['react'],
+      external: ['react', 'react-dom', '@emotion/react', '@emotion/styled'],
       output: {
         globals: {
           react: 'React',
+          'react-dom': 'ReactDOM',
+          '@emotion/react': '@emotion/react',
+          '@emotion/styled': '@emotion/styled',
         },
       },
     },
