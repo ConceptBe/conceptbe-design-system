@@ -5,9 +5,13 @@
 ## 설치 방법
 
 ```sh
-$ npm install concept-be-design-system
-# or
-$ yarn add concept-be-design-system
+npm install concept-be-design-system
+```
+
+또는
+
+```sh
+yarn add concept-be-design-system
 ```
 
 ## 사용 전에
@@ -25,6 +29,8 @@ const App = ({ children }) => {
 ## 사용 방법
 
 ### 컴포넌트
+
+자세한 내용은 [스토리북](https://65a04fca8611ba47d7f8b115-jlefxghrma.chromatic.com/)에서 확인하세요.
 
 Button 컴포넌트는 다음과 같이 사용할 수 있습니다.
 
@@ -172,10 +178,7 @@ function SomeComponent() {
         nameKey="skill"
         options={radioValue.skill}
         onChange={(e) =>
-          onChangeRadio(e, 'skill', {
-            checkboxKey: 'skill',
-            maxValue: 3,
-          })
+          onChangeRadio(e, 'skill')
         }
       />
     </form>
@@ -249,7 +252,7 @@ function SomeComponent() {
 
 ## 문서
 
-추후 업데이트 예정
+- [스토리북](https://65a04fca8611ba47d7f8b115-jlefxghrma.chromatic.com/)
 
 ## 기여
 

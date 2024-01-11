@@ -1,12 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Child from './Child';
 import CheckboxContainer from './components/CheckboxContainer/CheckboxContainer';
 import Dropdown from './components/Dropdown/Dropdown';
 import RadioContainer from './components/RadioContainer/RadioContainer';
+import Tag from './components/Tag/Tag';
 import useCheckbox from './hooks/useCheckbox';
 import useDropdown from './hooks/useDropdown';
 import useRadio from './hooks/useRadio';
+
+interface DropdownProps {
+  see: string;
+  do: string;
+}
 
 interface FilterOption {
   id: number;
@@ -72,13 +78,12 @@ const App = () => {
     name: filterOptions,
     age: filterOptions2,
   });
-  const { dropdownValue, onResetDropdown, onClickDropdown } = useDropdown<{
-    see: string;
-    do: string;
-  }>({
-    see: '',
-    do: '',
-  });
+  const { dropdownValue, onResetDropdown, onClickDropdown } =
+    useDropdown<DropdownProps>({
+      see: '',
+      do: '',
+    });
+  const [tags, setTags] = useState<string[]>(['a', 'b', 'c', 'd']);
 
   useEffect(() => {
     if (dropdownValue.do !== '') {
@@ -90,6 +95,11 @@ const App = () => {
 
   return (
     <>
+      {tags.map((tag) => (
+        <Tag onDelete={(name) => setTags(tags.filter((tag) => tag !== name))}>
+          {tag}
+        </Tag>
+      ))}
       <Child />
       <Dropdown
         selectedValue={dropdownValue.see}
@@ -102,6 +112,24 @@ const App = () => {
             value={name}
             onClick={(value) => {
               onClickDropdown(value, 'see');
+            }}
+          >
+            {name}
+          </Dropdown.Item>
+        ))}
+      </Dropdown>
+
+      <Dropdown
+        selectedValue={dropdownValue.do}
+        initialValue="시/도/군"
+        disabled={false}
+      >
+        {regionOptions.map(({ id, name }) => (
+          <Dropdown.Item
+            key={id}
+            value={name}
+            onClick={(value) => {
+              onClickDropdown(value, 'do');
             }}
           >
             {name}

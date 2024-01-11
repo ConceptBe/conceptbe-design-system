@@ -10,9 +10,14 @@ export interface Props {
   children: ReactNode;
 }
 
-const NavigationItem = ({ onClick, position = 'normal', children }: Props) => {
+const NavigationItem = ({
+  onClick,
+  position = 'normal',
+  children,
+  ...attributes
+}: Props) => {
   return (
-    <Wrapper onClick={onClick} position={position}>
+    <Wrapper onClick={onClick} position={position} {...attributes}>
       {children}
     </Wrapper>
   );

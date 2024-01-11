@@ -1,10 +1,5 @@
 import styled from '@emotion/styled';
-import {
-  ReactNode,
-  CSSProperties,
-  ElementType,
-  ComponentPropsWithoutRef,
-} from 'react';
+import { ReactNode, ElementType, ComponentPropsWithoutRef } from 'react';
 
 import { ReactComponent as SVGTextRequired } from '../../assets/svg/text_required.svg';
 import { ColorKeyType, FontKeyType } from '../../styles/theme';
@@ -15,7 +10,6 @@ type Props<T extends ElementType> = {
   font?: FontKeyType;
   color?: ColorKeyType;
   required?: boolean;
-  customStyle?: CSSProperties;
 } & ComponentPropsWithoutRef<T>;
 
 const Text = <T extends ElementType>({
@@ -23,20 +17,13 @@ const Text = <T extends ElementType>({
   children,
   font = 'suit14sm',
   color = 'b',
-  customStyle,
   required = false,
   ...attributes
 }: Props<T>) => {
   const tag = as || 'span';
 
   return (
-    <Wrapper
-      as={tag}
-      textColor={color}
-      textFont={font}
-      style={{ ...customStyle }}
-      {...attributes}
-    >
+    <Wrapper as={tag} textColor={color} textFont={font} {...attributes}>
       {children}
       {required && (
         <RequiredWrapper>

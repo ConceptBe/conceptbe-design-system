@@ -1,22 +1,22 @@
 import styled from '@emotion/styled';
 
-import { ReactComponent as SVGCancel } from '../../assets/svg/x.svg';
+import { ReactComponent as SVGCancel } from '../../assets/svg/cancel.svg';
 import Spacer from '../Spacer/Spacer';
 import Text from '../Text/Text';
 
 interface TagProps {
-  text: string;
-  onDelete: (text: string) => void;
+  children: string;
+  onDelete: (name: string) => void;
 }
 
-const Tag = ({ text, onDelete }: TagProps) => {
+const Tag = ({ children, onDelete, ...attributes }: TagProps) => {
   return (
-    <Wrapper>
-      <Text font="suit13m" color="w1" customStyle={{ fontWeight: 400 }}>
-        {text}
+    <Wrapper {...attributes}>
+      <Text font="suit13m" color="w1" style={{ fontWeight: 400 }}>
+        {children}
       </Text>
       <Spacer size={10} />
-      <SVGWrapper onClick={() => onDelete(text)}>
+      <SVGWrapper onClick={() => onDelete(children)}>
         <SVGCancel />
       </SVGWrapper>
     </Wrapper>

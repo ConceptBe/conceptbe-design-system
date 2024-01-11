@@ -5,7 +5,7 @@ import DropdownItem from './DropdownItem.tsx';
 import { ReactComponent as SVGArrow } from '../../assets/svg/arrow.svg';
 import useHandleClickOutside from '../../hooks/useHandleClickOutside.ts';
 
-interface DropdownProps {
+interface Props {
   disabled?: boolean;
   selectedValue: string;
   initialValue: string;
@@ -27,7 +27,8 @@ const Dropdown = ({
   selectedValue = '',
   initialValue,
   disabled,
-}: DropdownProps) => {
+  ...attributes
+}: Props) => {
   const [isActive, setIsActive] = useState(false);
   const { ref } = useHandleClickOutside<HTMLDivElement>(
     useCallback(() => {
@@ -53,6 +54,7 @@ const Dropdown = ({
         onBlur={() => {
           setIsActive(false);
         }}
+        {...attributes}
       >
         <Trigger
           disabled={disabled}

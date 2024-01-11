@@ -7,9 +7,14 @@ interface BottomSheetProps {
   onClose: () => void;
 }
 
-const BottomSheet = ({ children, isOpen, onClose }: BottomSheetProps) => {
+const BottomSheet = ({
+  children,
+  isOpen,
+  onClose,
+  ...attributes
+}: BottomSheetProps) => {
   return (
-    <Wrapper isOpen={isOpen}>
+    <Wrapper isOpen={isOpen} {...attributes}>
       {isOpen && <Overlay onClick={onClose} />}
       <BottomSheetWrapper isOpen={isOpen}>
         <Content>{children}</Content>
@@ -25,7 +30,7 @@ const Wrapper = styled.div<{ isOpen: boolean }>`
 
 const BottomSheetWrapper = styled.div<{ isOpen: boolean }>`
   position: fixed;
-  bottom: ${(props) => (props.isOpen ? '0' : '-1000px')};
+  bottom: ${(props) => (props.isOpen ? '0' : '-100vh')};
   left: 0;
   right: 0;
   background-color: #fff;

@@ -39,6 +39,7 @@ export interface Props {
   cursor?: CSSProperties['cursor'];
   opacity?: CSSProperties['opacity'];
   zIndex?: CSSProperties['zIndex'];
+  shadow?: CSSProperties['boxShadow'];
 }
 
 const Box = styled.div<Props>`
@@ -84,6 +85,7 @@ const Box = styled.div<Props>`
   cursor: ${({ cursor }) => cursor};
   opacity: ${({ opacity }) => opacity};
   z-index: ${({ zIndex }) => zIndex};
+  box-shadow: ${({ shadow }) => shadow};
 `;
 
 export default Box;

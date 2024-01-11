@@ -8,10 +8,10 @@ type Props<T extends ElementType> = {
 const HeaderItem = <T extends ElementType>({
   children,
   as,
-  ...props
+  ...attributes
 }: Props<T>) => {
   const Tag = as || 'div';
-  return <Tag {...props}>{children}</Tag>;
+  return <Tag {...attributes}>{children}</Tag>;
 };
 
 export default HeaderItem;

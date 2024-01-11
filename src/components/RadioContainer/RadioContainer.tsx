@@ -20,9 +20,10 @@ const RadioContainer = ({
   options,
   onChange,
   gap = 'small',
+  ...attributes
 }: Props) => {
   return (
-    <Wrapper>
+    <Wrapper {...attributes}>
       {options.map((option) => (
         <RadioWrapper key={option.id}>
           <RadioInput

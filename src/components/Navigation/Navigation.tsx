@@ -8,9 +8,9 @@ interface Props {
   children: ReactNode;
 }
 
-const Navigation = ({ children }: Props) => {
+const Navigation = ({ children, ...attributes }: Props) => {
   return (
-    <Wrapper>
+    <Wrapper {...attributes}>
       <NavBackImg src={PNGBottomBg} alt="bottom-menu-back-image" />
       <NavWrapper>{children}</NavWrapper>
     </Wrapper>

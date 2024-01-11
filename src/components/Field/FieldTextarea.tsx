@@ -15,7 +15,6 @@ export interface Props {
   successMessage?: string;
   errorMessage?: string;
   autoFocus?: boolean;
-  maxLength?: number;
   placeholder?: string;
 }
 
@@ -28,6 +27,7 @@ const FieldTextarea = ({
   errorMessage = '',
   autoFocus = false,
   placeholder = '',
+  ...attributes
 }: Props) => {
   const { isRequired, inputValue: value, maxLength } = useContext(FieldContext);
 
@@ -47,8 +47,9 @@ const FieldTextarea = ({
         autoFocus={autoFocus}
         maxLength={maxLength}
         errorMessage={errorMessage}
+        {...attributes}
       />
-      {!errorMessage && isSuccess && value && (
+      {!errorMessage && isSuccess && successMessage && value && (
         <MessageWrapper isNonError={!errorMessage && isSuccess}>
           {successMessage}
         </MessageWrapper>

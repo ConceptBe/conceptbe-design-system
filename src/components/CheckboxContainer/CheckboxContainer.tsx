@@ -13,9 +13,14 @@ interface Props {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CheckboxContainer = ({ nameKey, options, onChange }: Props) => {
+const CheckboxContainer = ({
+  nameKey,
+  options,
+  onChange,
+  ...attributes
+}: Props) => {
   return (
-    <Wrapper>
+    <Wrapper {...attributes}>
       {options.map((option) => (
         <Fragment key={option.id}>
           <CheckboxInput

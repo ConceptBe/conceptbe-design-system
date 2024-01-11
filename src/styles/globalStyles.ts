@@ -7,6 +7,10 @@ export const GlobalStyles = css`
     margin: 0 auto;
   }
 
+  * {
+    font-family: 'SUIT', sans-serif;
+  }
+
   body {
     margin: 0;
     display: flex;
@@ -43,9 +47,5 @@ export const GlobalStyles = css`
   ::-webkit-scrollbar-track {
     margin-top: 14px;
     opacity: 0;
-  }
-
-  * {
-    font-family: 'SUIT Variable', sans-serif;
   }
 `;
