@@ -61,6 +61,7 @@ export const Sample: Story = {
       '시각디자인',
       '마케팅',
       '데이터',
+      '개발',
     ]);
 
     useEffect(() => {
