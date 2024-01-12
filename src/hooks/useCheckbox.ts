@@ -6,9 +6,9 @@ interface CheckboxItem {
   checked: boolean;
 }
 
-interface Limit<T> {
+interface Config<T> {
   checkboxKey: keyof T;
-  maxValue: number;
+  maxCount?: number;
 }
 
 const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
@@ -20,7 +20,7 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
     (
       e: ChangeEvent<HTMLInputElement>,
       checkboxKey: keyof T,
-      limit?: Limit<T>,
+      config?: Config<T>,
     ) => {
       const { value, checked } = e.target;
 
@@ -29,7 +29,7 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
           (checkbox) => checkbox.checked,
         ).length;
 
-        if (limit && checked && currentCheckedCount === limit.maxValue) {
+        if (config && checked && currentCheckedCount === config.maxCount) {
           return prev;
         }
 

@@ -10,10 +10,14 @@ const meta = {
   component: CheckboxContainer,
   tags: ['autodocs'],
   argTypes: {
-    nameKey: {
+    label: {
       control: 'text',
+      description: 'CheckboxContainer 컴포넌트의 label을 설정합니다.',
+    },
+    checkboxKey: {
+      control: false,
       description:
-        'CheckboxContainer에 적용되는 name을 설정합니다. useCheckbox훅을 통해 전달한 초기화 객체의 프로퍼티를 전달하면 됩니다. 제어 컴포넌트 방식이라 잘못된 값을 전달해도 정상 동작하나, 안정성을 위하여 만들어 놓았습니다.',
+        'CheckboxContainer 컴포넌트에 적용되는 name을 설정합니다. useCheckbox훅을 통해 전달한 초기화 객체의 프로퍼티를 전달해야 정상 동작합니다.',
     },
     options: {
       control: false,
@@ -24,6 +28,14 @@ const meta = {
       description:
         'Checkbox를 클릭하면 체크 상태로 변경해줍니다. 최대로 체크할 수 있는 최댓값을 설정할 수 있습니다.',
     },
+    maxCount: {
+      control: 'number',
+      description: '체크박스를 선택할 수 있는 최대 개수를 설정합니다.',
+    },
+    required: {
+      control: 'boolean',
+      description: 'CheckboxContainer의 필수값 여부를 지정합니다.',
+    },
   },
 } as Meta<typeof CheckboxContainer>;
 
@@ -32,24 +44,30 @@ type Story = StoryObj<typeof CheckboxContainer>;
 
 export const Default: Story = {
   args: {
-    nameKey: 'name',
+    label: '옵션',
+    checkboxKey: 'key',
     options: [
       { id: 1, name: '1번 체크박스', checked: false },
       { id: 2, name: '2번 체크박스', checked: false },
       { id: 3, name: '3번 체크박스', checked: false },
     ],
+    maxCount: 3,
+    required: false,
   },
-  render: ({ nameKey, options }) => {
+  render: ({ label, checkboxKey, options, maxCount, required }) => {
     const { checkboxValue, onChangeCheckbox } = useCheckbox({
-      [nameKey]: options,
+      [checkboxKey]: options,
     });
 
     return (
       <>
         <CheckboxContainer
-          nameKey={nameKey}
-          options={checkboxValue[nameKey]}
-          onChange={(e) => onChangeCheckbox(e, nameKey)}
+          label={label}
+          checkboxKey={checkboxKey}
+          options={checkboxValue[checkboxKey]}
+          onChange={(e) => onChangeCheckbox(e, checkboxKey)}
+          maxCount={maxCount}
+          required={required}
         />
       </>
     );
@@ -58,7 +76,8 @@ export const Default: Story = {
 
 export const InteractionTest: Story = {
   args: {
-    nameKey: 'purpose',
+    label: '가입 목적 (최대 3개)',
+    checkboxKey: 'purpose',
     options: [
       { id: 1, name: '사이드프로젝트', checked: false },
       { id: 2, name: '창업', checked: false },
@@ -66,34 +85,24 @@ export const InteractionTest: Story = {
       { id: 4, name: '공모전', checked: false },
       { id: 5, name: '스터디', checked: false },
     ],
+    maxCount: 3,
+    required: true,
   },
-  render: ({ nameKey, options }) => {
+  render: ({ label, checkboxKey, options, maxCount, required }) => {
     const { checkboxValue, onChangeCheckbox } = useCheckbox({
-      [nameKey]: options,
+      [checkboxKey]: options,
     });
 
     return (
       <>
-        <div
-          style={{
-            fontWeight: 500,
-            fontSize: '15px',
-            color: 'rgba(0, 0, 0, 0.40)',
-            marginBottom: '12px',
-          }}
-        >
-          가입 목적 (최대 3개)
-        </div>
         <CheckboxContainer
           data-testid="checkbox-container"
-          nameKey={nameKey}
-          options={checkboxValue[nameKey]}
-          onChange={(e) =>
-            onChangeCheckbox(e, nameKey, {
-              checkboxKey: nameKey,
-              maxValue: 3,
-            })
-          }
+          label={label}
+          checkboxKey={checkboxKey}
+          options={checkboxValue[checkboxKey]}
+          onChange={onChangeCheckbox}
+          maxCount={maxCount}
+          required={required}
         />
       </>
     );
@@ -102,10 +111,10 @@ export const InteractionTest: Story = {
     const canvas = within(canvasElement);
 
     const checkboxContainer = await canvas.findByTestId('checkbox-container');
-    const checkboxes = [...checkboxContainer.children].filter(
+    const checkboxes = [...checkboxContainer.children[1].children].filter(
       (_, idx) => idx % 2 === 1,
     );
-    const checkboxChecks = [...checkboxContainer.children].filter(
+    const checkboxChecks = [...checkboxContainer.children[1].children].filter(
       (_, idx) => idx % 2 !== 1,
     ) as HTMLInputElement[];
 

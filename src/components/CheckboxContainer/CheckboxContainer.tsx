@@ -1,55 +1,79 @@
 import styled from '@emotion/styled';
 import { ChangeEvent, Fragment } from 'react';
 
+import Flex from '../Flex/Flex';
+import Text from '../Text/Text';
+
 interface CheckboxOptions {
   id: number;
   name: string;
   checked: boolean;
 }
 
-interface Props {
-  nameKey: string;
-  options: CheckboxOptions[];
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+interface Config<T> {
+  checkboxKey: T;
+  maxCount?: number;
 }
 
-const CheckboxContainer = ({
-  nameKey,
+interface Props<T> {
+  label: string;
+  checkboxKey: T;
+  options: CheckboxOptions[];
+  onChange: (
+    e: ChangeEvent<HTMLInputElement>,
+    checkboxKey: T,
+    config?: Config<T>,
+  ) => void;
+  maxCount?: number;
+  required?: boolean;
+}
+
+const CheckboxContainer = <T extends string>({
+  label,
+  checkboxKey,
   options,
   onChange,
+  maxCount,
+  required,
   ...attributes
-}: Props) => {
+}: Props<T>) => {
   return (
-    <Wrapper {...attributes}>
-      {options.map((option) => (
-        <Fragment key={option.id}>
-          <CheckboxInput
-            id={`${option.id}-${option.name}`}
-            name={nameKey}
-            value={option.name}
-            type="checkbox"
-            checked={option.checked}
-            onChange={onChange}
-          />
-          <CheckboxLabel
-            htmlFor={`${option.id}-${option.name}`}
-            checked={option.checked}
-          >
-            {option.name}
-          </CheckboxLabel>
-        </Fragment>
-      ))}
-    </Wrapper>
+    <div {...attributes}>
+      <Flex alignItems="center" paddingBottom={12}>
+        <Text font="suit15m" color="b9" required={required}>
+          {label}
+        </Text>
+      </Flex>
+      <Flex wrap="wrap" gap={8}>
+        {options.map((option) => (
+          <Fragment key={option.id}>
+            <CheckboxInput
+              id={`${option.id}-${option.name}`}
+              name={checkboxKey}
+              value={option.name}
+              type="checkbox"
+              checked={option.checked}
+              onChange={(e) =>
+                onChange(e, checkboxKey, {
+                  checkboxKey,
+                  maxCount,
+                })
+              }
+            />
+            <CheckboxLabel
+              htmlFor={`${option.id}-${option.name}`}
+              checked={option.checked}
+            >
+              {option.name}
+            </CheckboxLabel>
+          </Fragment>
+        ))}
+      </Flex>
+    </div>
   );
 };
 
 export default CheckboxContainer;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
 
 const CheckboxInput = styled.input`
   display: none;
@@ -67,7 +91,7 @@ const CheckboxLabel = styled.label<{ checked: boolean }>`
   background-color: ${({ checked, theme }) =>
     checked ? theme.color.c1 : theme.color.w1};
   color: ${({ checked, theme }) => (checked ? theme.color.w1 : theme.color.b4)};
-  font-size: 14px;
-  font-weight: 500;
+  font-size: ${({ theme }) => theme.font.suit15m.fontSize}px;
+  font-weight: ${({ theme }) => theme.font.suit15m.fontWeight};
   cursor: pointer;
 `;
