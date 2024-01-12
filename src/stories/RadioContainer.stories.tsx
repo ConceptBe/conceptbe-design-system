@@ -82,6 +82,8 @@ export const InteractionTest: Story = {
       { id: 3, name: '오프라인', checked: false },
     ],
     gap: 'small',
+    label: '협업 방식',
+    required: false,
   },
   render: ({ label, radioKey, options, gap, required }) => {
     const { radioValue, onChangeRadio } = useRadio({
@@ -90,16 +92,6 @@ export const InteractionTest: Story = {
 
     return (
       <>
-        <div
-          style={{
-            fontWeight: 500,
-            fontSize: '15px',
-            color: 'rgba(0, 0, 0, 0.40)',
-            marginBottom: '12px',
-          }}
-        >
-          선택영역
-        </div>
         <RadioContainer
           data-testid="radio-container"
           label={label}
