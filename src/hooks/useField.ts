@@ -38,7 +38,7 @@ const useField = <T extends Record<keyof T, string>>(initialValue: T) => {
         [name]: value,
       }));
 
-      if (config?.isRequired && value.length === 0) {
+      if (config?.required && value.length === 0) {
         setFieldErrorValue((prev) => ({
           ...prev,
           [name]: '필수 입력 값입니다.',

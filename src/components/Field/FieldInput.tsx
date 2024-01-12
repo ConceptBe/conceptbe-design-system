@@ -20,7 +20,7 @@ const FieldInput = ({
   ...attributes
 }: Props) => {
   const {
-    isRequired,
+    required,
     inputValue: value,
     maxLength,
     onChange,
@@ -34,7 +34,7 @@ const FieldInput = ({
         value={value}
         onChange={(e) => {
           onChange(e, {
-            isRequired,
+            required,
             maxLength,
             name,
             onValidate,

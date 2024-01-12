@@ -16,11 +16,11 @@ interface Props {
   ) => void;
   onValidate?: () => Validate[];
   maxLength?: number;
-  isRequired?: boolean;
+  required?: boolean;
 }
 
 interface FieldContextProps {
-  isRequired: boolean;
+  required: boolean;
   inputValue: string;
   maxLength: number | undefined;
   onChange: (
@@ -31,7 +31,7 @@ interface FieldContextProps {
 }
 
 export const FieldContext = createContext<FieldContextProps>({
-  isRequired: false,
+  required: false,
   inputValue: '',
   maxLength: undefined,
   onChange: () => {},
@@ -44,14 +44,14 @@ const Field = ({
   onChange,
   onValidate,
   maxLength,
-  isRequired = false,
+  required = false,
   children,
   ...attributes
 }: Props) => {
   return (
     <FieldContext.Provider
       value={{
-        isRequired,
+        required,
         inputValue: value,
         maxLength,
         onChange,
@@ -64,7 +64,7 @@ const Field = ({
         paddingBottom={12}
         {...attributes}
       >
-        <Text font="suit15m" color="b9" required={isRequired}>
+        <Text font="suit15m" color="b9" required={required}>
           {label}
         </Text>
         {maxLength && (

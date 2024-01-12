@@ -1,5 +1,5 @@
 export interface Config {
-  isRequired?: boolean;
+  required?: boolean;
   maxLength?: number;
   name?: string;
   onValidate?: () => Validate[];
