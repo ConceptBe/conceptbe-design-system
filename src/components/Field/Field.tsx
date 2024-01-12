@@ -1,62 +1,83 @@
-import styled from '@emotion/styled';
 import { ReactNode, createContext } from 'react';
 
 import FieldInput from './FieldInput';
 import FieldTextarea from './FieldTextarea';
-import { ReactComponent as SVGTextRequired } from '../../assets/svg/text_required.svg';
+import { Config, Validate } from '../../types/useField';
+import Flex from '../Flex/Flex';
+import Text from '../Text/Text';
 
-interface InputProps {
+interface Props {
   children: ReactNode;
   label: string;
   value: string;
+  onChange: (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    config: Config,
+  ) => void;
+  onValidate?: () => Validate[];
   maxLength?: number;
-  isRequired?: boolean;
+  required?: boolean;
 }
 
 interface FieldContextProps {
-  isRequired: boolean;
+  required: boolean;
   inputValue: string;
   maxLength: number | undefined;
+  onChange: (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    config: Config,
+  ) => void;
+  onValidate?: () => Validate[];
 }
 
 export const FieldContext = createContext<FieldContextProps>({
-  isRequired: false,
+  required: false,
   inputValue: '',
   maxLength: undefined,
+  onChange: () => {},
+  onValidate: () => [],
 });
 
 const Field = ({
   label,
   value,
+  onChange,
+  onValidate,
   maxLength,
-  isRequired = false,
+  required = false,
   children,
   ...attributes
-}: InputProps) => {
+}: Props) => {
   return (
     <FieldContext.Provider
       value={{
-        isRequired,
+        required,
         inputValue: value,
         maxLength,
+        onChange,
+        onValidate,
       }}
     >
-      <LabelWrapper {...attributes}>
-        <Label>
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        paddingBottom={12}
+        {...attributes}
+      >
+        <Text font="suit15m" color="b9" required={required}>
           {label}
-          {isRequired && (
-            <SVGRequiredWrapper>
-              <SVGTextRequired />
-            </SVGRequiredWrapper>
-          )}
-        </Label>
+        </Text>
         {maxLength && (
-          <div>
-            <LabelLength>{value.length}</LabelLength>
-            <LabelLengthLimit>/{maxLength}</LabelLengthLimit>
-          </div>
+          <Flex>
+            <Text font="suit13m" color="c1">
+              {value.length}
+            </Text>
+            <Text font="suit13m" color="b9">
+              /{maxLength}
+            </Text>
+          </Flex>
         )}
-      </LabelWrapper>
+      </Flex>
       {children}
     </FieldContext.Provider>
   );
@@ -66,35 +87,3 @@ Field.Input = FieldInput;
 Field.Textarea = FieldTextarea;
 
 export default Field;
-
-const LabelWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 500;
-  padding-bottom: 12px;
-`;
-
-const Label = styled.label`
-  font-size: 15px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.color.b9};
-  padding-right: 10px;
-  position: relative;
-`;
-
-const SVGRequiredWrapper = styled.div`
-  position: absolute;
-  display: flex;
-  top: 0;
-  right: 0;
-`;
-
-const LabelLength = styled.span`
-  color: ${({ theme }) => theme.color.c1};
-`;
-
-const LabelLengthLimit = styled.span`
-  color: ${({ theme }) => theme.color.b9};
-`;

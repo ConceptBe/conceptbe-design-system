@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 import { ChangeEvent } from 'react';
 
+import Flex from '../Flex/Flex';
+import Text from '../Text/Text';
+
 type GapType = 'small' | 'large';
 
 interface RadioOptions {
@@ -8,58 +11,61 @@ interface RadioOptions {
   name: string;
   checked: boolean;
 }
-interface Props {
-  nameKey: string;
+interface Props<T> {
+  label: string;
+  radioKey: T;
   options: RadioOptions[];
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>, radioKey: T) => void;
+  required?: boolean;
   gap?: GapType;
 }
 
-const RadioContainer = ({
-  nameKey,
+const RadioContainer = <T extends string>({
+  label,
+  radioKey,
   options,
   onChange,
+  required,
   gap = 'small',
   ...attributes
-}: Props) => {
+}: Props<T>) => {
   return (
-    <Wrapper {...attributes}>
-      {options.map((option) => (
-        <RadioWrapper key={option.id}>
-          <RadioInput
-            type="radio"
-            id={`${option.id}-${option.name}`}
-            name={nameKey}
-            value={option.name}
-            checked={option.checked}
-            onChange={onChange}
-          />
-          {option.checked ? (
-            <CheckedLabel htmlFor={`${option.id}-${option.name}`} gap={gap}>
-              {option.name}
-            </CheckedLabel>
-          ) : (
-            <UnCheckedLabel htmlFor={`${option.id}-${option.name}`} gap={gap}>
-              {option.name}
-            </UnCheckedLabel>
-          )}
-        </RadioWrapper>
-      ))}
-    </Wrapper>
+    <div {...attributes}>
+      <Flex alignItems="center" paddingBottom={12}>
+        <Text font="suit15m" color="b9" required={required}>
+          {label}
+        </Text>
+      </Flex>
+      <Flex wrap="wrap">
+        {options.map((option) => (
+          <Flex alignItems="center" key={option.id}>
+            <RadioInput
+              type="radio"
+              id={`${option.id}-${option.name}`}
+              name={radioKey}
+              value={option.name}
+              checked={option.checked}
+              onChange={(e) => {
+                onChange(e, radioKey);
+              }}
+            />
+            {option.checked ? (
+              <CheckedLabel htmlFor={`${option.id}-${option.name}`} gap={gap}>
+                {option.name}
+              </CheckedLabel>
+            ) : (
+              <UnCheckedLabel htmlFor={`${option.id}-${option.name}`} gap={gap}>
+                {option.name}
+              </UnCheckedLabel>
+            )}
+          </Flex>
+        ))}
+      </Flex>
+    </div>
   );
 };
 
 export default RadioContainer;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const RadioWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
 
 const RadioInput = styled.input`
   display: none;

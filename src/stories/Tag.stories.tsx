@@ -63,7 +63,7 @@ export const InteractionTest: Story = {
       timerId.current = setTimeout(() => {
         setTags((prev) => [...prev, children]);
       }, 500);
-    }, [name]);
+    }, [children]);
 
     return (
       <div>

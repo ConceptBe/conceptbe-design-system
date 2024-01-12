@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { Spacer } from '.';
 import Child from './Child';
 import CheckboxContainer from './components/CheckboxContainer/CheckboxContainer';
 import Dropdown from './components/Dropdown/Dropdown';
@@ -45,6 +46,14 @@ const filterSubOptions2 = [
   { id: 5, name: '스터디', checked: false },
 ];
 
+const filterSubOptions3 = [
+  { id: 111, name: '사이드프로젝트', checked: false },
+  { id: 222, name: '창업', checked: false },
+  { id: 333, name: '크라우드펀딩', checked: false },
+  { id: 444, name: '공모전', checked: false },
+  { id: 555, name: '스터디', checked: false },
+];
+
 const filterOptions = [
   { name: 'IT', id: 1, checked: false },
   { name: '게임', id: 2, checked: false },
@@ -66,10 +75,12 @@ const filterOptions2 = [
 const App = () => {
   const { checkboxValue, onChangeCheckbox } = useCheckbox<{
     goal: FilterOption[];
-    goal2: FilterOption[];
+    name: FilterOption[];
+    oneMore: FilterOption[];
   }>({
     goal: filterSubOptions,
-    goal2: filterSubOptions2,
+    name: filterSubOptions2,
+    oneMore: filterSubOptions3,
   });
   const { radioValue, onChangeRadio } = useRadio<{
     name: FilterOption[];
@@ -83,7 +94,7 @@ const App = () => {
       see: '',
       do: '',
     });
-  const [tags, setTags] = useState<string[]>(['a', 'b', 'c', 'd']);
+  const [tags, setTags] = useState<string[]>(['a', 'b', 'c']);
 
   useEffect(() => {
     if (dropdownValue.do !== '') {
@@ -100,6 +111,7 @@ const App = () => {
           {tag}
         </Tag>
       ))}
+      <Spacer size={50} />
       <Child />
       <Dropdown
         selectedValue={dropdownValue.see}
@@ -137,48 +149,32 @@ const App = () => {
         ))}
       </Dropdown>
 
-      <Dropdown
-        selectedValue={dropdownValue.do}
-        initialValue="시/도/군"
-        disabled={false}
-      >
-        {regionOptions.map(({ id, name }) => (
-          <Dropdown.Item
-            key={id}
-            value={name}
-            onClick={(value) => {
-              onClickDropdown(value, 'do');
-            }}
-          >
-            {name}
-          </Dropdown.Item>
-        ))}
-      </Dropdown>
-
       <CheckboxContainer
-        nameKey="goal"
+        label="가입 목적"
+        checkboxKey="goal"
         options={checkboxValue.goal}
-        onChange={(e) => onChangeCheckbox(e, 'goal')}
+        onChange={onChangeCheckbox}
       />
       <CheckboxContainer
-        nameKey="goal2"
-        options={checkboxValue.goal2}
-        onChange={(e) =>
-          onChangeCheckbox(e, 'goal2', {
-            checkboxKey: 'goal2',
-            maxValue: 3,
-          })
-        }
+        label="이름 선택"
+        checkboxKey="name"
+        options={checkboxValue.name}
+        onChange={onChangeCheckbox}
+        maxCount={3}
+        required
       />
       <RadioContainer
-        nameKey="name"
+        label="name"
+        radioKey="name"
         options={radioValue.name}
-        onChange={(e) => onChangeRadio(e, 'name')}
+        onChange={onChangeRadio}
+        required
       />
       <RadioContainer
-        nameKey="age"
+        label="age"
+        radioKey="age"
         options={radioValue.age}
-        onChange={(e) => onChangeRadio(e, 'age')}
+        onChange={onChangeRadio}
       />
     </>
   );

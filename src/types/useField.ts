@@ -1,11 +1,11 @@
 export interface Config {
-  isRequired?: boolean;
+  required?: boolean;
   maxLength?: number;
+  name?: string;
   onValidate?: () => Validate[];
 }
 
 export interface Validate {
-  regexp: RegExp;
-  name: string;
+  validateFn: (value: string) => boolean;
   errorMessage: string;
 }

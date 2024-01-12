@@ -38,7 +38,7 @@ const useField = <T extends Record<keyof T, string>>(initialValue: T) => {
         [name]: value,
       }));
 
-      if (config?.isRequired && value.length === 0) {
+      if (config?.required && value.length === 0) {
         setFieldErrorValue((prev) => ({
           ...prev,
           [name]: '필수 입력 값입니다.',
@@ -48,7 +48,7 @@ const useField = <T extends Record<keyof T, string>>(initialValue: T) => {
 
       if (config && config.onValidate) {
         config.onValidate().forEach((validate) => {
-          if (validate.name === name && validate.regexp.test(value)) {
+          if (config.name === name && validate.validateFn(value)) {
             setFieldErrorValue((prev) => ({
               ...prev,
               [name]: validate.errorMessage,
@@ -60,8 +60,7 @@ const useField = <T extends Record<keyof T, string>>(initialValue: T) => {
           config
             .onValidate()
             .find(
-              (validate) =>
-                validate.name === name && validate.regexp.test(value),
+              (validate) => config.name === name && validate.validateFn(value),
             )
         )
           return;

@@ -51,7 +51,7 @@ export const Sample: Story = {
     as: 'div',
     fontColor: 'b9',
     backgroundColor: 'bg1',
-    children: '개발',
+    children: '프론트엔드',
   },
   render: ({ children, backgroundColor, fontColor }) => {
     const timerId = useRef<NodeJS.Timeout | null>(null);

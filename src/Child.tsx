@@ -13,11 +13,15 @@ const Child = () => {
       intro: '',
     });
 
-  const validateInput = () => {
+  const validateNickname = () => {
     return [
       {
-        regexp: /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g,
-        name: 'intro',
+        validateFn: (value: string) =>
+          /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g.test(value),
+        errorMessage: '사용 불가한 소개입니다.',
+      },
+      {
+        validateFn: () => fieldErrorValue.intro.length > 0,
         errorMessage: '사용 불가한 소개입니다.',
       },
     ];
@@ -28,26 +32,29 @@ const Child = () => {
       <Field
         label="닉네임"
         value={fieldValue.nickName}
+        onChange={onChangeField}
+        onValidate={validateNickname}
         maxLength={10}
-        isRequired
+        required
       >
         <Field.Input
           name="nickName"
-          onChange={onChangeField}
-          onValidate={validateInput}
           placeholder="닉네임을 입력해주세요"
-          errorMessage={fieldErrorValue.nickName}
+          errorValue={fieldErrorValue.nickName}
           successMessage="사용 가능한 닉네임입니다."
         />
       </Field>
 
-      <Field label="자기소개" value={fieldValue.intro} maxLength={150}>
+      <Field
+        label="자기소개"
+        value={fieldValue.intro}
+        onChange={onChangeField}
+        maxLength={150}
+      >
         <Field.Textarea
           name="intro"
-          onChange={onChangeField}
-          onValidate={validateInput}
           placeholder="자기소개를 입력해 주세요. (최대 150자)"
-          errorMessage={fieldErrorValue.intro}
+          errorValue={fieldErrorValue.intro}
         />
       </Field>
     </>
