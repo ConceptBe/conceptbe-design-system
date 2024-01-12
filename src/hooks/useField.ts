@@ -48,7 +48,7 @@ const useField = <T extends Record<keyof T, string>>(initialValue: T) => {
 
       if (config && config.onValidate) {
         config.onValidate().forEach((validate) => {
-          if (validate.name === name && validate.regexp.test(value)) {
+          if (config.name === name && validate.validateFn(value)) {
             setFieldErrorValue((prev) => ({
               ...prev,
               [name]: validate.errorMessage,
@@ -60,8 +60,7 @@ const useField = <T extends Record<keyof T, string>>(initialValue: T) => {
           config
             .onValidate()
             .find(
-              (validate) =>
-                validate.name === name && validate.regexp.test(value),
+              (validate) => config.name === name && validate.validateFn(value),
             )
         )
           return;

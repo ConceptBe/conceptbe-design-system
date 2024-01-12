@@ -2,34 +2,30 @@ import styled from '@emotion/styled';
 import { useContext } from 'react';
 
 import { FieldContext } from './Field';
-import { Config, Validate } from '../../types/useField';
 
 export interface Props {
   name: string;
-  onChange: (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    config: Config,
-  ) => void;
-  onValidate?: () => Validate[];
-  isSuccess?: boolean;
   successMessage?: string;
-  errorMessage?: string;
+  errorValue?: string;
   autoFocus?: boolean;
   placeholder?: string;
 }
 
 const FieldTextarea = ({
   name,
-  onChange,
-  onValidate,
-  isSuccess = true,
   successMessage = '',
-  errorMessage = '',
+  errorValue = '',
   autoFocus = false,
   placeholder = '',
   ...attributes
 }: Props) => {
-  const { isRequired, inputValue: value, maxLength } = useContext(FieldContext);
+  const {
+    isRequired,
+    inputValue: value,
+    maxLength,
+    onChange,
+    onValidate,
+  } = useContext(FieldContext);
 
   return (
     <>
@@ -40,25 +36,24 @@ const FieldTextarea = ({
           onChange(e, {
             isRequired,
             maxLength,
+            name,
             onValidate,
           });
         }}
         placeholder={placeholder}
         autoFocus={autoFocus}
         maxLength={maxLength}
-        errorMessage={errorMessage}
+        errorValue={errorValue}
         {...attributes}
       />
-      {!errorMessage && isSuccess && successMessage && value && (
-        <MessageWrapper isNonError={!errorMessage && isSuccess}>
+      {!errorValue && successMessage && value && (
+        <MessageWrapper isNonError={!errorValue}>
           {successMessage}
         </MessageWrapper>
       )}
 
-      {(errorMessage || !isSuccess) && (
-        <MessageWrapper isNonError={!errorMessage && isSuccess}>
-          {errorMessage}
-        </MessageWrapper>
+      {errorValue && (
+        <MessageWrapper isNonError={!errorValue}>{errorValue}</MessageWrapper>
       )}
     </>
   );
@@ -66,7 +61,7 @@ const FieldTextarea = ({
 
 export default FieldTextarea;
 
-const TextArea = styled.textarea<{ errorMessage: string }>`
+const TextArea = styled.textarea<{ errorValue: string }>`
   box-sizing: border-box;
   width: 100%;
   height: 100px;
@@ -75,8 +70,7 @@ const TextArea = styled.textarea<{ errorMessage: string }>`
   font-size: ${({ theme }) => theme.font.suit14r.fontSize}px;
   font-weight: ${({ theme }) => theme.font.suit14r.fontWeight};
   border: 1px solid
-    ${({ errorMessage, theme }) =>
-      errorMessage ? theme.color.c3 : theme.color.l2};
+    ${({ errorValue, theme }) => (errorValue ? theme.color.c3 : theme.color.l2)};
   outline: none;
   color: ${({ theme }) => theme.color.b4};
   background: ${({ theme }) => theme.color.w1};

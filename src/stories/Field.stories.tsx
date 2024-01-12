@@ -14,9 +14,8 @@ interface Props {
   maxLength: number;
   isRequired: boolean;
   name: string;
-  isSuccess: boolean;
   successMessage: string;
-  errorMessage: string;
+  errorValue: string;
   placeholder: string;
   autoFocus: boolean;
 }
@@ -61,17 +60,12 @@ const meta = {
       description:
         'Field.Input, Field.Textarea 컴포넌트의 유저 타이핑 값을 정규표현식을 통해 검증할 때 사용합니다.',
     },
-    isSuccess: {
-      control: 'boolean',
-      description:
-        'Field.Input, Field.Textarea 컴포넌트의 유저 타이핑 값을 외부 로직을 통해 검증할 때 사용합니다. 기본값은 true 입니다.',
-    },
     successMessage: {
       control: 'text',
       description:
         'Field.Input, Field.Textarea 컴포넌트의 입력값이 정상적일 경우 하단에 표시할 메세지를 설정합니다.',
     },
-    errorMessage: {
+    errorValue: {
       control: 'text',
       description:
         'Field.Input, Field.Textarea 컴포넌트의 입력값이 비정상적일 경우 하단에 표시할 메세지를 설정합니다. useField 훅의 fieldErrorValue의 name 프로퍼티에 해당하는 값을 전달하면 됩니다.',
@@ -99,9 +93,8 @@ export const Input: Story = {
     maxLength: 10,
     isRequired: true,
     name: 'nickname',
-    isSuccess: true,
     successMessage: '사용 가능한 닉네임입니다.',
-    errorMessage: '사용 불가능한 닉네임입니다.',
+    errorValue: '사용 불가능한 닉네임입니다.',
     placeholder: '특수문자를 제외한 닉네임을 입력해 주세요.',
     autoFocus: false,
   },
@@ -110,9 +103,8 @@ export const Input: Story = {
     maxLength,
     isRequired,
     name,
-    isSuccess,
     successMessage,
-    errorMessage,
+    errorValue,
     placeholder,
     autoFocus,
   }: Props) => {
@@ -123,9 +115,9 @@ export const Input: Story = {
     const onValidate = () => {
       return [
         {
-          regexp: /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g,
-          name,
-          errorMessage,
+          validateFn: (value: string) =>
+            /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g.test(value),
+          errorMessage: errorValue,
         },
       ];
     };
@@ -134,16 +126,15 @@ export const Input: Story = {
       <Field
         label={label}
         value={fieldValue[name]}
+        onChange={onChangeField}
+        onValidate={onValidate}
         maxLength={maxLength}
         isRequired={isRequired}
       >
         <Field.Input
           name={name}
-          onChange={onChangeField}
-          onValidate={onValidate}
-          isSuccess={isSuccess}
+          errorValue={fieldErrorValue[name]}
           successMessage={successMessage}
-          errorMessage={fieldErrorValue[name]}
           autoFocus={autoFocus}
           placeholder={placeholder}
         />
@@ -159,9 +150,8 @@ export const Textarea: Story = {
     maxLength: 150,
     isRequired: true,
     name: 'intro',
-    isSuccess: true,
     successMessage: '사용 가능한 자기소개입니다.',
-    errorMessage: '사용 불가능한 자기소개입니다.',
+    errorValue: '사용 불가능한 자기소개입니다.',
     placeholder: '특수문자를 제외한 자기소개을 입력해 주세요.',
     autoFocus: false,
   },
@@ -170,9 +160,8 @@ export const Textarea: Story = {
     maxLength,
     isRequired,
     name,
-    isSuccess,
     successMessage,
-    errorMessage,
+    errorValue,
     placeholder,
     autoFocus,
   }: Props) => {
@@ -183,9 +172,9 @@ export const Textarea: Story = {
     const onValidate = () => {
       return [
         {
-          regexp: /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g,
-          name,
-          errorMessage,
+          validateFn: (value: string) =>
+            /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g.test(value),
+          errorMessage: errorValue,
         },
       ];
     };
@@ -194,16 +183,15 @@ export const Textarea: Story = {
       <Field
         label={label}
         value={fieldValue[name]}
+        onChange={onChangeField}
+        onValidate={onValidate}
         maxLength={maxLength}
         isRequired={isRequired}
       >
         <Field.Textarea
           name={name}
-          onChange={onChangeField}
-          onValidate={onValidate}
-          isSuccess={isSuccess}
           successMessage={successMessage}
-          errorMessage={fieldErrorValue[name]}
+          errorValue={fieldErrorValue[name]}
           autoFocus={autoFocus}
           placeholder={placeholder}
         />
@@ -219,9 +207,8 @@ export const InteractionTest: Story = {
     maxLength: 10,
     isRequired: true,
     name: 'nickname',
-    isSuccess: true,
     successMessage: '사용 가능한 닉네임입니다.',
-    errorMessage: '사용 불가능한 닉네임입니다.',
+    errorValue: '사용 불가능한 닉네임입니다.',
     placeholder: '특수문자를 제외한 닉네임을 입력해 주세요.',
     autoFocus: false,
   },
@@ -230,9 +217,8 @@ export const InteractionTest: Story = {
     maxLength,
     isRequired,
     name,
-    isSuccess,
     successMessage,
-    errorMessage,
+    errorValue,
     placeholder,
     autoFocus,
   }: Props) => {
@@ -244,9 +230,9 @@ export const InteractionTest: Story = {
     const onValidate = () => {
       return [
         {
-          regexp: /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g,
-          name,
-          errorMessage,
+          validateFn: (value: string) =>
+            /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g.test(value),
+          errorMessage: errorValue,
         },
       ];
     };
@@ -256,17 +242,16 @@ export const InteractionTest: Story = {
         <Field
           label={label}
           value={fieldValue[name]}
+          onChange={onChangeField}
+          onValidate={onValidate}
           maxLength={maxLength}
           isRequired={isRequired}
           data-testid="input-field"
         >
           <Field.Input
             name={name}
-            onChange={onChangeField}
-            onValidate={onValidate}
-            isSuccess={isSuccess}
             successMessage={successMessage}
-            errorMessage={fieldErrorValue[name]}
+            errorValue={fieldErrorValue[name]}
             autoFocus={autoFocus}
             placeholder={placeholder}
             data-testid="input"
@@ -276,16 +261,15 @@ export const InteractionTest: Story = {
         <Field
           label="자기소개"
           value={fieldValue.intro}
+          onChange={onChangeField}
           maxLength={150}
           isRequired={isRequired}
           data-testid="textarea-field"
         >
           <Field.Textarea
             name="intro"
-            onChange={onChangeField}
-            isSuccess
             successMessage="사용 가능한 자기소개입니다."
-            errorMessage={fieldErrorValue.intro}
+            errorValue={fieldErrorValue.intro}
             placeholder="자기소개를 입력해 주세요."
             data-testid="textarea"
           />

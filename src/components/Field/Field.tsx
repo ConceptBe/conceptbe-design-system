@@ -4,11 +4,17 @@ import { ReactNode, createContext } from 'react';
 import FieldInput from './FieldInput';
 import FieldTextarea from './FieldTextarea';
 import { ReactComponent as SVGTextRequired } from '../../assets/svg/text_required.svg';
+import { Config, Validate } from '../../types/useField';
 
 interface InputProps {
   children: ReactNode;
   label: string;
   value: string;
+  onChange: (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    config: Config,
+  ) => void;
+  onValidate?: () => Validate[];
   maxLength?: number;
   isRequired?: boolean;
 }
@@ -17,17 +23,26 @@ interface FieldContextProps {
   isRequired: boolean;
   inputValue: string;
   maxLength: number | undefined;
+  onChange: (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    config: Config,
+  ) => void;
+  onValidate?: () => Validate[];
 }
 
 export const FieldContext = createContext<FieldContextProps>({
   isRequired: false,
   inputValue: '',
   maxLength: undefined,
+  onChange: () => {},
+  onValidate: () => [],
 });
 
 const Field = ({
   label,
   value,
+  onChange,
+  onValidate,
   maxLength,
   isRequired = false,
   children,
@@ -39,6 +54,8 @@ const Field = ({
         isRequired,
         inputValue: value,
         maxLength,
+        onChange,
+        onValidate,
       }}
     >
       <LabelWrapper {...attributes}>
