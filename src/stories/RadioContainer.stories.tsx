@@ -10,10 +10,14 @@ const meta = {
   component: RadioContainer,
   tags: ['autodocs'],
   argTypes: {
-    nameKey: {
+    label: {
       control: 'text',
+      description: 'RadioContainer 컴포넌트의 label을 설정합니다.',
+    },
+    radioKey: {
+      control: false,
       description:
-        'Radio Input에 적용되는 name을 설정합니다. useRadio를 통해 전달한 초기화 객체의 프로퍼티를 전달하면 됩니다. 제어 컴포넌트 방식이라 잘못된 값을 전달해도 정상 동작하나, 안정성을 위하여 만들어 놓았습니다.',
+        'Radio Input에 적용되는 name을 설정합니다. useRadio를 통해 전달한 초기화 객체의 프로퍼티를 전달하면 됩니다.',
     },
     options: {
       control: false,
@@ -27,6 +31,10 @@ const meta = {
       control: 'inline-radio',
       description: 'Radio간 간격을 설정합니다. 기본값은 small 입니다.',
     },
+    required: {
+      control: 'boolean',
+      description: 'RadioContainer 컴포넌트의 필수값 여부를 지정합니다.',
+    },
   },
 } as Meta<typeof RadioContainer>;
 
@@ -35,26 +43,30 @@ type Story = StoryObj<typeof RadioContainer>;
 
 export const Default: Story = {
   args: {
-    nameKey: 'name',
+    radioKey: 'name',
     options: [
       { id: 1, name: '1번 라디오', checked: false },
       { id: 2, name: '2번 라디오', checked: false },
       { id: 3, name: '3번 라디오', checked: false },
     ],
     gap: 'small',
+    label: '옵션',
+    required: false,
   },
-  render: ({ nameKey, options, gap }) => {
+  render: ({ label, radioKey, options, gap, required }) => {
     const { radioValue, onChangeRadio } = useRadio({
-      [nameKey]: options,
+      [radioKey]: options,
     });
 
     return (
       <>
         <RadioContainer
-          nameKey={nameKey}
-          options={radioValue[nameKey]}
-          onChange={(e) => onChangeRadio(e, nameKey)}
+          label={label}
+          radioKey={radioKey}
+          options={radioValue[radioKey]}
+          onChange={(e) => onChangeRadio(e, radioKey)}
           gap={gap}
+          required={required}
         />
       </>
     );
@@ -63,7 +75,7 @@ export const Default: Story = {
 
 export const InteractionTest: Story = {
   args: {
-    nameKey: 'option',
+    radioKey: 'option',
     options: [
       { id: 1, name: '상관없음', checked: true },
       { id: 2, name: '온라인', checked: false },
@@ -71,9 +83,9 @@ export const InteractionTest: Story = {
     ],
     gap: 'small',
   },
-  render: ({ nameKey, options, gap }) => {
+  render: ({ label, radioKey, options, gap, required }) => {
     const { radioValue, onChangeRadio } = useRadio({
-      [nameKey]: options,
+      [radioKey]: options,
     });
 
     return (
@@ -90,10 +102,12 @@ export const InteractionTest: Story = {
         </div>
         <RadioContainer
           data-testid="radio-container"
-          nameKey={nameKey}
-          options={radioValue[nameKey]}
-          onChange={(e) => onChangeRadio(e, nameKey)}
+          label={label}
+          radioKey={radioKey}
+          options={radioValue[radioKey]}
+          onChange={(e) => onChangeRadio(e, radioKey)}
           gap={gap}
+          required={required}
         />
       </>
     );
@@ -102,10 +116,10 @@ export const InteractionTest: Story = {
     const canvas = within(canvasElement);
 
     const radioContainer = await canvas.findByTestId('radio-container');
-    const radioInputs = [...radioContainer.children].map(
+    const radioInputs = [...radioContainer.children[1].children].map(
       (inputWrapper) => inputWrapper.children[0],
     );
-    const radioLabels = [...radioContainer.children].map(
+    const radioLabels = [...radioContainer.children[1].children].map(
       (inputWrapper) => inputWrapper.children[1],
     );
 
