@@ -135,6 +135,9 @@ export const InteractionTest: Story = {
     await userEvent.click(checkboxes[3], {
       delay: 300,
     });
+    await userEvent.click(checkboxes[2], {
+      delay: 300,
+    });
     expect(checkboxChecks.filter((checkbox) => checkbox.checked).length).toBe(
       3,
     );
