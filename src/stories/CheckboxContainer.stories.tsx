@@ -34,7 +34,7 @@ const meta = {
     },
     required: {
       control: 'boolean',
-      description: 'CheckboxContainer의 필수값 여부를 지정합니다.',
+      description: 'CheckboxContainer 컴포넌트의 필수값 여부를 지정합니다.',
     },
   },
 } as Meta<typeof CheckboxContainer>;
