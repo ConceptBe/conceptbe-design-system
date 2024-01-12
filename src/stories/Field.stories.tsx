@@ -12,7 +12,7 @@ interface Props {
   label: string;
   value: string;
   maxLength: number;
-  isRequired: boolean;
+  required: boolean;
   name: string;
   successMessage: string;
   errorValue: string;
@@ -42,7 +42,7 @@ const meta = {
       control: 'number',
       description: 'Field 컴포넌트의 입력 최대값을 설정합니다.',
     },
-    isRequired: {
+    required: {
       control: 'boolean',
       description:
         'Field 컴포넌트가 필수 입력값인지에 대한 여부를 설정합니다. 기본값은 false입니다.',
@@ -91,7 +91,7 @@ export const Input: Story = {
     label: '닉네임',
     value: '',
     maxLength: 10,
-    isRequired: true,
+    required: true,
     name: 'nickname',
     successMessage: '사용 가능한 닉네임입니다.',
     errorValue: '사용 불가능한 닉네임입니다.',
@@ -101,7 +101,7 @@ export const Input: Story = {
   render: ({
     label,
     maxLength,
-    isRequired,
+    required,
     name,
     successMessage,
     errorValue,
@@ -129,7 +129,7 @@ export const Input: Story = {
         onChange={onChangeField}
         onValidate={onValidate}
         maxLength={maxLength}
-        isRequired={isRequired}
+        required={required}
       >
         <Field.Input
           name={name}
@@ -148,7 +148,7 @@ export const Textarea: Story = {
     label: '자기소개',
     value: '',
     maxLength: 150,
-    isRequired: true,
+    required: true,
     name: 'intro',
     successMessage: '사용 가능한 자기소개입니다.',
     errorValue: '사용 불가능한 자기소개입니다.',
@@ -158,7 +158,7 @@ export const Textarea: Story = {
   render: ({
     label,
     maxLength,
-    isRequired,
+    required,
     name,
     successMessage,
     errorValue,
@@ -186,7 +186,7 @@ export const Textarea: Story = {
         onChange={onChangeField}
         onValidate={onValidate}
         maxLength={maxLength}
-        isRequired={isRequired}
+        required={required}
       >
         <Field.Textarea
           name={name}
@@ -205,7 +205,7 @@ export const InteractionTest: Story = {
     label: '닉네임',
     value: '',
     maxLength: 10,
-    isRequired: true,
+    required: true,
     name: 'nickname',
     successMessage: '사용 가능한 닉네임입니다.',
     errorValue: '사용 불가능한 닉네임입니다.',
@@ -215,7 +215,7 @@ export const InteractionTest: Story = {
   render: ({
     label,
     maxLength,
-    isRequired,
+    required,
     name,
     successMessage,
     errorValue,
@@ -245,7 +245,7 @@ export const InteractionTest: Story = {
           onChange={onChangeField}
           onValidate={onValidate}
           maxLength={maxLength}
-          isRequired={isRequired}
+          required={required}
           data-testid="input-field"
         >
           <Field.Input
@@ -263,7 +263,7 @@ export const InteractionTest: Story = {
           value={fieldValue.intro}
           onChange={onChangeField}
           maxLength={150}
-          isRequired={isRequired}
+          required={required}
           data-testid="textarea-field"
         >
           <Field.Textarea
