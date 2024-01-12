@@ -62,25 +62,24 @@ function SomeComponent() {
 
 Field 컴포넌트와 useField 훅은 다음과 같이 사용할 수 있습니다.
 
-```jsx
+```ts
 import { Field, useField } from 'concept-be-design-system';
 
 function SomeComponent() {
-  const { fieldValue, fieldErrorValue, onChangeField } =
-    useField<{
-      nickName: string;
-      intro: string;
-    }>({
-      nickName: '',
-      intro: '',
-    });
+  const { fieldValue, fieldErrorValue, onChangeField } = useField<{
+    nickName: string;
+    intro: string;
+  }>({
+    nickName: '',
+    intro: '',
+  });
 
   const validateInput = () => {
     return [
       {
-        regexp: /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g,
-        name: 'nickName',
-        errorMessage: '사용 불가한 닉네임입니다.',
+        validateFn: (value: string) =>
+          /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g.test(value),
+        errorMessage: '사용 불가한 소개입니다.',
       },
     ];
   };
@@ -90,26 +89,29 @@ function SomeComponent() {
       <Field
         label="닉네임"
         value={fieldValue.nickName}
+        onChange={onChangeField}
+        onValidate={validateNickname}
         maxLength={10}
-        isRequired
+        required
       >
         <Field.Input
-          name="nickName"
-          onChange={onChangeField}
-          onValidate={validateInput}
+          name="nickname"
           placeholder="닉네임을 입력해주세요"
-          errorMessage={fieldErrorValue.nickName}
+          errorValue={fieldErrorValue.nickName}
           successMessage="사용 가능한 닉네임입니다."
         />
       </Field>
 
-      <Field label="자기소개" value={fieldValue.intro} maxLength={150}>
+      <Field
+        label="자기소개"
+        value={fieldValue.intro}
+        onChange={onChangeField}
+        maxLength={150}
+      >
         <Field.Textarea
           name="intro"
-          onChange={onChangeField}
-          onValidate={validateInput}
           placeholder="자기소개를 입력해 주세요. (최대 150자)"
-          errorMessage={fieldErrorValue.intro}
+          errorValue={fieldErrorValue.intro}
         />
       </Field>
     </form>
@@ -119,34 +121,39 @@ function SomeComponent() {
 
 CheckboxContainer 컴포넌트와 useCheckbox 훅은 다음과 같이 사용할 수 있습니다.
 
-```jsx
+```ts
 import { CheckboxContainer, useCheckbox } from 'concept-be-design-system';
+
+interface FilterOption {
+  id: number;
+  name: string;
+  checked: boolean;
+}
 
 function SomeComponent() {
   const { checkboxValue, onChangeCheckBox } = useCheckbox<{
-    name: FilterOption[];
+    goal: FilterOption[];
     skill: FilterOption[];
   }>({
-    name: nameOptions,
+    goal: goalOptions,
     skill: skillOptions,
   });
 
   return (
     <form>
       <CheckboxContainer
-        nameKey="name"
-        options={checkboxValue.name}
-        onChange={(e) => onChangeCheckBox(e, 'name')}
+        label="가입 목적"
+        checkboxKey="goal"
+        options={checkboxValue.goal}
+        onChange={onChangeCheckbox}
       />
       <CheckboxContainer
-        nameKey="skill"
+        label="스킬 선택"
+        checkboxKey="skill"
         options={checkboxValue.skill}
-        onChange={(e) =>
-          onChangeCheckBox(e, 'skill', {
-            checkboxKey: 'skill',
-            maxValue: 3,
-          })
-        }
+        onChange={onChangeCheckbox}
+        maxCount={3}
+        required
       />
     </form>
   )
@@ -155,31 +162,38 @@ function SomeComponent() {
 
 RadioContainer 컴포넌트와 useRadio 훅은 다음과 같이 사용할 수 있습니다.
 
-```jsx
+```ts
 import { RadioContainer, useRadio } from 'concept-be-design-system';
+
+interface FilterOption {
+  id: number;
+  name: string;
+  checked: boolean;
+}
 
 function SomeComponent() {
   const { radioValue, onChangeRadio } = useRadio<{
-    name: FilterOption[];
+    collaboration: FilterOption[];
     skill: FilterOption[];
   }>({
-    name: nameOptions,
-    skill: skillOptions,
+    collaboration: collaborationOptions,
+    mainSkill: mainSkillOptions,
   });
 
   return (
     <form>
       <RadioContainer
-        nameKey="name"
-        options={radioValue.name}
-        onChange={(e) => onChangeRadio(e, 'name')}
+        label="협업 방식"
+        radioKey="collaboration"
+        options={radioValue.collaboration}
+        onChange={onChangeRadio}
+        required
       />
       <RadioContainer
-        nameKey="skill"
-        options={radioValue.skill}
-        onChange={(e) =>
-          onChangeRadio(e, 'skill')
-        }
+        label="대표 스킬"
+        radioKey="mainSkill"
+        options={radioValue.mainSkill}
+        onChange={onChangeRadio}
       />
     </form>
   )
@@ -188,30 +202,30 @@ function SomeComponent() {
 
 Dropdown 컴포넌트와 useDropdown 훅은 다음과 같이 사용할 수 있습니다.
 
-```jsx
+```ts
 import { useEffect } from 'react';
 import { Dropdown, useDropdown } from 'concept-be-design-system';
 
 function SomeComponent() {
   const { dropdownValue, onResetDropdown, onClickDropdown } = useDropdown<{
-    see: string;
-    do: string;
+    region: string;
+    detail: string;
   }>({
-    see: '',
-    do: '',
+    region: '',
+    detail: '',
   });
 
   useEffect(() => {
-    if (dropdownValue.do !== '') {
-      onResetDropdown('see');
-      onResetDropdown('do');
+    if (dropdownValue.detail !== '') {
+      onResetDropdown('region');
+      onResetDropdown('detail');
     }
   }, [dropdownValue, onResetDropdown]);
 
   return (
     <form>
       <Dropdown
-        selectedValue={dropdownValue.see}
+        selectedValue={dropdownValue.region}
         initialValue="시/도/광역시"
         disabled={false}
       >
@@ -220,7 +234,7 @@ function SomeComponent() {
             key={id}
             value={name}
             onClick={(value) => {
-              onClickDropdown(value, 'see');
+              onClickDropdown(value, 'region');
             }}
           >
             {name}
@@ -229,7 +243,7 @@ function SomeComponent() {
       </Dropdown>
 
       <Dropdown
-        selectedValue={dropdownValue.do}
+        selectedValue={dropdownValue.detail}
         initialValue="시/도/광역시"
         disabled={false}
       >
@@ -238,7 +252,7 @@ function SomeComponent() {
             key={id}
             value={name}
             onClick={(value) => {
-              onClickDropdown(value, 'do');
+              onClickDropdown(value, 'detail');
             }}
           >
             {name}
@@ -250,7 +264,7 @@ function SomeComponent() {
 }
 ```
 
-## 문서
+## 링크
 
 - [스토리북](https://65a04fca8611ba47d7f8b115-jlefxghrma.chromatic.com/)
 
