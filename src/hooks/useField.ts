@@ -73,6 +73,7 @@ const useField = <T extends Record<keyof T, string>>(initialValue: T) => {
   return {
     fieldValue,
     fieldErrorValue,
+    setFieldErrorValue,
     onChangeField,
   };
 };
