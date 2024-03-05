@@ -270,6 +270,6 @@ function SomeComponent() {
 
 ## 기여
 
-| <img src="https://avatars.githubusercontent.com/u/89172499?v=4" width="120" height="120"> |
-| :---------------------------------------------------------------------------------------: |
-|                          [이세민](https://github.com/semnil5202)                          |
+| <img src="https://avatars.githubusercontent.com/u/89172499?v=4" width="120" height="120"> | <img src="https://avatars.githubusercontent.com/u/33623078?v=4" width="120" height="120"> |
+| :---------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: |
+|                          [이세민](https://github.com/semnil5202)                          |                            [박영진](https://github.com/yogjin)                            |
