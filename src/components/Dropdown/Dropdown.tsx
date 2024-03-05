@@ -110,12 +110,12 @@ const PanelWrapper = styled.ul`
   left: 0;
   bottom: 0;
   transform: translateY(calc(100% + 5px));
-  width: -webkit-fill-available;
+  width: 100%;
 
   background-color: ${({ theme }) => theme.color.w1};
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 6px;
   max-height: 125px;
-  overflow: scroll;
+  overflow: auto;
   z-index: 1;
 `;
