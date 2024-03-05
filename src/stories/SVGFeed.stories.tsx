@@ -37,7 +37,6 @@ export const Default: Story = {
       <SVGFeedPencil />
       <SVGFeedReCommentLine />
       <SVGFeedScrap />
-      <SVGFeedUnLike />
       <SVGFeedUnScrap />
     </div>
   ),
