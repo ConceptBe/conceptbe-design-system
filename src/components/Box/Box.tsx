@@ -40,6 +40,7 @@ export interface Props {
   opacity?: CSSProperties['opacity'];
   zIndex?: CSSProperties['zIndex'];
   shadow?: CSSProperties['boxShadow'];
+  boxSizing?: CSSProperties['boxSizing'];
 }
 
 const Box = styled.div<Props>`
@@ -86,6 +87,7 @@ const Box = styled.div<Props>`
   opacity: ${({ opacity }) => opacity};
   z-index: ${({ zIndex }) => zIndex};
   box-shadow: ${({ shadow }) => shadow};
+  box-sizing: ${({ boxSizing }) => boxSizing};
 `;
 
 export default Box;
