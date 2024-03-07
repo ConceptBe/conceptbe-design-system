@@ -1,5 +1,6 @@
 import PNGAgreementBackground from './assets/image/agreement_bg.png';
 import PNGBottomBackground from './assets/image/bottom_bg.png';
+import PNGErrorBackground from './assets/image/error_back.png';
 import PNGIdeaBackground1 from './assets/image/idea_back_1.png';
 import PNGIdeaBackground2 from './assets/image/idea_back_2.png';
 import PNGIdeaBackground3 from './assets/image/idea_back_3.png';
@@ -115,4 +116,5 @@ export {
   PNGIdeaBackground3,
   PNGIdeaBackground4,
   PNGIdeaBackground5,
+  PNGErrorBackground,
 };
