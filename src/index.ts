@@ -81,6 +81,7 @@ export { ReactComponent as SVGFeedReCommentLine } from './assets/svg/feed/re_com
 export { ReactComponent as SVGFeedScrap } from './assets/svg/feed/scrap.svg';
 export { ReactComponent as SVGFeedUnLike } from './assets/svg/feed/unlike.svg';
 export { ReactComponent as SVGFeedUnScrap } from './assets/svg/feed/unscrap.svg';
+export { ReactComponent as SVGMore24 } from './assets/svg/feed/more.svg';
 
 export {
   Badge,
