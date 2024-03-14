@@ -113,7 +113,7 @@ const PanelWrapper = styled.ul`
   width: 100%;
 
   background-color: ${({ theme }) => theme.color.w1};
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   max-height: 125px;
   overflow: auto;

@@ -41,8 +41,8 @@ const Wrapper = styled.button<{ isGrayOut: boolean }>`
     isGrayOut ? theme.color.b : theme.color.w1};
   border: none;
   border-radius: 6px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.font.suit16sb.fontSize}px;
+  font-weight: ${({ theme }) => theme.font.suit16sb.fontWeight};
   width: 100%;
   padding: 17px 28px;
   cursor: pointer;
