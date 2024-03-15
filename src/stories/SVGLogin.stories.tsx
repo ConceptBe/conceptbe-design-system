@@ -4,9 +4,7 @@ import {
   SVGLoginNaver,
   SVGLoginKakao,
   SVGLoginLogo,
-  SVGLoginDefaultImage,
   SVGLoginImageWrite,
-  SVGLoginDefaultProfile,
 } from '../.';
 
 const meta = {
@@ -42,8 +40,6 @@ export const Default: Story = {
       >
         <SVGLoginKakao />
       </div>
-      <SVGLoginDefaultImage />
-      <SVGLoginDefaultProfile />
       <SVGLoginImageWrite />
       <SVGLoginLogo />
     </div>

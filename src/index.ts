@@ -1,7 +1,8 @@
 import PNGAgreementBackground from './assets/image/agreement_bg.png';
 import PNGBottomBackground from './assets/image/bottom_bg.png';
-import PNGDefaultProfileIcon from './assets/image/default_profile_icon.png';
-import PNGDefaultProfileImage from './assets/image/default_profile_image.png';
+import PNGDefaultProfileInfo100 from './assets/image/default_login_profile.png';
+import PNGDefaultProfileBackground from './assets/image/default_profile_background.png';
+import PNGDefaultProfileInfo36 from './assets/image/default_profile_info.png';
 import PNGErrorBackground from './assets/image/error_back.png';
 import PNGIdeaBackground1 from './assets/image/idea_back_1.png';
 import PNGIdeaBackground2 from './assets/image/idea_back_2.png';
@@ -74,8 +75,6 @@ export { ReactComponent as SVGLoginImageWrite } from './assets/svg/login/image_w
 export { ReactComponent as SVGLoginNaver } from './assets/svg/login/naver.svg';
 export { ReactComponent as SVGLoginKakao } from './assets/svg/login/kakao.svg';
 export { ReactComponent as SVGLoginLogo } from './assets/svg/login/login_logo.svg';
-export { ReactComponent as SVGLoginDefaultImage } from './assets/svg/login/default_image.svg';
-export { ReactComponent as SVGLoginDefaultProfile } from './assets/svg/login/default_profile.svg';
 
 export { ReactComponent as SVGFeedWrite40 } from './assets/svg/feed/write40.svg';
 export { ReactComponent as SVGFeedLike } from './assets/svg/feed/like.svg';
@@ -124,6 +123,7 @@ export {
   PNGIdeaBackground4,
   PNGIdeaBackground5,
   PNGErrorBackground,
-  PNGDefaultProfileIcon,
-  PNGDefaultProfileImage,
+  PNGDefaultProfileInfo36,
+  PNGDefaultProfileInfo100,
+  PNGDefaultProfileBackground,
 };
