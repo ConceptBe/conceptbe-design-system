@@ -10,7 +10,7 @@ type Props<T extends ElementType> = {
   as?: T;
   backgroundColor?: BackgroundColorType;
   fontColor?: FontColorType;
-  children: string;
+  children: number | string;
 } & ComponentPropsWithoutRef<T>;
 
 const Badge = <T extends ElementType>({
