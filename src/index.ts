@@ -1,5 +1,7 @@
 import PNGAgreementBackground from './assets/image/agreement_bg.png';
 import PNGBottomBackground from './assets/image/bottom_bg.png';
+import PNGDefaultProfileIcon from './assets/image/default_profile_icon.png';
+import PNGDefaultProfileImage from './assets/image/default_profile_image.png';
 import PNGErrorBackground from './assets/image/error_back.png';
 import PNGIdeaBackground1 from './assets/image/idea_back_1.png';
 import PNGIdeaBackground2 from './assets/image/idea_back_2.png';
@@ -85,7 +87,6 @@ export { ReactComponent as SVGFeedUnLike } from './assets/svg/feed/unlike.svg';
 export { ReactComponent as SVGFeedUnScrap } from './assets/svg/feed/unscrap.svg';
 export { ReactComponent as SVGMore24 } from './assets/svg/feed/more.svg';
 
-export { ReactComponent as SVGProfileDefaultImage } from './assets/svg/profile/profile_image_default.svg';
 export { ReactComponent as SVGProfileMessageDots } from './assets/svg/profile/message_dots_circle.svg';
 export { ReactComponent as SVGProfileBookOpen } from './assets/svg/profile/book_open.svg';
 
@@ -123,4 +124,6 @@ export {
   PNGIdeaBackground4,
   PNGIdeaBackground5,
   PNGErrorBackground,
+  PNGDefaultProfileIcon,
+  PNGDefaultProfileImage,
 };
