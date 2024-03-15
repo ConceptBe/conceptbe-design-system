@@ -77,7 +77,7 @@ export const InteractionTest: Story = {
             as={as}
             isGrayOut
             onClick={() => setCount((prev) => prev - 1)}
-            customStyle={{ flex: 1 }}
+            style={{ flex: 1 }}
           >
             감소
           </Button>
@@ -86,7 +86,7 @@ export const InteractionTest: Story = {
             as={as}
             isGrayOut={isGrayOut}
             onClick={() => setCount((prev) => prev + 1)}
-            customStyle={{ flex: 2 }}
+            style={{ flex: 2 }}
           >
             증가
           </Button>
