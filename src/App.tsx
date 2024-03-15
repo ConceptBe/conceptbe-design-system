@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Spacer } from '.';
+import { Button, Spacer } from '.';
 import Child from './Child';
 import CheckboxContainer from './components/CheckboxContainer/CheckboxContainer';
 import Dropdown from './components/Dropdown/Dropdown';
@@ -148,6 +148,8 @@ const App = () => {
           </Dropdown.Item>
         ))}
       </Dropdown>
+
+      <Button>버튼 테스트</Button>
 
       <CheckboxContainer
         label="가입 목적"
