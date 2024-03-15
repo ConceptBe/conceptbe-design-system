@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Badge from '../components/Badge/Badge';
-import { useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 const meta = {
   title: 'Components/Badge',
@@ -55,7 +55,7 @@ export const Sample: Story = {
   },
   render: ({ children, backgroundColor, fontColor }) => {
     const timerId = useRef<NodeJS.Timeout | null>(null);
-    const [badges, setBadges] = useState<string[]>([
+    const [badges, setBadges] = useState<ReactNode[]>([
       '서비스기획',
       '영상디자인',
       '시각디자인',

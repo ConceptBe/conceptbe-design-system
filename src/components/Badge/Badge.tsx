@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ComponentPropsWithoutRef, ElementType } from 'react';
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
 import { ColorType } from '../../styles/theme';
 
@@ -10,7 +10,7 @@ type Props<T extends ElementType> = {
   as?: T;
   backgroundColor?: BackgroundColorType;
   fontColor?: FontColorType;
-  children: number | string;
+  children: ReactNode;
 } & ComponentPropsWithoutRef<T>;
 
 const Badge = <T extends ElementType>({
