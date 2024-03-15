@@ -16,6 +16,7 @@ import Dropdown from './components/Dropdown/Dropdown';
 import Field from './components/Field/Field';
 import Flex from './components/Flex/Flex';
 import Header from './components/Header/Header';
+import ImageView from './components/ImageView/ImageView';
 import Navigation from './components/Navigation/Navigation';
 import RadioContainer from './components/RadioContainer/RadioContainer';
 import Spacer from './components/Spacer/Spacer';
@@ -95,6 +96,7 @@ export {
   Field,
   Flex,
   Header,
+  ImageView,
   Navigation,
   RadioContainer,
   Spacer,
