@@ -85,6 +85,10 @@ export { ReactComponent as SVGFeedUnLike } from './assets/svg/feed/unlike.svg';
 export { ReactComponent as SVGFeedUnScrap } from './assets/svg/feed/unscrap.svg';
 export { ReactComponent as SVGMore24 } from './assets/svg/feed/more.svg';
 
+export { ReactComponent as SVGProfileDefaultImage } from './assets/svg/profile/profile_image_default.svg';
+export { ReactComponent as SVGProfileMessageDots } from './assets/svg/profile/message_dots_circle.svg';
+export { ReactComponent as SVGProfileBookOpen } from './assets/svg/profile/book_open.svg';
+
 export {
   Badge,
   BottomSheet,
