@@ -33,16 +33,18 @@ const BottomSheetWrapper = styled.div<{ isOpen: boolean }>`
   bottom: ${(props) => (props.isOpen ? '0' : '-100vh')};
   left: 0;
   right: 0;
-  background-color: #fff;
-  height: 80%;
-  transition: bottom 0.3s ease-in-out;
-  overflow: auto;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  border-radius: 14px 14px 0 0;
-  max-width: 375px;
-  width: auto;
   margin: 0 auto;
+  width: auto;
+  height: max-content;
+  max-width: 420px;
+  max-height: 90%;
+  min-height: 70%;
+  background-color: #fff;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 14px 14px 0 0;
+  overflow: auto;
+  z-index: 9999;
+  transition: bottom 0.3s ease-in-out;
 `;
 
 const Overlay = styled.div`

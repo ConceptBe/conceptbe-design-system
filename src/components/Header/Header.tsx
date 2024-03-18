@@ -35,7 +35,7 @@ const Wrapper = styled.header<{ main?: boolean }>`
   position: fixed;
   box-sizing: border-box;
   width: 100%;
-  max-width: 375px;
+  max-width: 420px;
   top: 0;
   z-index: 1;
 `;

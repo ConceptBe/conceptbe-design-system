@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   width: 100%;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 375px;
+  max-width: 420px;
 `;
 
 const NavBackImg = styled.img`

@@ -1,5 +1,8 @@
 import PNGAgreementBackground from './assets/image/agreement_bg.png';
 import PNGBottomBackground from './assets/image/bottom_bg.png';
+import PNGDefaultProfileInfo100 from './assets/image/default_login_profile.png';
+import PNGDefaultProfileBackground from './assets/image/default_profile_background.png';
+import PNGDefaultProfileInfo36 from './assets/image/default_profile_info.png';
 import PNGErrorBackground from './assets/image/error_back.png';
 import PNGIdeaBackground1 from './assets/image/idea_back_1.png';
 import PNGIdeaBackground2 from './assets/image/idea_back_2.png';
@@ -16,6 +19,7 @@ import Dropdown from './components/Dropdown/Dropdown';
 import Field from './components/Field/Field';
 import Flex from './components/Flex/Flex';
 import Header from './components/Header/Header';
+import ImageView from './components/ImageView/ImageView';
 import Navigation from './components/Navigation/Navigation';
 import RadioContainer from './components/RadioContainer/RadioContainer';
 import Spacer from './components/Spacer/Spacer';
@@ -71,8 +75,6 @@ export { ReactComponent as SVGLoginImageWrite } from './assets/svg/login/image_w
 export { ReactComponent as SVGLoginNaver } from './assets/svg/login/naver.svg';
 export { ReactComponent as SVGLoginKakao } from './assets/svg/login/kakao.svg';
 export { ReactComponent as SVGLoginLogo } from './assets/svg/login/login_logo.svg';
-export { ReactComponent as SVGLoginDefaultImage } from './assets/svg/login/default_image.svg';
-export { ReactComponent as SVGLoginDefaultProfile } from './assets/svg/login/default_profile.svg';
 
 export { ReactComponent as SVGFeedWrite40 } from './assets/svg/feed/write40.svg';
 export { ReactComponent as SVGFeedLike } from './assets/svg/feed/like.svg';
@@ -83,6 +85,9 @@ export { ReactComponent as SVGFeedScrap } from './assets/svg/feed/scrap.svg';
 export { ReactComponent as SVGFeedUnLike } from './assets/svg/feed/unlike.svg';
 export { ReactComponent as SVGFeedUnScrap } from './assets/svg/feed/unscrap.svg';
 export { ReactComponent as SVGMore24 } from './assets/svg/feed/more.svg';
+
+export { ReactComponent as SVGProfileMessageDots } from './assets/svg/profile/message_dots_circle.svg';
+export { ReactComponent as SVGProfileBookOpen } from './assets/svg/profile/book_open.svg';
 
 export {
   Badge,
@@ -95,6 +100,7 @@ export {
   Field,
   Flex,
   Header,
+  ImageView,
   Navigation,
   RadioContainer,
   Spacer,
@@ -117,4 +123,7 @@ export {
   PNGIdeaBackground4,
   PNGIdeaBackground5,
   PNGErrorBackground,
+  PNGDefaultProfileInfo36,
+  PNGDefaultProfileInfo100,
+  PNGDefaultProfileBackground,
 };

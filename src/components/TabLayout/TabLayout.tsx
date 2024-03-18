@@ -11,14 +11,18 @@ interface TabProps {
 
 interface Props {
   width?: number | string;
+  maxWidth?: number | string;
   height?: number | string;
+  maxHeight?: number | string;
   tabBoxHeight?: number | string;
   children: ReactNode;
 }
 
 const TabLayout = ({
-  width = 375,
-  height = 400,
+  width,
+  maxWidth,
+  height,
+  maxHeight,
   tabBoxHeight = 50,
   children,
   ...attributes
@@ -29,7 +33,7 @@ const TabLayout = ({
   const [position, setPosition] = useState(0);
 
   return (
-    <Wrapper width={width} {...attributes}>
+    <Wrapper width={width} maxWidth={maxWidth} {...attributes}>
       <TabBoxesWrapper tabBoxHeight={tabBoxHeight}>
         {childrenElements.map((children, idx) => (
           <TabBox
@@ -44,7 +48,7 @@ const TabLayout = ({
       {childrenElements.map(
         (children, idx) =>
           position === idx && (
-            <TabPanel key={children.key} height={height}>
+            <TabPanel key={children.key} height={height} maxHeight={maxHeight}>
               {children}
             </TabPanel>
           ),
@@ -57,8 +61,9 @@ TabLayout.Tab = Tab;
 
 export default TabLayout;
 
-const Wrapper = styled.div<{ width: number | string }>`
+const Wrapper = styled.div<Partial<Props>>`
   width: ${({ width }) => width && convertCSS(width)};
+  max-width: ${({ maxWidth }) => maxWidth && convertCSS(maxWidth)};
   margin: 0 auto;
   position: relative;
 `;
@@ -84,7 +89,8 @@ const TabBox = styled.div<{ active: boolean }>`
   box-sizing: border-box;
 `;
 
-const TabPanel = styled.div<{ height: number | string }>`
+const TabPanel = styled.div<Partial<Props>>`
   width: 100%;
   height: ${({ height }) => height && convertCSS(height)};
+  max-height: ${({ maxHeight }) => maxHeight && convertCSS(maxHeight)};
 `;

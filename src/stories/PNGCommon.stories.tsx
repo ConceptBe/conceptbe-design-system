@@ -3,6 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 import {
   PNGAgreementBackground,
   PNGBottomBackground,
+  PNGDefaultProfileBackground,
+  PNGDefaultProfileInfo100,
+  PNGDefaultProfileInfo36,
   PNGIdeaBackground1,
   PNGIdeaBackground2,
   PNGIdeaBackground3,
@@ -65,6 +68,26 @@ export const Default: Story = {
           height={180}
           src={PNGIdeaBackground5}
           alt="PNGIdeaBackground5"
+        />
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        <img
+          width={420}
+          height={420}
+          src={PNGDefaultProfileBackground}
+          alt="PNGDefaultProfileBackground"
+        />
+        <img
+          width={36}
+          height={36}
+          src={PNGDefaultProfileInfo36}
+          alt="PNGDefaultProfileInfo36"
+        />
+        <img
+          width={100}
+          height={100}
+          src={PNGDefaultProfileInfo100}
+          alt="PNGDefaultProfileInfo100"
         />
       </div>
     </div>
