@@ -5,6 +5,10 @@ export const GlobalStyles = css`
     margin: 0 auto;
   }
 
+  * {
+    font-family: 'SUIT', sans-serif;
+  }
+
   ::-webkit-scrollbar {
     width: 4px;
   }
