@@ -1,5 +1,10 @@
 import styled from '@emotion/styled';
-import { ReactNode, ElementType, ComponentPropsWithoutRef } from 'react';
+import {
+  ReactNode,
+  ElementType,
+  ComponentPropsWithoutRef,
+  CSSProperties,
+} from 'react';
 
 import { ReactComponent as SVGTextRequired } from '../../assets/svg/text_required.svg';
 import { ColorKeyType, FontKeyType } from '../../styles/theme';
@@ -10,6 +15,7 @@ type Props<T extends ElementType> = {
   font?: FontKeyType;
   color?: ColorKeyType;
   required?: boolean;
+  wordBreak?: CSSProperties['wordBreak'];
 } & ComponentPropsWithoutRef<T>;
 
 const Text = <T extends ElementType>({
