@@ -6,18 +6,26 @@ interface RadioItem {
   checked: boolean;
 }
 
+interface OnResetRadioProps<T> {
+  radioKey: keyof T;
+  resetId?: number;
+}
+
 const useRadio = <T extends Record<keyof T, RadioItem[]>>(initialValue: T) => {
   const [radioValue, setRadioValue] = useState<T>(initialValue);
 
-  const onResetRadio = useCallback((radioKey: keyof T, initId: number) => {
-    setRadioValue((prev) => ({
-      ...prev,
-      [radioKey]: prev[radioKey].map((radio) => ({
-        ...radio,
-        checked: radio.id === initId,
-      })),
-    }));
-  }, []);
+  const onResetRadio = useCallback(
+    ({ radioKey, resetId }: OnResetRadioProps<T>) => {
+      setRadioValue((prev) => ({
+        ...prev,
+        [radioKey]: prev[radioKey].map((radio) => ({
+          ...radio,
+          checked: resetId ? radio.id === resetId : false,
+        })),
+      }));
+    },
+    [],
+  );
 
   const onChangeRadio = useCallback(
     (e: ChangeEvent<HTMLInputElement>, radioKey: keyof T) => {
