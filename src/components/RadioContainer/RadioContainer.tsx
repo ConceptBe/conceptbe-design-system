@@ -31,7 +31,7 @@ const RadioContainer = <T extends string>({
 }: Props<T>) => {
   return (
     <div {...attributes}>
-      <Flex alignItems="center" paddingBottom={12}>
+      <Flex alignItems="center" paddingBottom={4}>
         <Text font="suit15m" color="b9" required={required}>
           {label}
         </Text>
@@ -75,6 +75,7 @@ const RadioLabel = styled.label<{ gap: GapType }>`
   position: relative;
   padding-left: 28px;
   margin-right: ${({ gap }) => (gap === 'large' ? '30px' : '18px')};
+  margin-top: 8px;
   cursor: pointer;
   font-size: 15px;
   font-weight: 500;
