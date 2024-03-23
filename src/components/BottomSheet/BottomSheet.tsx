@@ -35,7 +35,6 @@ const BottomSheetWrapper = styled.div<{ isOpen: boolean }>`
   right: 0;
   margin: 0 auto;
   width: auto;
-  height: max-content;
   max-width: 420px;
   max-height: 90%;
   min-height: 70%;
