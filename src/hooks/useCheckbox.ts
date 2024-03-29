@@ -16,6 +16,16 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
 ) => {
   const [checkboxValue, setCheckboxValue] = useState<T>(initialValue);
 
+  const onResetCheckbox = useCallback((checkboxKey: keyof T) => {
+    setCheckboxValue((prev) => ({
+      ...prev,
+      [checkboxKey]: prev[checkboxKey].map((checkbox) => ({
+        ...checkbox,
+        checked: false,
+      })),
+    }));
+  }, []);
+
   const onChangeCheckbox = useCallback(
     (
       e: ChangeEvent<HTMLInputElement>,
@@ -47,6 +57,7 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
   return {
     checkboxValue,
     onChangeCheckbox,
+    onResetCheckbox,
   };
 };
 
