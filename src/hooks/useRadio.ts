@@ -44,6 +44,7 @@ const useRadio = <T extends Record<keyof T, RadioItem[]>>(initialValue: T) => {
 
   return {
     radioValue,
+    setRadioValue,
     onChangeRadio,
     onResetRadio,
   };

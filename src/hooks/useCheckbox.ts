@@ -56,6 +56,7 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
 
   return {
     checkboxValue,
+    setCheckboxValue,
     onChangeCheckbox,
     onResetCheckbox,
   };
