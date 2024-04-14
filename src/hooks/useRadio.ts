@@ -1,9 +1,8 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 
 interface RadioItem {
-  id: number;
-  name: string;
   checked: boolean;
+  [key: string]: any;
 }
 
 interface OnResetRadioProps<T> {
