@@ -2,6 +2,7 @@ import { ChangeEvent, useCallback, useState } from 'react';
 
 interface CheckboxItem {
   checked: boolean;
+  id: number;
   [key: string]: any;
 }
 
@@ -22,7 +23,7 @@ const getSelectedCheckboxValueId = <T extends Record<keyof T, CheckboxItem[]>>(
         .map((checkbox) => checkbox.id);
       return acc;
     },
-    new Object() as Record<keyof T, CheckboxItem[]>,
+    new Object() as Record<keyof T, number[]>,
   );
 
   return selectedCheckboxValue;
@@ -32,7 +33,7 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
   initialValue: T,
 ) => {
   const [checkboxValue, setCheckboxValue] = useState<T>(initialValue);
-  const selectedCheckboxId = getSelectedCheckboxValueId(checkboxValue);
+  const selectedCheckboxIds = getSelectedCheckboxValueId(checkboxValue);
 
   const onResetCheckbox = useCallback((checkboxKey: keyof T) => {
     setCheckboxValue((prev) => ({
@@ -74,7 +75,7 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
 
   return {
     checkboxValue,
-    selectedCheckboxId,
+    selectedCheckboxIds,
     setCheckboxValue,
     onChangeCheckbox,
     onResetCheckbox,

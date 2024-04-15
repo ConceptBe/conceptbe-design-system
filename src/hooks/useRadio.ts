@@ -2,6 +2,7 @@ import { ChangeEvent, useCallback, useState } from 'react';
 
 interface RadioItem {
   checked: boolean;
+  name: string;
   [key: string]: any;
 }
 
@@ -17,7 +18,7 @@ const getSelectedRadioValueName = <T extends Record<keyof T, RadioItem[]>>(
 
   const selectedRadioValue = radioValueKeys.reduce(
     (acc, key) => {
-      acc[key] = radioValue[key].find((radio) => radio.checked)?.name;
+      acc[key] = radioValue[key].find((radio) => radio.checked)?.name || '';
       return acc;
     },
     new Object() as Record<keyof T, string>,
