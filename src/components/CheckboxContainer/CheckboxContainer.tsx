@@ -5,9 +5,9 @@ import Flex from '../Flex/Flex';
 import Text from '../Text/Text';
 
 interface CheckboxOptions {
-  id: number;
-  name: string;
   checked: boolean;
+  id: number;
+  [key: string]: any;
 }
 
 interface Config<T> {
