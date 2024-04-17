@@ -1,8 +1,9 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 
 interface CheckboxItem {
-  checked: boolean;
   id: number;
+  name: string;
+  checked: boolean;
   [key: string]: any;
 }
 

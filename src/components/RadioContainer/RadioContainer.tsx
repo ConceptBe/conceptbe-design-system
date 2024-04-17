@@ -7,8 +7,9 @@ import Text from '../Text/Text';
 type GapType = 'small' | 'large';
 
 interface RadioOptions {
-  checked: boolean;
+  id: number;
   name: string;
+  checked: boolean;
   [key: string]: any;
 }
 interface Props<T> {
