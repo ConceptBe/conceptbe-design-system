@@ -73,7 +73,7 @@ const filterOptions2 = [
 ];
 
 const App = () => {
-  const { checkboxValue, onChangeCheckbox } = useCheckbox<{
+  const { checkboxValue, selectedCheckboxIds, onChangeCheckbox } = useCheckbox<{
     goal: FilterOption[];
     name: FilterOption[];
     oneMore: FilterOption[];
@@ -82,7 +82,7 @@ const App = () => {
     name: filterSubOptions2,
     oneMore: filterSubOptions3,
   });
-  const { radioValue, onChangeRadio } = useRadio<{
+  const { radioValue, selectedRadioName, onChangeRadio } = useRadio<{
     name: FilterOption[];
     age: FilterOption[];
   }>({
@@ -104,10 +104,15 @@ const App = () => {
     }
   }, [dropdownValue, onResetDropdown]);
 
+  console.log(selectedCheckboxIds, selectedRadioName);
+
   return (
     <>
       {tags.map((tag) => (
-        <Tag onDelete={(name) => setTags(tags.filter((tag) => tag !== name))}>
+        <Tag
+          key={tag}
+          onDelete={(name) => setTags(tags.filter((tag) => tag !== name))}
+        >
           {tag}
         </Tag>
       ))}
