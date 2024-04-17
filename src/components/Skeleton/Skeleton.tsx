@@ -1,7 +1,7 @@
 import { css, keyframes } from '@emotion/react';
 import { ComponentPropsWithoutRef } from 'react';
 
-import { theme } from 'concept-be-design-system';
+import theme from '../../styles/theme';
 
 export interface SkeletonProps extends ComponentPropsWithoutRef<'div'> {
   width?: string;
