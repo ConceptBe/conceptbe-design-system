@@ -87,7 +87,6 @@ const ArrowWrapper = styled.div<{ isActive: boolean }>`
 
 const Trigger = styled.div<{ disabled?: boolean }>`
   display: flex;
-  user-select: none;
   justify-content: space-between;
   align-items: center;
   height: 40px;

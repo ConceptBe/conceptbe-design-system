@@ -82,7 +82,6 @@ const TabBox = styled.div<{ active: boolean }>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  user-select: none;
   border-bottom: 2px solid
     ${({ theme, active }) => (active ? theme.color.b : theme.color.w1)};
   transition: border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
