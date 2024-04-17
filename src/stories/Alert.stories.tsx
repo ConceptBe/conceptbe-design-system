@@ -2,7 +2,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import Alert from '../components/Alert/Alert';
 import { useEffect, useState } from 'react';
-import { Button, Flex } from '../../dist';
+import Button from '../components/Button/Button';
+import Flex from '../components/Flex/Flex';
 
 const meta = {
   title: 'Components/Alert',
