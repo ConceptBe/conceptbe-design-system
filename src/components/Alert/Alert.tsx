@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-import theme from '../../styles/theme';
 import Flex from '../Flex/Flex';
 import Text from '../Text/Text';
 
@@ -26,19 +25,11 @@ const Alert = ({
             <Flex height="100%" justifyContent="center" alignItems="center">
               <ContentWrapper>{content}</ContentWrapper>
             </Flex>
-            <Flex
-              borderTop={`1px solid ${theme.color.l3}`}
-              width="100%"
-              minHeight={50}
-              justifyContent="center"
-              alignItems="center"
-              cursor="pointer"
-              onClick={onClose}
-            >
+            <ButtonWrapper onClick={onClose}>
               <Text color="c1" font="suit15m">
                 {buttonContent}
               </Text>
-            </Flex>
+            </ButtonWrapper>
           </ModalWrapper>
         </Wrapper>
       )}
@@ -80,10 +71,20 @@ const ModalWrapper = styled.div`
 const ContentWrapper = styled.div`
   width: 149px;
   text-align: center;
-  font-size: ${theme.font.suit14r.fontSize}px;
-  font-weight: ${theme.font.suit14r.fontWeight};
+  font-size: ${({ theme }) => theme.font.suit14r.fontSize}px;
+  font-weight: ${({ theme }) => theme.font.suit14r.fontWeight};
   line-height: 160%;
   word-break: keep-all;
+`;
+
+const ButtonWrapper = styled.div`
+  border-top: ${({ theme }) => `1px solid ${theme.color.l3}`};
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 `;
 
 const Overlay = styled.div`

@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-import theme from '../../styles/theme';
 import Flex from '../Flex/Flex';
 import Text from '../Text/Text';
 
@@ -36,43 +35,22 @@ const Confirm = ({
             <Flex height="100%" justifyContent="center" alignItems="center">
               <ContentWrapper>{content}</ContentWrapper>
             </Flex>
-            <Flex
-              borderTop={`1px solid ${theme.color.l3}`}
-              width="100%"
-              minHeight={50}
-              justifyContent="center"
-              alignItems="center"
-              cursor="pointer"
-              onClick={onClose}
-            >
+            <ButtonSectionWrapper onClick={onClose}>
               {closeButtonContent !== '' && (
-                <Flex
-                  width="50%"
-                  height="100%"
-                  justifyContent="center"
-                  alignItems="center"
-                  borderRight={`1px solid ${theme.color.l3}`}
-                  onClick={onClose}
-                >
+                <ButtonWrapper location="left" onClick={onClose}>
                   <Text color="b9" font="suit15m">
                     {closeButtonContent}
                   </Text>
-                </Flex>
+                </ButtonWrapper>
               )}
               {confirmButtonContent !== '' && (
-                <Flex
-                  width="50%"
-                  height="100%"
-                  justifyContent="center"
-                  alignItems="center"
-                  onClick={onClickConfirm}
-                >
+                <ButtonWrapper location="right" onClick={onClickConfirm}>
                   <Text color="c1" font="suit15m">
                     {confirmButtonContent}
                   </Text>
-                </Flex>
+                </ButtonWrapper>
               )}
-            </Flex>
+            </ButtonSectionWrapper>
           </ModalWrapper>
         </Wrapper>
       )}
@@ -115,9 +93,30 @@ const ModalWrapper = styled.div`
 const ContentWrapper = styled.div`
   width: 149px;
   text-align: center;
-  font-size: ${theme.font.suit14r.fontSize}px;
-  font-weight: ${theme.font.suit14r.fontWeight};
+  font-size: ${({ theme }) => theme.font.suit14r.fontSize}px;
+  font-weight: ${({ theme }) => theme.font.suit14r.fontWeight};
   line-height: 160%;
+`;
+
+const ButtonSectionWrapper = styled.div`
+  border-top: ${({ theme }) => `1px solid ${theme.color.l3}`};
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const ButtonWrapper = styled.div<{ location: 'left' | 'right' }>`
+  border-right: ${({ theme, location }) =>
+    location === 'left' && `1px solid ${theme.color.l3}`};
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 `;
 
 const Overlay = styled.div`
