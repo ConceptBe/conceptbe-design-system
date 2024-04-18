@@ -23,6 +23,7 @@ import Field from './components/Field/Field';
 import Flex from './components/Flex/Flex';
 import Header from './components/Header/Header';
 import ImageView from './components/ImageView/ImageView';
+import Input from './components/Input/Input';
 import Navigation from './components/Navigation/Navigation';
 import Radio from './components/Radio/Radio';
 import RadioContainer from './components/RadioContainer/RadioContainer';
@@ -32,6 +33,7 @@ import Spinner from './components/Spinner/Spinner';
 import TabLayout from './components/TabLayout/TabLayout';
 import Tag from './components/Tag/Tag';
 import Text from './components/Text/Text';
+import Textarea from './components/Textarea/Textarea';
 import TextDivider from './components/TextDivider/TextDivider';
 import ConceptBeProvider from './ConceptBeProvider';
 import useCheckbox from './hooks/useCheckbox';
@@ -110,6 +112,7 @@ export {
   Flex,
   Header,
   ImageView,
+  Input,
   Navigation,
   Radio,
   RadioContainer,
@@ -119,6 +122,7 @@ export {
   TabLayout,
   Tag,
   Text,
+  Textarea,
   TextDivider,
   ConceptBeProvider,
   useCheckbox,
