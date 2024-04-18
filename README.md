@@ -1,6 +1,6 @@
 # conceptbe-design-system
 
-컨셉비 디자인 시스템
+[컨셉비](https://github.com/ConceptBe/conceptbe-frontend)에서 사용하는 디자인 시스템입니다.
 
 ## 설치 방법
 
@@ -20,29 +20,38 @@ ConceptBeProvider를 프로젝트 루트에 감싸주세요.
 
 ```jsx
 import { ConceptBeProvider } from 'concept-be-design-system';
+import { createRoot } from 'react-dom/client';
 
-const App = ({ children }) => {
-  return <ConceptBeProvider>{children}</ConceptBeProvider>;
-};
+import App from './App.tsx';
+
+createRoot(document.getElementById('root')!).render(
+  <ConceptBeProvider>
+    <App />
+  </ConceptBeProvider>
+);
 ```
 
 ## 사용 방법
 
 ### 컴포넌트
 
-자세한 내용은 [스토리북](https://65a04fca8611ba47d7f8b115-bdybhmnomg.chromatic.com/)에서 확인하세요.
+자세한 내용은 [스토리북](https://65a04fca8611ba47d7f8b115-dqgporpvoy.chromatic.com/)에서 확인해 주세요.
 
-Button 컴포넌트는 다음과 같이 사용할 수 있습니다.
+예를 들어, Button 컴포넌트는 다음과 같이 사용할 수 있습니다.
 
 ```jsx
 import { Button } from 'concept-be-design-system';
 
 function SomeComponent() {
-  return <Button>ConceptBe</Button>;
+  return (
+    <Button width={120} height={40}>
+      ConceptBe
+    </Button>
+  );
 }
 ```
 
-Text 컴포넌트는 다음과 같이 사용할 수 있습니다.
+예를 들어, Text 컴포넌트는 다음과 같이 사용할 수 있습니다.
 
 ```jsx
 import { Text } from 'concept-be-design-system';
@@ -56,20 +65,27 @@ function SomeComponent() {
 }
 ```
 
-(중략)
+이하 생략.
 
 ### 훅
 
-Field 컴포넌트와 useField 훅은 다음과 같이 사용할 수 있습니다.
+아래 훅들은 **하나의 Form 당 하나의 훅을 사용하면 됩니다.** Form에서 여러 개의 분리된 상태를 하나의 통합된 상태로 관리하는 것에 목적이 있습니다. 따라서 Field, CheckboxContainer, RadioContainer, Dropdown 컴포넌트는 각각 useField, useCheckbox, useRadio, useDropdown와 같이 사용하도록 설계되어 있습니다.
 
-```ts
+만일 해당 훅들을 사용하지 않고 직접 상태 관리를 하고자 한다면, 각 컴포넌트의 item에 해당하는 Input, Textarea, Checkbox, Radio 컴포넌트와 Text 컴포넌트를 조합하여 작성할 수 있습니다. 단, Dropdown 컴포넌트는 설계 구조상 직접 작성을 지원하지 않습니다.
+
+> Field 컴포넌트와 useField 훅은 다음과 같이 사용할 수 있습니다.
+
+```tsx
 import { Field, useField } from 'concept-be-design-system';
+import { post } from 'somewhere';
+
+interface Field {
+  nickName: string;
+  intro: string;
+}
 
 function SomeComponent() {
-  const { fieldValue, fieldErrorValue, onChangeField } = useField<{
-    nickName: string;
-    intro: string;
-  }>({
+  const { fieldValue, fieldErrorValue, onChangeField } = useField<Field>({
     nickName: '',
     intro: '',
   });
@@ -78,14 +94,27 @@ function SomeComponent() {
     return [
       {
         validateFn: (value: string) =>
-          /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}]/g.test(value),
+          /[~!@#$%";'^,&*()_+|</>=>`?:{[\]}\s]/g.test(value),
         errorMessage: '사용 불가한 소개입니다.',
+      },
+      {
+        validateFn: (value: string) => value.length < 2,
+        errorMessage: '최소 두 글자 이상 작성해야 합니다.',
       },
     ];
   };
 
+  const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    post({
+      nickname: fieldValue.nickName,
+      intro: fieldValue.intro,
+    });
+  };
+
   return (
-    <form>
+    <form onSubmit={onSubmitForm}>
       <Field
         label="닉네임"
         value={fieldValue.nickName}
@@ -119,38 +148,49 @@ function SomeComponent() {
 }
 ```
 
-CheckboxContainer 컴포넌트와 useCheckbox 훅은 다음과 같이 사용할 수 있습니다.
+> CheckboxContainer 컴포넌트와 useCheckbox 훅은 다음과 같이 사용할 수 있습니다.
 
 ```ts
 import { CheckboxContainer, useCheckbox } from 'concept-be-design-system';
+import { post } from 'somewhere'
 
 interface FilterOption {
   id: number;
   name: string;
   checked: boolean;
+  [key: string]: any;
 }
 
 function SomeComponent() {
-  const { checkboxValue, onChangeCheckBox } = useCheckbox<{
-    goal: FilterOption[];
-    skill: FilterOption[];
+  const { checkboxValue, selectedCheckboxId, onChangeCheckBox } = useCheckbox<{
+    goals: FilterOption[];
+    skills: FilterOption[];
   }>({
-    goal: goalOptions,
-    skill: skillOptions,
+    goals: goalsOptions,
+    skills: skillsOptions,
   });
 
+  const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    post({
+      goalIds: selectedCheckboxId.goals,
+      skillIds: selectedCheckboxId.skills,
+    })
+  }
+
   return (
-    <form>
+    <form onSubmit={onSubmitForm}>
       <CheckboxContainer
         label="가입 목적"
-        checkboxKey="goal"
-        options={checkboxValue.goal}
+        checkboxKey="goals"
+        options={checkboxValue.goals}
         onChange={onChangeCheckbox}
       />
       <CheckboxContainer
         label="스킬 선택"
-        checkboxKey="skill"
-        options={checkboxValue.skill}
+        checkboxKey="skills"
+        options={checkboxValue.skills}
         onChange={onChangeCheckbox}
         maxCount={3}
         required
@@ -160,51 +200,63 @@ function SomeComponent() {
 }
 ```
 
-RadioContainer 컴포넌트와 useRadio 훅은 다음과 같이 사용할 수 있습니다.
+> RadioContainer 컴포넌트와 useRadio 훅은 다음과 같이 사용할 수 있습니다.
 
-```ts
+```tsx
 import { RadioContainer, useRadio } from 'concept-be-design-system';
+import { post } from 'somewhere';
 
 interface FilterOption {
   id: number;
   name: string;
   checked: boolean;
+  [key: string]: any;
 }
 
 function SomeComponent() {
-  const { radioValue, onChangeRadio } = useRadio<{
-    collaboration: FilterOption[];
-    skill: FilterOption[];
+  const { radioValue, selectedRadioName, onChangeRadio } = useRadio<{
+    collaborations: FilterOption[];
+    mainSkills: FilterOption[];
   }>({
-    collaboration: collaborationOptions,
-    mainSkill: mainSkillOptions,
+    collaborations: collaborationOptions,
+    mainSkills: mainSkillsOptions,
   });
 
+  const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    post({
+      collaborationName: selectedRadioName.collaborations,
+      mainSkillName: selectedRadioName.mainSkills,
+    });
+  };
+
   return (
-    <form>
+    <form onSubmit={onSubmitForm}>
       <RadioContainer
         label="협업 방식"
-        radioKey="collaboration"
-        options={radioValue.collaboration}
+        radioKey="collaborations"
+        options={radioValue.collaborations}
         onChange={onChangeRadio}
         required
       />
       <RadioContainer
         label="대표 스킬"
-        radioKey="mainSkill"
-        options={radioValue.mainSkill}
+        radioKey="mainSkills"
+        options={radioValue.mainSkills}
         onChange={onChangeRadio}
       />
     </form>
-  )
+  );
 }
 ```
 
-Dropdown 컴포넌트와 useDropdown 훅은 다음과 같이 사용할 수 있습니다.
+> Dropdown 컴포넌트와 useDropdown 훅은 다음과 같이 사용할 수 있습니다.
 
-```ts
+```tsx
 import { useEffect } from 'react';
 import { Dropdown, useDropdown } from 'concept-be-design-system';
+import { post } from 'somewhere';
 
 function SomeComponent() {
   const { dropdownValue, onResetDropdown, onClickDropdown } = useDropdown<{
@@ -215,6 +267,15 @@ function SomeComponent() {
     detail: '',
   });
 
+  const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    post({
+      region: dropdownValue.region,
+      detail: dropdownValue.detail,
+    });
+  };
+
   useEffect(() => {
     if (dropdownValue.detail !== '') {
       onResetDropdown('region');
@@ -223,7 +284,7 @@ function SomeComponent() {
   }, [dropdownValue, onResetDropdown]);
 
   return (
-    <form>
+    <form onSubmit={onSubmitForm}>
       <Dropdown
         selectedValue={dropdownValue.region}
         initialValue="시/도/광역시"
@@ -233,7 +294,7 @@ function SomeComponent() {
           <Dropdown.Item
             key={id}
             value={name}
-            onClick={(value) => {
+            onClick={(value: string) => {
               onClickDropdown(value, 'region');
             }}
           >
@@ -244,14 +305,14 @@ function SomeComponent() {
 
       <Dropdown
         selectedValue={dropdownValue.detail}
-        initialValue="시/도/광역시"
-        disabled={false}
+        initialValue="상세 지역"
+        disabled={dropdownValue.region === ''}
       >
         {regionOptions.map(({ id, name }) => (
           <Dropdown.Item
             key={id}
             value={name}
-            onClick={(value) => {
+            onClick={(value: string) => {
               onClickDropdown(value, 'detail');
             }}
           >
@@ -260,13 +321,13 @@ function SomeComponent() {
         ))}
       </Dropdown>
     </form>
-  )
+  );
 }
 ```
 
 ## 링크
 
-- [스토리북](https://65a04fca8611ba47d7f8b115-bdybhmnomg.chromatic.com/)
+- [스토리북](https://65a04fca8611ba47d7f8b115-dqgporpvoy.chromatic.com/)
 
 ## 기여
 
