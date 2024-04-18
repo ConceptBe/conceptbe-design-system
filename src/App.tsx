@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Button, Spacer } from '.';
 import Child from './Child';
+import Checkbox from './components/Checkbox/Checkbox';
 import CheckboxContainer from './components/CheckboxContainer/CheckboxContainer';
 import Dropdown from './components/Dropdown/Dropdown';
 import RadioContainer from './components/RadioContainer/RadioContainer';
@@ -153,6 +154,18 @@ const App = () => {
           </Dropdown.Item>
         ))}
       </Dropdown>
+
+      {['A', 'B', 'C'].map((item) => (
+        <Checkbox
+          key={item}
+          width={50}
+          value={item}
+          checked={Math.random() > 0.5}
+          onChange={(e) => {
+            console.log(e);
+          }}
+        />
+      ))}
 
       <Button>버튼 테스트</Button>
 
