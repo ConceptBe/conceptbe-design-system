@@ -19,6 +19,7 @@ const Confirm = ({
   isOpen,
   onClose,
   onConfirm,
+  ...attributes
 }: ModalProps) => {
   const onClickConfirm = () => {
     if (onConfirm) onConfirm();
@@ -29,7 +30,7 @@ const Confirm = ({
   return (
     <>
       {isOpen && (
-        <Wrapper>
+        <Wrapper {...attributes}>
           <Overlay onClick={onClose} />
           <ModalWrapper>
             <Flex height="100%" justifyContent="center" alignItems="center">

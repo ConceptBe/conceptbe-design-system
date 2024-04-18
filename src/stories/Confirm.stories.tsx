@@ -4,6 +4,8 @@ import Confirm from '../components/Confirm/Confirm';
 import { useEffect, useState } from 'react';
 import Button from '../components/Button/Button';
 import Flex from '../components/Flex/Flex';
+import { userEvent, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 const meta = {
   title: 'Components/Confirm',
@@ -74,5 +76,70 @@ export const Default: Story = {
         </div>
       </>
     );
+  },
+};
+
+export const InteractionTest: Story = {
+  args: {
+    content: 'Confirm 컴포넌트의 내용입니다.',
+    closeButtonContent: '취소',
+    confirmButtonContent: '확인',
+    isOpen: false,
+  },
+  render: ({ content, closeButtonContent, confirmButtonContent, isOpen }) => {
+    const [isConfirmOpen, setIsConfirmOpen] = useState<boolean>(isOpen);
+
+    useEffect(() => {
+      setIsConfirmOpen(isOpen);
+    }, [isOpen]);
+
+    return (
+      <>
+        <Flex width={'100%'} justifyContent="center">
+          <Button
+            width={200}
+            onClick={() => setIsConfirmOpen(true)}
+            data-testid="button"
+          >
+            Confirm 열기
+          </Button>
+        </Flex>
+
+        <div style={{ width: '100%', height: '500px' }}>
+          <Confirm
+            content={content}
+            closeButtonContent={closeButtonContent}
+            confirmButtonContent={confirmButtonContent}
+            isOpen={isConfirmOpen}
+            onClose={() => setIsConfirmOpen(false)}
+            data-testid="confirm"
+          />
+        </div>
+      </>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const openAlertButton = await canvas.findByTestId('button');
+
+    await userEvent.click(openAlertButton, {
+      delay: 300,
+    });
+
+    const confirm = await canvas.findByTestId('confirm');
+    const confirmContent = confirm.children[1].children[0].children[0];
+    const confirmButton =
+      confirm.children[1].children[1].children[1].children[0];
+
+    expect(confirm).toBeInTheDocument();
+    expect(confirmContent.innerHTML).toBe('Confirm 컴포넌트의 내용입니다.');
+    expect(confirmButton.innerHTML).toBe('확인');
+
+    await userEvent.click(confirmButton, {
+      delay: 300,
+    });
+
+    expect(confirm).not.toBeInTheDocument();
   },
 };
