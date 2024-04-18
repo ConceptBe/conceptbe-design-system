@@ -11,13 +11,6 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
   padding?: string;
 }
 
-interface CheckboxLabelProps {
-  checked: boolean;
-  width?: string | number;
-  height?: string | number;
-  padding?: string;
-}
-
 const Checkbox = ({
   value,
   checked,
@@ -52,7 +45,7 @@ const CheckboxInput = styled.input`
   display: none;
 `;
 
-const CheckboxLabel = styled.label<CheckboxLabelProps>`
+const CheckboxLabel = styled.label<Omit<Props, 'value'>>`
   width: ${({ width }) => width && convertCSS(width)};
   height: ${({ height }) => height && convertCSS(height)};
   padding: ${({ padding }) => padding || '11px 16px 12px'};

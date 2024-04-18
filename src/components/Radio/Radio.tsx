@@ -11,11 +11,6 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
   gap?: string | number;
 }
 
-interface RadioLabelProps {
-  margin?: string;
-  gap?: string | number;
-}
-
 const Radio = ({ value, checked, margin, gap = 28, ...attributes }: Props) => {
   return (
     <>
@@ -47,7 +42,7 @@ const RadioInput = styled.input`
   display: none;
 `;
 
-const RadioLabel = styled.label<RadioLabelProps>`
+const RadioLabel = styled.label<Pick<Props, 'margin' | 'gap'>>`
   margin: ${({ margin }) => margin};
   position: relative;
   padding-left: ${({ gap }) => gap && convertCSS(gap)};
