@@ -16,7 +16,7 @@ interface RadioLabelProps {
   gap?: string | number;
 }
 
-const Radio = ({ value, checked, margin, gap, ...attributes }: Props) => {
+const Radio = ({ value, checked, margin, gap = 28, ...attributes }: Props) => {
   return (
     <>
       <RadioInput
@@ -50,7 +50,7 @@ const RadioInput = styled.input`
 const RadioLabel = styled.label<RadioLabelProps>`
   margin: ${({ margin }) => margin};
   position: relative;
-  padding-left: ${({ gap }) => (gap && convertCSS(gap)) || '28px'};
+  padding-left: ${({ gap }) => gap && convertCSS(gap)};
   cursor: pointer;
   font-size: 15px;
   font-weight: 500;
