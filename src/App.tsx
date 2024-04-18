@@ -74,7 +74,7 @@ const filterOptions2 = [
 ];
 
 const App = () => {
-  const { checkboxValue, selectedCheckboxIds, onChangeCheckbox } = useCheckbox<{
+  const { checkboxValue, selectedCheckboxId, onChangeCheckbox } = useCheckbox<{
     goal: FilterOption[];
     name: FilterOption[];
     oneMore: FilterOption[];
@@ -105,7 +105,7 @@ const App = () => {
     }
   }, [dropdownValue, onResetDropdown]);
 
-  console.log(selectedCheckboxIds, selectedRadioName);
+  console.log(selectedCheckboxId, selectedRadioName);
 
   return (
     <>

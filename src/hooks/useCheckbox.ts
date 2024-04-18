@@ -34,7 +34,7 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
   initialValue: T,
 ) => {
   const [checkboxValue, setCheckboxValue] = useState<T>(initialValue);
-  const selectedCheckboxIds = getSelectedCheckboxValueId(checkboxValue);
+  const selectedCheckboxId = getSelectedCheckboxValueId(checkboxValue);
 
   const onResetCheckbox = useCallback((checkboxKey: keyof T) => {
     setCheckboxValue((prev) => ({
@@ -76,7 +76,7 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
 
   return {
     checkboxValue,
-    selectedCheckboxIds,
+    selectedCheckboxId,
     setCheckboxValue,
     onChangeCheckbox,
     onResetCheckbox,
