@@ -15,11 +15,12 @@ const Alert = ({
   buttonContent = '확인',
   isOpen,
   onClose,
+  ...attributes
 }: ModalProps) => {
   return (
     <>
       {isOpen && (
-        <Wrapper>
+        <Wrapper {...attributes}>
           <Overlay onClick={onClose} />
           <ModalWrapper>
             <Flex height="100%" justifyContent="center" alignItems="center">
