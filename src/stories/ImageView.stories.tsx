@@ -73,3 +73,23 @@ export const Default: Story = {
     </div>
   ),
 };
+
+export const Error: Story = {
+  args: {
+    src: 'error',
+    alt: '이미지 입니다.',
+    width: '100%',
+    height: '100%',
+    maxWidth: undefined,
+    maxHeight: undefined,
+    objectFit: 'cover',
+    borderRadius: undefined,
+    defaultSrc:
+      'https://upload.wikimedia.org/wikipedia/commons/b/ba/Error-logo.png',
+  },
+  render: (args) => (
+    <div style={{ width: 'max-content', height: 'max-content' }}>
+      <ImageView {...args} />
+    </div>
+  ),
+};
