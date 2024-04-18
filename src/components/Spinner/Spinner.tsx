@@ -4,10 +4,10 @@ type Props = {
   backdrop?: boolean;
 };
 
-const Spinner = ({ backdrop = false }: Props) => (
+const Spinner = ({ backdrop = false, ...attributes }: Props) => (
   <>
     {backdrop && <Backdrop />}
-    <Position>
+    <Position {...attributes}>
       <SpinnerContainer />
     </Position>
   </>
