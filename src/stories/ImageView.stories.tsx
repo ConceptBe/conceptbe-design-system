@@ -43,6 +43,10 @@ const meta = {
       control: 'number',
       description: 'ImageView 컴포넌트의 Border Radius를 설정합니다.',
     },
+    ratio: {
+      control: 'text',
+      description: 'ImageView 컴포넌트의 aspect-ratio 값을 지정합니다.',
+    },
     defaultSrc: {
       control: 'text',
       description:
