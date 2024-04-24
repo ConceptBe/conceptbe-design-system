@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 
 interface CheckboxItem {
   id: number;
@@ -34,7 +34,10 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
   initialValue: T,
 ) => {
   const [checkboxValue, setCheckboxValue] = useState<T>(initialValue);
-  const selectedCheckboxId = getSelectedCheckboxValueId(checkboxValue);
+  const selectedCheckboxId = useMemo(
+    () => getSelectedCheckboxValueId(checkboxValue),
+    [checkboxValue],
+  );
 
   const onResetCheckbox = useCallback((checkboxKey: keyof T) => {
     setCheckboxValue((prev) => ({

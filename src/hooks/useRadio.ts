@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 
 interface RadioItem {
   id: number;
@@ -30,7 +30,10 @@ const getSelectedRadioValueName = <T extends Record<keyof T, RadioItem[]>>(
 
 const useRadio = <T extends Record<keyof T, RadioItem[]>>(initialValue: T) => {
   const [radioValue, setRadioValue] = useState<T>(initialValue);
-  const selectedRadioName = getSelectedRadioValueName(radioValue);
+  const selectedRadioName = useMemo(
+    () => getSelectedRadioValueName(radioValue),
+    [radioValue],
+  );
 
   const onResetRadio = useCallback(
     ({ radioKey, resetId }: OnResetRadioProps<T>) => {
