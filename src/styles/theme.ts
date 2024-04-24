@@ -89,14 +89,26 @@ const font = {
   },
 } as const;
 
+const zIndex = {
+  navigation: 1000,
+  modalBackdrop: 1010,
+  modal: 1020,
+  alertBackdrop: 1030,
+  alert: 1040,
+  spinnerBackdrop: 1050,
+  spinner: 1060,
+} as const;
+
 export type ColorType = typeof color;
 export type FontType = typeof font;
+export type ZIndexType = typeof zIndex;
 export type ColorKeyType = keyof typeof color;
 export type FontKeyType = keyof typeof font;
 
 const theme = {
   color,
   font,
+  zIndex,
 } as const;
 
 export default theme;
