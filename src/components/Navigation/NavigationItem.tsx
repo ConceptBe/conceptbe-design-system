@@ -39,7 +39,6 @@ const Wrapper = styled.div<{ position: PositionType }>`
           justify-content: center;
           align-items: center;
           cursor: pointer;
-          z-index: 99;
         `
       : css`
           flex: 1 1 auto;

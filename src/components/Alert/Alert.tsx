@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   inset: 0;
-  z-index: 10;
+  z-index: ${({ theme }) => theme.zIndex.alertBackdrop};
 `;
 
 const ModalWrapper = styled.div`
@@ -65,7 +65,7 @@ const ModalWrapper = styled.div`
     rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
   background-color: #fff;
   color: inherit;
-  z-index: 11;
+  z-index: ${({ theme }) => theme.zIndex.alert};
   white-space: pre-wrap;
 `;
 
