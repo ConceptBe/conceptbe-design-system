@@ -8,6 +8,7 @@ interface CheckboxOptions {
   id: number;
   name: string;
   checked: boolean;
+  [key: string]: any;
 }
 
 interface Config<T> {

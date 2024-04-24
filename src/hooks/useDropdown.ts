@@ -22,6 +22,7 @@ const useDropdown = <T extends Record<keyof T, string>>(initialValue: T) => {
 
   return {
     dropdownValue,
+    setDropdownValue,
     onResetDropdown,
     onClickDropdown,
   };

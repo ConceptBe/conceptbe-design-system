@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Button, Spacer } from '.';
 import Child from './Child';
+import Checkbox from './components/Checkbox/Checkbox';
 import CheckboxContainer from './components/CheckboxContainer/CheckboxContainer';
 import Dropdown from './components/Dropdown/Dropdown';
 import RadioContainer from './components/RadioContainer/RadioContainer';
@@ -73,7 +74,7 @@ const filterOptions2 = [
 ];
 
 const App = () => {
-  const { checkboxValue, onChangeCheckbox } = useCheckbox<{
+  const { checkboxValue, selectedCheckboxId, onChangeCheckbox } = useCheckbox<{
     goal: FilterOption[];
     name: FilterOption[];
     oneMore: FilterOption[];
@@ -82,7 +83,7 @@ const App = () => {
     name: filterSubOptions2,
     oneMore: filterSubOptions3,
   });
-  const { radioValue, onChangeRadio } = useRadio<{
+  const { radioValue, selectedRadioName, onChangeRadio } = useRadio<{
     name: FilterOption[];
     age: FilterOption[];
   }>({
@@ -104,10 +105,15 @@ const App = () => {
     }
   }, [dropdownValue, onResetDropdown]);
 
+  console.log(selectedCheckboxId, selectedRadioName);
+
   return (
     <>
       {tags.map((tag) => (
-        <Tag onDelete={(name) => setTags(tags.filter((tag) => tag !== name))}>
+        <Tag
+          key={tag}
+          onDelete={(name) => setTags(tags.filter((tag) => tag !== name))}
+        >
           {tag}
         </Tag>
       ))}
@@ -148,6 +154,18 @@ const App = () => {
           </Dropdown.Item>
         ))}
       </Dropdown>
+
+      {['A', 'B', 'C'].map((item) => (
+        <Checkbox
+          key={item}
+          width={50}
+          value={item}
+          checked={Math.random() > 0.5}
+          onChange={(e) => {
+            console.log(e);
+          }}
+        />
+      ))}
 
       <Button>버튼 테스트</Button>
 

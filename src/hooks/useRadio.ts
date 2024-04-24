@@ -1,9 +1,10 @@
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 
 interface RadioItem {
   id: number;
   name: string;
   checked: boolean;
+  [key: string]: any;
 }
 
 interface OnResetRadioProps<T> {
@@ -11,8 +12,28 @@ interface OnResetRadioProps<T> {
   resetId?: number;
 }
 
+const getSelectedRadioValueName = <T extends Record<keyof T, RadioItem[]>>(
+  radioValue: T,
+) => {
+  const radioValueKeys = Object.keys(radioValue) as (keyof T)[];
+
+  const selectedRadioValue = radioValueKeys.reduce(
+    (acc, key) => {
+      acc[key] = radioValue[key].find((radio) => radio.checked)?.name || '';
+      return acc;
+    },
+    new Object() as Record<keyof T, string>,
+  );
+
+  return selectedRadioValue;
+};
+
 const useRadio = <T extends Record<keyof T, RadioItem[]>>(initialValue: T) => {
   const [radioValue, setRadioValue] = useState<T>(initialValue);
+  const selectedRadioName = useMemo(
+    () => getSelectedRadioValueName(radioValue),
+    [radioValue],
+  );
 
   const onResetRadio = useCallback(
     ({ radioKey, resetId }: OnResetRadioProps<T>) => {
@@ -44,6 +65,8 @@ const useRadio = <T extends Record<keyof T, RadioItem[]>>(initialValue: T) => {
 
   return {
     radioValue,
+    selectedRadioName,
+    setRadioValue,
     onChangeRadio,
     onResetRadio,
   };

@@ -43,6 +43,10 @@ const meta = {
       control: 'number',
       description: 'ImageView 컴포넌트의 Border Radius를 설정합니다.',
     },
+    ratio: {
+      control: 'text',
+      description: 'ImageView 컴포넌트의 aspect-ratio 값을 지정합니다.',
+    },
     defaultSrc: {
       control: 'text',
       description:
@@ -57,6 +61,26 @@ type Story = StoryObj<typeof ImageView>;
 export const Default: Story = {
   args: {
     src: 'https://interactive-examples.mdn.mozilla.net/media/examples/plumeria-146x200.jpg',
+    alt: '이미지 입니다.',
+    width: '100%',
+    height: '100%',
+    maxWidth: undefined,
+    maxHeight: undefined,
+    objectFit: 'cover',
+    borderRadius: undefined,
+    defaultSrc:
+      'https://upload.wikimedia.org/wikipedia/commons/b/ba/Error-logo.png',
+  },
+  render: (args) => (
+    <div style={{ width: 'max-content', height: 'max-content' }}>
+      <ImageView {...args} />
+    </div>
+  ),
+};
+
+export const Error: Story = {
+  args: {
+    src: 'error',
     alt: '이미지 입니다.',
     width: '100%',
     height: '100%',

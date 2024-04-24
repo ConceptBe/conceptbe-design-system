@@ -1,9 +1,10 @@
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 
 interface CheckboxItem {
   id: number;
   name: string;
   checked: boolean;
+  [key: string]: any;
 }
 
 interface Config<T> {
@@ -11,10 +12,32 @@ interface Config<T> {
   maxCount?: number;
 }
 
+const getSelectedCheckboxValueId = <T extends Record<keyof T, CheckboxItem[]>>(
+  checkboxValue: T,
+) => {
+  const checkboxValueKeys = Object.keys(checkboxValue) as (keyof T)[];
+
+  const selectedCheckboxValue = checkboxValueKeys.reduce(
+    (acc, key) => {
+      acc[key] = checkboxValue[key]
+        .filter((checkbox) => checkbox.checked)
+        .map((checkbox) => checkbox.id);
+      return acc;
+    },
+    new Object() as Record<keyof T, number[]>,
+  );
+
+  return selectedCheckboxValue;
+};
+
 const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
   initialValue: T,
 ) => {
   const [checkboxValue, setCheckboxValue] = useState<T>(initialValue);
+  const selectedCheckboxId = useMemo(
+    () => getSelectedCheckboxValueId(checkboxValue),
+    [checkboxValue],
+  );
 
   const onResetCheckbox = useCallback((checkboxKey: keyof T) => {
     setCheckboxValue((prev) => ({
@@ -56,6 +79,8 @@ const useCheckbox = <T extends Record<keyof T, CheckboxItem[]>>(
 
   return {
     checkboxValue,
+    selectedCheckboxId,
+    setCheckboxValue,
     onChangeCheckbox,
     onResetCheckbox,
   };

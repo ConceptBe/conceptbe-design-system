@@ -10,6 +10,7 @@ interface RadioOptions {
   id: number;
   name: string;
   checked: boolean;
+  [key: string]: any;
 }
 interface Props<T> {
   label: string;
