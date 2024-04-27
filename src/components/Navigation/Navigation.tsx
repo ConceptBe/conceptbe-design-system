@@ -29,6 +29,7 @@ const Wrapper = styled.div`
   left: 50%;
   transform: translateX(-50%);
   max-width: 420px;
+  z-index: ${({ theme }) => theme.zIndex.navigation};
 `;
 
 const NavBackImg = styled.img`
