@@ -20,6 +20,7 @@ const Position = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: ${({ theme }) => theme.zIndex.spinner};
 `;
 
 const SpinnerContainer = styled.div`
@@ -50,5 +51,5 @@ const Backdrop = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9;
+  z-index: ${({ theme }) => theme.zIndex.spinnerBackdrop};
 `;

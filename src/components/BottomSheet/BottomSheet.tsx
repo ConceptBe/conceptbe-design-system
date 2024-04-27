@@ -42,7 +42,7 @@ const BottomSheetWrapper = styled.div<{ isOpen: boolean }>`
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 14px 14px 0 0;
   overflow: auto;
-  z-index: 9999;
+  z-index: ${({ theme }) => theme.zIndex.modal};
   transition: bottom 0.3s ease-in-out;
 `;
 
@@ -53,7 +53,7 @@ const Overlay = styled.div`
   display: flex;
   opacity: 1;
   inset: 0;
-  z-index: 9998;
+  z-index: ${({ theme }) => theme.zIndex.modalBackdrop};
 `;
 
 const Content = styled.div`
