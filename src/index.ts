@@ -49,6 +49,8 @@ export { ReactComponent as SVGCancel } from './assets/svg/cancel.svg';
 export { ReactComponent as SVGCheckFilled24 } from './assets/svg/check_filled_24.svg';
 export { ReactComponent as SVGFeed24 } from './assets/svg/feed_24.svg';
 export { ReactComponent as SVGFeedFilled24 } from './assets/svg/feed_filled_24.svg';
+export { ReactComponent as SVGGoldBell } from './assets/svg/gold_bell.svg';
+export { ReactComponent as SVGInfoCircle } from './assets/svg/info_circle.svg';
 export { ReactComponent as SVGProfile24 } from './assets/svg/profile_24.svg';
 export { ReactComponent as SVGProfileFilled24 } from './assets/svg/profile_filled_24.svg';
 export { ReactComponent as SVGRadioCheck24 } from './assets/svg/radio_check_24.svg';
@@ -73,14 +75,14 @@ export { ReactComponent as SVGCardLike14 } from './assets/svg/card/like_14.svg';
 export { ReactComponent as SVGCardScrap14 } from './assets/svg/card/scrap_14.svg';
 export { ReactComponent as SVGCardView14 } from './assets/svg/card/view_14.svg';
 
-export { ReactComponent as SVGNavAlarmFilled } from './assets/svg/navigation/alarm-active.svg';
 export { ReactComponent as SVGNavAlarm } from './assets/svg/navigation/alarm.svg';
-export { ReactComponent as SVGNavEditFilled } from './assets/svg/navigation/edit-active.svg';
+export { ReactComponent as SVGNavAlarmFilled } from './assets/svg/navigation/alarm_active.svg';
 export { ReactComponent as SVGNavEdit } from './assets/svg/navigation/edit.svg';
-export { ReactComponent as SVGNavHomeFilled } from './assets/svg/navigation/home-active.svg';
+export { ReactComponent as SVGNavEditFilled } from './assets/svg/navigation/edit_active.svg';
 export { ReactComponent as SVGNavHome } from './assets/svg/navigation/home.svg';
-export { ReactComponent as SVGNavUserFilled } from './assets/svg/navigation/user-active.svg';
+export { ReactComponent as SVGNavHomeFilled } from './assets/svg/navigation/home_active.svg';
 export { ReactComponent as SVGNavUser } from './assets/svg/navigation/user.svg';
+export { ReactComponent as SVGNavUserFilled } from './assets/svg/navigation/user_active.svg';
 
 export { ReactComponent as SVGLoginImageWrite } from './assets/svg/login/image_write.svg';
 export { ReactComponent as SVGLoginKakao } from './assets/svg/login/kakao.svg';
