@@ -16,24 +16,6 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          ['parent', 'sibling', 'index'],
-          'object',
-          'type',
-        ],
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: true,
-        },
-        'newlines-between': 'always',
-      },
-    ],
     '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
