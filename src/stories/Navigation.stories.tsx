@@ -1,16 +1,19 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Navigation from '../components/Navigation/Navigation';
+import { expect } from '@storybook/jest';
+import { userEvent, within } from '@storybook/testing-library';
 import { useState } from 'react';
 import {
-  SVGNavActiveFeed,
-  SVGNavActiveProfile,
-  SVGNavFeed,
-  SVGNavProfile,
-  SVGNavWrite24,
+  SVGNavAlarm,
+  SVGNavAlarmFilled,
+  SVGNavEdit,
+  SVGNavEditFilled,
+  SVGNavHome,
+  SVGNavHomeFilled,
+  SVGNavUser,
+  SVGNavUserFilled,
 } from '../.';
-import { userEvent, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import Navigation from '../components/Navigation/Navigation';
 
 const meta = {
   title: 'Components/Navigation',
@@ -29,89 +32,97 @@ type Story = StoryObj<typeof Navigation>;
 
 export const Default: Story = {
   render: () => {
-    const [navPosition, setNavPosition] = useState<'left' | 'center' | 'right'>(
-      'center',
-    );
+    const [navPosition, setNavPosition] = useState<
+      'home' | 'edit' | 'alarm' | 'user'
+    >('alarm');
 
     return (
-      <>
-        <div style={{ width: '75px', height: '75px' }}></div>
-        <Navigation>
-          <Navigation.Item onClick={() => setNavPosition('left')}>
-            {navPosition === 'left' ? <SVGNavActiveFeed /> : <SVGNavFeed />}
-          </Navigation.Item>
-          <Navigation.Item
-            position="center"
-            onClick={() => setNavPosition('center')}
-          >
-            <SVGNavWrite24 />
-          </Navigation.Item>
-          <Navigation.Item onClick={() => setNavPosition('right')}>
-            {navPosition === 'right' ? (
-              <SVGNavActiveProfile />
-            ) : (
-              <SVGNavProfile />
-            )}
-          </Navigation.Item>
-        </Navigation>
-      </>
+      <Navigation>
+        <Navigation.Item onClick={() => setNavPosition('home')}>
+          {navPosition === 'home' ? <SVGNavHomeFilled /> : <SVGNavHome />}
+        </Navigation.Item>
+        <Navigation.Item onClick={() => setNavPosition('edit')}>
+          {navPosition === 'edit' ? <SVGNavEditFilled /> : <SVGNavEdit />}
+        </Navigation.Item>
+        <Navigation.Item onClick={() => setNavPosition('alarm')}>
+          {navPosition === 'alarm' ? <SVGNavAlarmFilled /> : <SVGNavAlarm />}
+        </Navigation.Item>
+        <Navigation.Item onClick={() => setNavPosition('user')}>
+          {navPosition === 'user' ? <SVGNavUserFilled /> : <SVGNavUser />}
+        </Navigation.Item>
+      </Navigation>
     );
   },
 };
 
 export const InteractionTest: Story = {
   render: () => {
-    const [navPosition, setNavPosition] = useState<'left' | 'center' | 'right'>(
-      'center',
-    );
+    const [navPosition, setNavPosition] = useState<
+      'home' | 'edit' | 'alarm' | 'user'
+    >('alarm');
 
     return (
-      <>
-        <div style={{ width: '75px', height: '75px' }}></div>
-        <Navigation data-testid="navigation">
-          <Navigation.Item
-            data-testid="navigation-item"
-            onClick={() => setNavPosition('left')}
-          >
-            {navPosition === 'left' ? <SVGNavActiveFeed /> : <SVGNavFeed />}
-          </Navigation.Item>
-          <Navigation.Item
-            data-testid="navigation-item"
-            position="center"
-            onClick={() => setNavPosition('center')}
-          >
-            <SVGNavWrite24 />
-          </Navigation.Item>
-          <Navigation.Item
-            data-testid="navigation-item"
-            onClick={() => setNavPosition('right')}
-          >
-            {navPosition === 'right' ? (
-              <SVGNavActiveProfile />
-            ) : (
-              <SVGNavProfile />
-            )}
-          </Navigation.Item>
-        </Navigation>
-      </>
+      <Navigation>
+        <Navigation.Item
+          data-testid="navigation-item"
+          onClick={() => setNavPosition('home')}
+        >
+          {navPosition === 'home' ? <SVGNavHomeFilled /> : <SVGNavHome />}
+        </Navigation.Item>
+        <Navigation.Item
+          data-testid="navigation-item"
+          onClick={() => setNavPosition('edit')}
+        >
+          {navPosition === 'edit' ? <SVGNavEditFilled /> : <SVGNavEdit />}
+        </Navigation.Item>
+        <Navigation.Item
+          data-testid="navigation-item"
+          onClick={() => setNavPosition('alarm')}
+        >
+          {navPosition === 'alarm' ? <SVGNavAlarmFilled /> : <SVGNavAlarm />}
+        </Navigation.Item>
+        <Navigation.Item
+          data-testid="navigation-item"
+          onClick={() => setNavPosition('user')}
+        >
+          {navPosition === 'user' ? <SVGNavUserFilled /> : <SVGNavUser />}
+        </Navigation.Item>
+      </Navigation>
     );
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
     const navigationItems = await canvas.findAllByTestId('navigation-item');
-    const [feed, my] = [navigationItems[0], navigationItems[2]];
-    const SVGDisActivatedFeed = feed.children[0];
-    const SVGDisActivatedMy = my.children[0];
+    const [home, edit, alarm, user] = [
+      navigationItems[0],
+      navigationItems[1],
+      navigationItems[2],
+      navigationItems[3],
+    ];
+    const SVGDisActivatedFeed = home.children[0];
+    const SVGDisActivatedMy = edit.children[0];
+    const SVGDisActivatedAlarm = alarm.children[0];
+    const SVGDisActivatedUser = user.children[0];
 
-    await userEvent.click(feed, {
+    await userEvent.click(home, {
       delay: 300,
     });
     expect(SVGDisActivatedFeed).not.toBeInTheDocument();
 
-    await userEvent.click(my, {
+    await userEvent.click(edit, {
       delay: 300,
     });
     expect(SVGDisActivatedMy).not.toBeInTheDocument();
+
+    await userEvent.click(alarm, {
+      delay: 300,
+    });
+    expect(SVGDisActivatedAlarm).not.toBeInTheDocument();
+
+    await userEvent.click(user, {
+      delay: 300,
+    });
+    expect(SVGDisActivatedUser).not.toBeInTheDocument();
   },
 };

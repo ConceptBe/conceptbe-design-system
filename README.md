@@ -119,7 +119,7 @@ function SomeComponent() {
         label="닉네임"
         value={fieldValue.nickName}
         onChange={onChangeField}
-        onValidate={validateNickname}
+        onValidate={validateInput}
         maxLength={10}
         required
       >
